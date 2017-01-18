@@ -1,5 +1,9 @@
 package com.tata.motors.splash_screen.presenter;
 
+
+
+import android.widget.Toast;
+
 import com.tata.motors.splash_screen.SplashScreenCallBack;
 import com.tata.motors.splash_screen.model.RetrofitSplashScreenProvider;
 import com.tata.motors.splash_screen.model.SplashScreenProvider;
@@ -17,7 +21,7 @@ public class SplashScreenPresenterImpl implements SplashScreenPresenter {
     private SplashScreenProvider splashScreenProvider;
     private SplashScreenView splashScreenView;
 
-    public SplashScreenPresenterImpl(SplashScreenView splashScreenView,
+    public SplashScreenPresenterImpl(SplashScreenActivity splashScreenView,
                                      RetrofitSplashScreenProvider retrofitSplashScreenProvider) {
         this.splashScreenView = splashScreenView;
         this.splashScreenProvider = retrofitSplashScreenProvider;
@@ -25,21 +29,25 @@ public class SplashScreenPresenterImpl implements SplashScreenPresenter {
 
 
     @Override
-    public void requestSplash() {
-        splashScreenView.showProgressBar(true);
+    public void requestSplash()
+    {
+
+        //splashScreenView.showProgressBar(true);
         splashScreenProvider.requestSplash(new SplashScreenCallBack() {
             @Override
             public void onSuccess(SplashScreenData splashScreenData) {
+
+
                 if(splashScreenData.isSuccess())
                 {
-                    splashScreenView.version_check(splashScreenData);
-                    splashScreenView.showProgressBar(false);
 
+                    splashScreenView.version_check(splashScreenData);
+                    //splashScreenView.hideProgressBar();
                 }
                 else
                 {
                     splashScreenView.showMessage(splashScreenData.getMessage());
-                    splashScreenView.showProgressBar(false);
+                    //splashScreenView.hideProgressBar();
 
                 }
             }
@@ -47,7 +55,7 @@ public class SplashScreenPresenterImpl implements SplashScreenPresenter {
             @Override
             public void onFailure(String error) {
 
-                splashScreenView.showProgressBar(false);
+                //splashScreenView.hideProgressBar();
                 splashScreenView.showMessage("No Internet Connection");
 
 

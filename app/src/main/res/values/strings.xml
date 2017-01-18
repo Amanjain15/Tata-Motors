@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Tata-Motors</string>
     <string name="title_activity_home_page">home_page</string>
+    <string name="title_activity_welcome_page">welcome_page</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

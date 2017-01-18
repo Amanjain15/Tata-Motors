@@ -1,11 +1,15 @@
 package com.tata.motors.splash_screen.model;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.tata.motors.helper.Urls;
 import com.tata.motors.splash_screen.SplashScreenCallBack;
 import com.tata.motors.splash_screen.api.SplashScreenRequestApi;
 import com.tata.motors.splash_screen.model.data.SplashScreenData;
+
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -25,7 +29,7 @@ public class RetrofitSplashScreenProvider implements SplashScreenProvider{
     private static final String TAG = "RetrofitSplashScreen";
     private static final String LOG_TAG = "SplashScreenActivity";
     private SplashScreenRequestApi splashScreenRequestApi;
-
+    private Retrofit retrofit;
 
     @Override
     public void requestSplash(final SplashScreenCallBack splashScreenCallBack) {
@@ -39,22 +43,28 @@ public class RetrofitSplashScreenProvider implements SplashScreenProvider{
                 .create();
 
 
-        Retrofit retrofit = new Retrofit.Builder()
+        retrofit = new Retrofit.Builder()
                 .baseUrl(Urls.BASE_URL)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
+
         splashScreenRequestApi = retrofit.create(SplashScreenRequestApi.class);
+
         Call<SplashScreenData> call = splashScreenRequestApi.requestSplash();
+
         call.enqueue(new Callback<SplashScreenData>() {
             @Override
             public void onResponse(Call<SplashScreenData> call, Response<SplashScreenData> response) {
+
                 splashScreenCallBack.onSuccess(response.body());
+
             }
 
             @Override
             public void onFailure(Call<SplashScreenData> call, Throwable t) {
                 t.printStackTrace();
+
                 splashScreenCallBack.onFailure("Unable to Connect");
 
             }

@@ -12,5 +12,9 @@ public interface SplashScreenView {
 
     void showProgressBar(boolean show);
 
+    void hideProgressBar();
+
     void version_check(SplashScreenData splashScreenData);
+
+
 }

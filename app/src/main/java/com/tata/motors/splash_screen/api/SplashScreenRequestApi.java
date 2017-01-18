@@ -13,6 +13,6 @@ import retrofit2.http.GET;
 public interface SplashScreenRequestApi {
 
 
-    @GET(Urls.BASE_URL)
+    @GET(Urls.REQUEST_SPLASH_SCREEN)
     Call<SplashScreenData> requestSplash();
 }

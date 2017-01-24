@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.tata.motors.R;
+
 import com.tata.motors.helper.image_loader.GlideImageLoader;
 import com.tata.motors.helper.image_loader.ImageLoader;
 import com.tata.motors.welcome_screen.model.data.WelcomeImageDetails;

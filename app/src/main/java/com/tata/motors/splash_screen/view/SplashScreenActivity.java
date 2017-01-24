@@ -5,8 +5,6 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,8 +13,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.tata.motors.BuildConfig;
 import com.tata.motors.R;
+
+import com.tata.motors.BuildConfig;
 import com.tata.motors.helper.SharedPrefs;
 import com.tata.motors.splash_screen.model.RetrofitSplashScreenProvider;
 import com.tata.motors.splash_screen.model.data.SplashScreenData;

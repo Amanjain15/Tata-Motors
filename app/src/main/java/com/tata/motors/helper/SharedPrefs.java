@@ -1,6 +1,5 @@
 package com.tata.motors.helper;
 
-import com.tata.motors.splash_screen.view.SplashScreenActivity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;

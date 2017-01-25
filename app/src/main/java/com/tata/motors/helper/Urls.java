@@ -11,5 +11,5 @@ public class Urls {
     public static final String REQUEST_WELCOME_SCREEN = "url/";
     public static final String REPORT = "url/";
 
-
+    public static final String REQUEST_LOGIN = "LOGIN";
 }

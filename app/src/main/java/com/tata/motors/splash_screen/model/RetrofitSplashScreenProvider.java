@@ -1,15 +1,11 @@
 package com.tata.motors.splash_screen.model;
 
-import android.util.Log;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.tata.motors.helper.Urls;
 import com.tata.motors.splash_screen.SplashScreenCallBack;
 import com.tata.motors.splash_screen.api.SplashScreenRequestApi;
 import com.tata.motors.splash_screen.model.data.SplashScreenData;
-
-import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

@@ -31,7 +31,7 @@ public class ReportPresenterImpl implements ReportPresenter {
             public void onSuccess(ReportData reportData) {
                 if (reportData.isSuccess()) {
                     reportView.showProgressbar(false);
-                    reportView.onDataReceived(reportData);
+                    reportView.onDataReceived(reportData,1);
 
                 } else {
                     reportView.showProgressbar(false);

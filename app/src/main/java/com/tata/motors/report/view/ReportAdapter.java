@@ -55,6 +55,13 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
+        MyViewHolder myViewHolder=(MyViewHolder) holder;
+        if(type==1)
+        {
+            Daily daily=dailyList.get(position);
+            myViewHolder.test.setText("Success");
+
+        }
 
     }
 
@@ -68,11 +75,13 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.MyViewHold
             return monthlyList.size();
     }
 
-    protected class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private MyViewHolder(View itemView) {
+        TextView test;
+        public MyViewHolder(View itemView) {
             super(itemView);
 
+            test=(TextView)itemView.findViewById(R.id.test);
 
 
         }

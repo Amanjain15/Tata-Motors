@@ -16,15 +16,17 @@
             android:name=".splash_screen.view.SplashScreenActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name=".home.home_page"
+            android:label="@string/title_activity_home_page">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".home.home_page"
-            android:label="@string/title_activity_home_page"></activity>
         <activity
             android:name=".welcome_screen.view.WelcomeScreenActivity"
             android:label="@string/title_activity_welcome_page"></activity>

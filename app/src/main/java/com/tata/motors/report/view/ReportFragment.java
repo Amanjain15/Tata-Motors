@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.tata.motors.R;
 import com.tata.motors.helper.SharedPrefs;
+import com.tata.motors.report.model.MockReportProvider;
 import com.tata.motors.report.model.RetrofitReportProvider;
 import com.tata.motors.report.model.data.ReportData;
 import com.tata.motors.report.presenter.ReportPresenter;
@@ -86,6 +87,8 @@ public class ReportFragment extends Fragment implements ReportView {
                              Bundle savedInstanceState) {
 
 
+
+
         View view = inflater.inflate(R.layout.fragment_report, container, false);
         ButterKnife.bind(this, view);
         recyclerView=(RecyclerView)view.findViewById(R.id.report_recycler);
@@ -100,7 +103,7 @@ public class ReportFragment extends Fragment implements ReportView {
 
     void initialize() {
 //        orderPresenter = new ReportPresenterImpl(this, new RetrofitReportProvider());
-        reportPresenter=new ReportPresenterImpl(this,new RetrofitReportProvider());
+        reportPresenter=new ReportPresenterImpl(this,new MockReportProvider());
         reportAdapter = new ReportAdapter(getContext(), this);
         sharedPrefs = new SharedPrefs(getContext());
         token = sharedPrefs.getAccessToken();

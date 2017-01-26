@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.tata.motors.R;
+import com.tata.motors.helper.Keys;
 
 public class home_page extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -82,13 +83,15 @@ public class home_page extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_sign_out) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_profile) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_dsm) {
+            Keys.Key_id=1;
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_dse) {
+            Keys.Key_id=2;
 
         } else if (id == R.id.nav_share) {
 

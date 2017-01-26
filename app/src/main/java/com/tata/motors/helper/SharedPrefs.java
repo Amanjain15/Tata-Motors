@@ -1,6 +1,5 @@
 package com.tata.motors.helper;
 
-import com.tata.motors.splash_screen.view.SplashScreenActivity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
@@ -12,13 +11,21 @@ import android.util.Log;
 public class SharedPrefs {
     private static final String PREF_NAME = "welcome";
     private static final String PREF_NAME_LOGIN = "Login";
-    private static final String KEY_IS_LOGGEDIN = "isLoggedIn";
-    private static final String KEY_USERNAME = "username";
-    private static final String KEY_EMAIL = "email";
-    private static final String KEY_USER_ID = "userId";
-    private static final String KEY_LOGIN_TYPE = "loginType";
+
+    private static final String KEY_USER_ID = "user_id";
+    private static final String KEY_USER_TYPE = "user_type";
     private static final String KEY_ACCESS_TOKEN = "access_token";
-    private static final int KEY_VERSION = 1;
+    private static final String KEY_EMPLOYEE_TYPE="employee";
+    private static final String KEY_USERNAME = "username";
+
+    private static final String KEY_IS_LOGGEDIN = "isLoggedIn";
+    private static final String KEY_EMAIL = "email";
+
+
+
+
+
+
 
     // LogCat tag
     private static String TAG = "Shared Preference";
@@ -37,9 +44,7 @@ public class SharedPrefs {
         editor = pref.edit();
     }
 
-    public static int getKeyVersion() {
-        return KEY_VERSION;
-    }
+
 
     public boolean isLoggedIn() {
         return pref.getBoolean(KEY_IS_LOGGEDIN, false);
@@ -96,6 +101,15 @@ public class SharedPrefs {
         editor.commit();
     }
 
+    public String getUserType() {
+        return KEY_USER_TYPE;
+    }
 
+    public String getKeyEmployeeType() {
+        return KEY_EMPLOYEE_TYPE;
+    }
 
+    public void setKeyEmployeeType(String employee) {
+        editor.putString(KEY_EMPLOYEE_TYPE, employee);
+    }
 }

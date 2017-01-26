@@ -2,8 +2,6 @@ package com.tata.motors.splash_screen.presenter;
 
 
 
-import android.widget.Toast;
-
 import com.tata.motors.splash_screen.SplashScreenCallBack;
 import com.tata.motors.splash_screen.model.RetrofitSplashScreenProvider;
 import com.tata.motors.splash_screen.model.SplashScreenProvider;

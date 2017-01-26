@@ -1,6 +1,5 @@
 package com.tata.motors.welcome_screen.view;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -21,8 +20,6 @@ import com.tata.motors.welcome_screen.presenter.WelcomeScreenPresenterImpl;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import butterknife.BindView;
 
 /**
  * Created by aman on 14/12/16.

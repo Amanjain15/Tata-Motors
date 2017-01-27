@@ -129,12 +129,12 @@ public class AddUserFragment extends Fragment implements AddUserView {
 
 
 
-        if(prefs.getKeyEmployeeType().equals("2"))
+        if(prefs.getKeyEmployeeType().equals("2"))        //adding dse
         {
             showSpinnerDsm(dsmListDetails);
         }
 
-        if(prefs.getKeyEmployeeType().equals("1"))
+        if(prefs.getKeyEmployeeType().equals("1"))        //adding dsm
         {
             showSpinnerDealer(dealerListDetails);
         }

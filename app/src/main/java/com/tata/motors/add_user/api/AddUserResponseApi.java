@@ -18,8 +18,8 @@ public interface AddUserResponseApi {
 
     @FormUrlEncoded
     @POST(Urls.RESPONSE_ADD_USER)
-    Call<UserAddedData> responseAddUser(@Query("dealer_id") String dealer_id,
-                                        @Query("dsm_id") String dsm_id,
-                                        @Query("username") String username,
-                                        @Query("name") String name);
+    Call<UserAddedData> responseAddUser(@Field("dealer_id") String dealer_id,
+                                        @Field("dsm_id") String dsm_id,
+                                        @Field("username") String username,
+                                        @Field("name") String name);
 }

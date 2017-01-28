@@ -5,4 +5,7 @@ package com.tata.motors.add_customer.model;
  */
 
 public interface CustomerAddedProvider {
+
+
+
 }

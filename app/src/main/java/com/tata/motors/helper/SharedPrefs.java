@@ -18,6 +18,8 @@ public class SharedPrefs {
     private static final String KEY_LOGIN_TYPE = "loginType";
     private static final String KEY_ACCESS_TOKEN = "access_token";
     private static final int KEY_VERSION = 1;
+    private  static final String KEY_EMPLOYEE_TYPE="employee";
+
 
     // LogCat tag
     private static String TAG = "Shared Preference";
@@ -92,6 +94,16 @@ public class SharedPrefs {
 
     public void setAccessToken(String accessToken) {
         editor.putString(KEY_ACCESS_TOKEN, accessToken);
+        editor.commit();
+    }
+
+
+    public  String getKeyEmployeeType() {
+        return pref.getString(KEY_EMPLOYEE_TYPE,null);
+    }
+
+    public void setKeyEmployeeType(String employee){
+        editor.putString(KEY_EMPLOYEE_TYPE,employee);
         editor.commit();
     }
 

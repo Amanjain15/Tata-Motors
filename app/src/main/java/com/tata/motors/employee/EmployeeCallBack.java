@@ -8,6 +8,6 @@ import com.tata.motors.employee.model.data.EmployeeData;
 public interface EmployeeCallBack {
 
     void onSuccess(EmployeeData employeeData);
-    void onFailure(String error);
+    void onFailure();
 
 }

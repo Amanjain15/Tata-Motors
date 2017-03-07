@@ -10,4 +10,6 @@ public class Urls {
     public static final String REQUEST_SPLASH_SCREEN = "version/";
     public static final String REQUEST_WELCOME_SCREEN = "url/";
     public static final String REQUEST_LOGIN = "LOGIN";
+    public  static final String REQUEST_PROFILE="PROFILE";
+    public  static final String REQUEST_SEND_PROFILE="SEND_PROFILE";
 }

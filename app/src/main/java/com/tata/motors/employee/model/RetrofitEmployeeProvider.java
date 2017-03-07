@@ -42,7 +42,7 @@ public class RetrofitEmployeeProvider implements EmployeeProvider {
     @Override
     public void requestEmployee(String token, String Employee, final EmployeeCallBack employeeCallBack) {
 
-        Call<EmployeeData> call= employeeApi.getemployee(token,Employee){
+        Call<EmployeeData> call= employeeApi.getemployee(token,Employee);
             call.enqueue(new Callback<EmployeeData>() {
                 @Override
                 public void onResponse(Call<EmployeeData> call, Response<EmployeeData> response) {
@@ -51,9 +51,10 @@ public class RetrofitEmployeeProvider implements EmployeeProvider {
 
                 @Override
                 public void onFailure(Call<EmployeeData> call, Throwable t) {
-                    employeeCallBack.onFailure("Unable to Connect");
+                    employeeCallBack.onFailure();
+                    t.printStackTrace();
                 }
             });
         }
     }
-}
+

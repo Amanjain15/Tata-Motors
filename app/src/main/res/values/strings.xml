@@ -25,6 +25,8 @@
     <string name="login">LOGIN</string>
 
     <string name="add_dsm">Add DSM</string>
+    <string name="dsm">DSM</string>
+    <string name="dse">DSE</string>
     <string name="application">Application</string>
     <string name="district">District</string>
     <string name="town">Town</string>
@@ -42,11 +44,6 @@
     <string name="ok_text">Ok</string>
     <string name="developed"><![CDATA[Powered by]]></string>
     <string name="description">Description</string>
-
-
-
-
-
 
 
 </resources>

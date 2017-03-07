@@ -1,0 +1,752 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-24.2.1_93134aa9e12c001699814c5f2fbd2c17bb3c4df2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-iid/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="6bb5d347ebc0c6ef3c83a905222a688da5d2f7b4">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-iid-10.0.1_26c8597633c8f23162c4bccf33ff582782ff3ccc/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_d432edbf04d53804e1c040229b71777b429a5e1c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-24.2.1_ee96a4f1d6c6b9b953bbaae5f60c06fc3dff1702/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="4c829ff0ccfecb28a999ee46d9e75948dfc777a4">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-analytics-10.0.1_55f1b6b68ef45cbfc56d4340e727273fa7e596a2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="27777b3cad3c20b1acab19f6e37fe3e03371bf6e">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-maps-10.0.1_09d6357f10fccac058828211cb2170eb565cd851/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="e2185aff89caeb337b1ffc36d5e525d8318e7cfe">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-auth-10.0.1_72f05a47a31f801e7e1f2fb32927b423b66e999a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.gradle/caches/modules-2/files-2.1/io.reactivex/rxjava/1.1.5/ece7b5d0870e66d8226dab6dcf47a2b12afff061/rxjava-1.1.5.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="ece7b5d0870e66d8226dab6dcf47a2b12afff061">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/rxjava-1.1.5_da7030dba86f3febc77b6d6ac14b1b7e834dd59d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="4852c35031ac3cbe3f4798600f41b0e2f37b0537">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_5f76372c15f350f73ce128ab142cd3bdce1dc753/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast-framework/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="df1cb17511aabbb63264a0024949d1e42502a512">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-cast-framework-10.0.1_ace005c6ef14f0edbde95e0bac9a44686a7fe10f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife-annotations/8.4.0/ea392375cf9ff59234a82e7928a204215ccc98cd/butterknife-annotations-8.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="ea392375cf9ff59234a82e7928a204215ccc98cd">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/butterknife-annotations-8.4.0_bd11534dcaadfa01f758bf17efd22df8ea54fe22/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tagmanager-v4-impl/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="f23ad0f8e58713ff4b55f61c0bbde3830378347c">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tagmanager-v4-impl-10.0.1_8cc165366efda92ec368104d74c87d8a8dc68295/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="39907d5c8f5902fffef30160ca7447c93b82405c">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-appinvite-10.0.1_badbb565772b264b3f51a4512e3dec443c16d71a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-clearcut/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="1d193729baf37df3d902a423291423a0df7e3779">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-clearcut-10.0.1_7ecd54e8766ebb197864eacae2867034b5cd4fc5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-24.2.1_ad2eb0e1d10db6334e248d143820d52e83792c73/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.firebase/firebase-storage/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="dd39827d2067497e60e21da48a7926000b6d4b0c">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-storage-10.0.1_c4d7fa14109a8cd3f9526da5467742f20b9dfe83/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-24.2.1_56dcd6739b67a6e243cf7c29edb85032d11a3014/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.firebase/firebase-config/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="ffc15e965a9e8c28f24455eedd4cac215c45d1fc">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-config-10.0.1_ca72fa12a47442fc902cdf75ad23e51005412594/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="8308ed003522a2ee8958311afcc4cfd0470377cd">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-gcm-10.0.1_888b39aa0521ea16f40267154febfbf2cde78be6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="028f8255cb977b29cdffbfcf05caa0459686120c">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-drive-10.0.1_64745af3d9e6c20e1b894323fce4e6a2ac1db3dd/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.firebase/firebase-crash/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="de29a39f9260f88151b1ef453140e71c76b6c415">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-crash-10.0.1_b3a0f5b9d709aafae46580632a19a6b950faed27/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.firebase/firebase-appindexing/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="ae80d328a8548b4610ead6c624bab8c6a6984f5b">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-appindexing-10.0.1_66b236da5c62049c34ca34b80bb73e6adbe44659/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tagmanager/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="971509bbe30bb7b971fc1c49d7b23d0d818830ac">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tagmanager-10.0.1_ddec7ec676219d67758e5997cb2efb0b6160a298/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-24.2.1_5300be20e11244e498f95c6b32c63ebc5bba0bdc/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="1e11c68fec92a17c84dd8d1dd80e74c4e67b12e2">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-games-10.0.1_8ad136cb210c84a54e3d437fdf05528e41ed5a72/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.android.support/multidex/1.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="78ea232052df889856dcb7b7b542707c89bb3bfb">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-multidex-1.0.1_36eec97e9fd0fdc9ab762152b7aa2ee63fb7c45d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="6116e0e7069de7fc259aac8e08b84f32c2038231">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-analytics-impl-10.0.1_f3a2f7cd4a395205100f020b4f4e522303c4a7db/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads-lite/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="b955cb3a1ad6f1b6ff728ce1e0cd592c1717b440">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-ads-lite-10.0.1_fe69af1a82945dca7a54c15f7f1b3d4428ef2665/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.firebase/firebase-database-connection/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="8010ae6ed32828a145b25ec97bc07b7a83c6318f">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-database-connection-10.0.1_b7ee626ab92ae5b01531ffa8873c967329cae6a9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="433f4d6aa5f21f19552afe0e6c5eff0fedba73ad">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-analytics-10.0.1_809d1d0394b46fa4941c93f43546693ee36d129d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-24.2.1_dc5aabec1ce06e0764117e7e7cbd2d9d2898fe77/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tagmanager-api/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="b1df8fa3d372a27e4e969ce00b00689ee1eed031">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tagmanager-api-10.0.1_3ec8c5e3c09a8260748fc07724dbda62fa8b98e9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-places/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="f3e51e9c5233b8897f61e08a6a27bc36283c2724">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-places-10.0.1_3495467a80f18e6fad9c8c9a767cbf85b5856dd5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="d0460bf07cc3657e0be518ca01c174493951c6b8">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-ads-10.0.1_549c9a475e48f9b3da40979c4529493bb524d0b4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.9.0/f824591a0016efbaeddb8300bee54832a1398cfa/okio-1.9.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="f824591a0016efbaeddb8300bee54832a1398cfa">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/okio-1.9.0_f33363f6ec469b45717a681b0ff3fb80bcda9991/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="7a64bf6dc775198eed9db9468a133adf7dfe6562">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-fitness-10.0.1_94017ecbc711bdb2f47d61673308a7d6b31b854d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/3.7.0/9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4/glide-3.7.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/glide-3.7.0_84229cfe17f2a2fec83726ab393a1fa330b67ec9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-24.2.1_9d75f4a77ac6ae604eba31c2382d041164b88518/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="486371f97baad8e607f332f20fee1d3dd00a731a">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-iid-10.0.1_23995d03a16f7e4ff2ec6dba2ce119231e1df499/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gass/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="57c2eceb8548de84509d1ebc293fedec53231f6c">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-gass-10.0.1_8e59d444d5ad35450e6db480c17e78d30a9718d2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="408a599ac77cd17fe8e8919326bec617b3d005bd">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-wearable-10.0.1_d9c94b427e6590ed009172462dc1ef9066c9c7be/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.android.support/palette-v7/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="734e80dffea7bd76c18ae256822a124c30d85850">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-palette-v7-24.0.0_a95f36a81e8606b1e71b0e54b38f673462c70d64/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_5ed77e031c9d67a08de0d15d5fb179099df56ae7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.firebase/firebase-storage-common/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="09cf6aa1390f95157e8295d02be7868f568825fc">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-storage-common-10.0.1_30f735371b694ed57ac3075354d66b4e35cfcb95/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-24.2.1_00d8d17c1f6acb1d78f0c0b5f771646cb64027f2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.firebase/firebase-database/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="8f128aeeb7e31271b28a7adb9dac1f3a6ed9f5e7">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-database-10.0.1_ab79ad9c40e7ffa88b029b2fbd8fddaede73dd9e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="44a694d4095be84c2888764b1f7256b385c030ad">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-location-10.0.1_927b4108950aeeac6970f7037706a3d27ef1de83/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/adapter-rxjava/2.1.0/693eddc23e87ab13f9cf5001707ce8e7e1d1ff01/adapter-rxjava-2.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="693eddc23e87ab13f9cf5001707ce8e7e1d1ff01">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/adapter-rxjava-2.1.0_da2c8625e46ba0564df9fabc7a7030ddf995bacc/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-24.2.1_b616600ad7f8d0a29fd262f7fdd97b3dc71c1507/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.firebase/firebase-messaging/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="4b17463c814bdc562fb0392fa3494063623a0904">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-messaging-10.0.1_042b3aa0b9581ff6d943559d95be093b45a95a73/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-24.2.1_f1fa81bf024b68b06c520e63cf815fe2e62f456b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.firebase/firebase-common/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="eb0d830e3eabb9deb9ec44869cf7ac7ea1ad794c">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-common-10.0.1_ba06244288f8850bd98803889f825b285cb9847f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/logging-interceptor/3.4.1/381fc1096ba65040d8e80ea43b2e1d9bad02345e/logging-interceptor-3.4.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="381fc1096ba65040d8e80ea43b2e1d9bad02345e">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/logging-interceptor-3.4.1_6dc52d24e04b5d79438a5c643dae15db1f88be12/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_f2f2fea7941d50948ed691a31c21d2e87ed93aa1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-24.2.1_30b1e79e680d35d1d2dd9da3bdcb7946ab3e4bf0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="756f6297eef79784f5e356dcd4f39865028b2bd0">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-basement-10.0.1_6fd646dee6376f97777f513e609892fb820a4ef8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics-impl/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="e871881b36b32e6bfd271a830c6eeb54ff0fc185">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-analytics-impl-10.0.1_d21ee5cf315b69158fbb232cfaf4186254859ad6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.firebase/firebase-auth/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="9cca2818594cc5348806d6662133491e7ea0fa8d">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-auth-10.0.1_c488ea4fc482e0ea9621e11f01d0633d0629932b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-instantapps/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="45305e6af414dab5aba6c3225081c2f15c3bdd1e">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-instantapps-10.0.1_4d631a39eb69b4e9448294f1a23574addfd0d7f7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-awareness/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="4385ccc0a88b33d182a836eadb47be55c8eb1107">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-awareness-10.0.1_af3679ba6e4878c59e7339f63c5a5581a0149047/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="2d5d113b0352ab60946fc44c518cf68fd26cbb79">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-wallet-10.0.1_88b544026f43d96e61b8d0c9a7aa79fafa215b40/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_173dafe43528fb62822063db5e52516839e28a20/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.7/751f548c85fa49f330cecbb1875893f971b33c4e/gson-2.7.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/gson-2.7_bf3f3aec9eded4ea3e8c33426115763ceb92538a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth-base/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="e96c6974cf924e7ee3b230e6847d5731423388c9">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-auth-base-10.0.1_4c15615d3cc4918fb989ab39936fecb4493810ce/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="25438f55fc6d906a0e72f30b21487541430ede43">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-base-10.0.1_85ea60a20912b05cf236e50454b2c1b91655cb88/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="c6e1f361e9d61aece9dac39b77fcc98a337a144d">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-nearby-10.0.1_36e4350f7e17d223c182ed623e32a2288bfd0308/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_cb7d65b167dd848114b1363c1befd3dbc22010b3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="6addaba208e21c6da776d0ca75b6b23a6ccd5499">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tasks-10.0.1_f422f2f404afcdb140de6ecbd9d534897de7967c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.jakewharton/butterknife/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="a07818a1ecabdb149998823429cce555af4b9cba">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.jakewharton-butterknife-8.4.0_6e5f9a150012eddd7ac4344f501ed0d4f6aee678/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.1.0/2de7cd8b95b7021b1d597f049bcb422055119f2c/retrofit-2.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="2de7cd8b95b7021b1d597f049bcb422055119f2c">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/retrofit-2.1.0_a690cd9364cb60d177ffb31ef9471d294b57a361/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="6459e3159acad5f3b2abdd7aac9c887177dae947">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_d796cdd2332ec712ae803562f33d8c42c861dbd2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="92c871a22463a247e8a77a9f3fd231c278788c4a">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-panorama-10.0.1_044321904b8affee53b778380ab508182d9652fa/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-vision/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="ba6aa5e69ef31dee57208125323cee958fc67565">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-vision-10.0.1_055f5f8f0c183ae99f92d181b755216b96d11567/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="c5e6490573cd2cc8018417f60ddd251138b6ed61">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-cardview-v7-24.2.1_b407fea52b680513d1852071fe3d7ed8b8407a1b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="b327fbe2fad414bc38cf0ce8f7efe1a38f572837">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-mediarouter-v7-24.0.0_1283c2802de5bc9f5cf49e65d2669c8b566f3589/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/24.0.0/jars/libs/internal_impl-24.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="b6763651ec29b4c95e7bbe63fc393ffcc8c4c2c5">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.0.0_fcc4e769543b9d1e1c0417e71f97f26df77bad31/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="771267c5b0c7a5b348d3205dcfa1f871af7e0177">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-cast-10.0.1_8291f6923a02a69a5c90277d86a07ddeb0d169d2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="a48dc0b148059764d32500be558702d5ff932058">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-identity-10.0.1_7bcbd83aa73659a20c50e2c42bd55537e3044f73/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="f6cf557be4dbd0282ea2388633e5378634423226">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-safetynet-10.0.1_3ecad75e51d9caa80f6cc4aba64cd035e8830f0e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-gson/2.1.0/aa557d71ead91cbf26e0c316a0f593d168303309/converter-gson-2.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="aa557d71ead91cbf26e0c316a0f593d168303309">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/converter-gson-2.1.0_627921e19eae1c0c008bf75fda1857738d6383a4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.4.1/c7c4f9e35c2fd5900da24f9872e3971801f08ce0/okhttp-3.4.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="c7c4f9e35c2fd5900da24f9872e3971801f08ce0">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/okhttp-3.4.1_dfb385ab87a99c1c0eeddddf3aeae1cc2558f3be/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="c14f0c89f28cf782e42581ab0aba5f63af39b3d2">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-plus-10.0.1_31db4608274b3a1ad5f7c8fe351a6f7b836b7d4f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.2.1_0635a65784fede381a8666717571643f99c4cd75/classes.dex" />
+    </item>
+
+</items>

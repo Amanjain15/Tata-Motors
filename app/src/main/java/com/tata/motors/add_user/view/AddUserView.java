@@ -14,6 +14,7 @@ public interface AddUserView {
     void showSpinnerDealer(DealerListDetails dealerListDetails);
     void showError(String message);
     void showDialog();
+    void check();
 
 
 

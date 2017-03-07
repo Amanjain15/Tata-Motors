@@ -17,7 +17,9 @@ public interface CustomerAddedResponseApi {
 
     @FormUrlEncoded
     @POST(Urls.RESPONSE_ADD_CUSTOMER)
-    Call<CustomerAddedData> responseAddCustomer(@Field("customer_name") String customer_name,
+    Call<CustomerAddedData> responseAddCustomer(@Field("dsm_id") String dsm_id,
+                                                @Field("dse_id") String dse_id,
+                                                @Field("customer_name") String customer_name,
                                                 @Field("application_id") String application_id,
                                                 @Field("contact_no") String contact_no,
                                                 @Field("district_id") String district_id,

@@ -16,6 +16,8 @@ public class AddCustomerData {
     List<FinancierListDetails> financierListDetails;
     List<ModelListDetails> modelListDetails;
     List<VehicleListDetails> vehicleListDetails;
+    List<DsmListDetails> dsmListDetails;
+    List<DseListDetails> dseListDetails;
 
     public AddCustomerData(boolean success, String message, int user_type,
                            List<ApplicationListDetails> applicationListDetails,
@@ -23,7 +25,9 @@ public class AddCustomerData {
                            List<TownListDetails> townListDetails,
                            List<FinancierListDetails> financierListDetails,
                            List<ModelListDetails> modelListDetails,
-                           List<VehicleListDetails> vehicleListDetails) {
+                           List<VehicleListDetails> vehicleListDetails,
+                           List<DsmListDetails> dsmListDetails,
+                           List<DseListDetails> dseListDetails) {
         this.success = success;
         this.message = message;
         this.user_type = user_type;
@@ -33,8 +37,9 @@ public class AddCustomerData {
         this.financierListDetails = financierListDetails;
         this.modelListDetails = modelListDetails;
         this.vehicleListDetails = vehicleListDetails;
+        this.dsmListDetails = dsmListDetails;
+        this.dseListDetails = dseListDetails;
     }
-
 
     public boolean isSuccess() {
         return success;
@@ -70,5 +75,13 @@ public class AddCustomerData {
 
     public List<VehicleListDetails> getVehicleListDetails() {
         return vehicleListDetails;
+    }
+
+    public List<DsmListDetails> getDsmListDetails() {
+        return dsmListDetails;
+    }
+
+    public List<DseListDetails> getDseListDetails() {
+        return dseListDetails;
     }
 }

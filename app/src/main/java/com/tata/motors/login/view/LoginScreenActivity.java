@@ -2,8 +2,10 @@ package com.tata.motors.login.view;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.multidex.MultiDex;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 
 import com.tata.motors.R;
 import com.tata.motors.helper.SharedPrefs;
+import com.tata.motors.login.models.MockLoginProvider;
 import com.tata.motors.login.models.RetrofitLoginScreenProvider;
 import com.tata.motors.login.presenter.LoginScreenPresenter;
 import com.tata.motors.login.presenter.LoginScreenPresenterImpl;
@@ -38,32 +41,39 @@ public class LoginScreenActivity extends Activity implements LoginScreenView {
     String password1;
 
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
+//    @BindView(R.id.toolbar)
+//    Toolbar toolbar;
 
     private SharedPrefs sharedPrefs;
     private ProgressBar progressbar;
+
     private RetrofitLoginScreenProvider retrofitLoginScreenProvider;
     private LoginScreenPresenter loginScreenPresenter;
 
-
+    @Override
+    protected void attachBaseContext(Context context) {
+        super.attachBaseContext(context);
+        MultiDex.install(this);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_loginscreen);
+
         ButterKnife.bind(this);
 
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
+        //progressbar = (ProgressBar)findViewById(R.id.barLogin);
         Log.d("Response", "1");
         sharedPrefs = new SharedPrefs(this);
-        progressbar = (ProgressBar) findViewById(R.id.progressBar);
+        progressbar = (ProgressBar) findViewById(R.id.barLogin);
         Log.d("Response", "2");
 
         login_button = (Button) findViewById(R.id.button);
@@ -76,7 +86,7 @@ public class LoginScreenActivity extends Activity implements LoginScreenView {
         Log.d("Response", "4");
 
         loginScreenPresenter = new LoginScreenPresenterImpl(this,
-                new RetrofitLoginScreenProvider());
+                new MockLoginProvider());
 
         Log.d("Response", "5");
         login_button.setOnClickListener(new View.OnClickListener() {

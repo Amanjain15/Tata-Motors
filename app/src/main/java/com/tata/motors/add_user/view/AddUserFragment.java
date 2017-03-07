@@ -133,19 +133,6 @@ public class AddUserFragment extends Fragment implements AddUserView {
                 prefs.getUserType() , prefs.getKeyEmployeeType());
 
 
-
-        if(prefs.getKeyEmployeeType().equals("2"))        //adding dse
-        {
-
-            toolbar.setTitle("Add DSE");
-            showSpinnerDsm(dsmListDetails);
-        }
-
-        if(prefs.getKeyEmployeeType().equals("1"))        //adding dsm
-        {
-            toolbar.setTitle("Add DSM");
-            showSpinnerDealer(dealerListDetails);
-        }
         button_submit.setOnClickListener(
                 new Button.OnClickListener(){                       /*Interface*/
                     public void onClick(View v){                                               /*Call Baack Method*/
@@ -157,12 +144,6 @@ public class AddUserFragment extends Fragment implements AddUserView {
 
                 }
         );
-
-
-
-
-
-
 
 
         return view;
@@ -310,6 +291,25 @@ public class AddUserFragment extends Fragment implements AddUserView {
         dialog.setTitle("PASSWORD");
         password.setText(userAddedData.getPassword());
 
+
+    }
+
+    @Override
+    public void check() {
+        if(prefs.getKeyEmployeeType().equals("2"))        //adding dse
+        {
+
+            toolbar.setTitle("Add DSE");
+            showSpinnerDsm(dsmListDetails);
+            //dsm_id=prefs.getUserId();
+        }
+
+        if(prefs.getKeyEmployeeType().equals("1"))        //adding dsm
+        {
+            toolbar.setTitle("Add DSM");
+            showSpinnerDealer(dealerListDetails);
+            dsm_id="";
+        }
 
     }
 

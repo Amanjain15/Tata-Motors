@@ -10,10 +10,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.tata.motors.R;
+import com.tata.motors.add_customer.view.AddCustomerFragment;
 import com.tata.motors.helper.Keys;
 
 public class home_page extends AppCompatActivity
@@ -43,6 +45,8 @@ public class home_page extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        Log.d("","HOME");
+        setFragment(new AddCustomerFragment(), "Add Customer");
 
 
     }

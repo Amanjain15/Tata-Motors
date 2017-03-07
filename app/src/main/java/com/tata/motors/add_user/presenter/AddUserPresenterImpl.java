@@ -30,11 +30,23 @@ public class AddUserPresenterImpl implements AddUserPresenter{
             @Override
             public void onSuccess(AddUserData addUserData) {
 
+                if(addUserData.isSuccess())
+                {
+                    //addCustomerView.showSpinners(addCustomerData);
+                    addUserView.check();
+                }
+
+                else
+                {
+                    //addCustomerView.showError("Something Went Wrong");
+                    addUserView.showError(addUserData.getMessage());
+                }
+
             }
 
             @Override
             public void onFailure() {
-
+                addUserView.showError("No Internet Connection");
             }
         });
 

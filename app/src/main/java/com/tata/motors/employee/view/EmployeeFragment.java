@@ -120,14 +120,14 @@ public class EmployeeFragment extends Fragment implements EmployeeView {
 
         ((home_page)getActivity()).getSupportActionBar().hide();
 
-       if(employee== "0") {
+       if(employee.equals("0")) {
            toolbar.setTitle("DEALERS");
        }
-        else if(employee=="1")
+        else if(employee.equals("1"))
        {
            toolbar.setTitle("DSM");
        }
-        else if(employee=="2")
+        else if(employee.equals("2"))
        {
            toolbar.setTitle("DSE");
        }

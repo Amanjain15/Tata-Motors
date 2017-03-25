@@ -30,7 +30,7 @@
         <activity
             android:name=".welcome_screen.view.WelcomeScreenActivity"
             android:label="@string/title_activity_welcome_page">
-            
+
         </activity>
         <activity android:name=".login.view.LoginScreenActivity"
             android:label="login_activity">

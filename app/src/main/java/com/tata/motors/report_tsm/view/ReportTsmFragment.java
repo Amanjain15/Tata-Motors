@@ -123,7 +123,7 @@ public class ReportTsmFragment extends Fragment implements  ReportTsmView{
                  if (employee.equals("2"))
                  {
 
-//                reportTsmAdapter = new ReportTsmAdapter(getContext(), this);
+                reportTsmAdapter = new ReportTsmAdapter(getContext(), this);
                 linearLayoutManager = new LinearLayoutManager(getContext());
                 recyclerView.setLayoutManager(linearLayoutManager);
                 recyclerView.setAdapter(reportTsmAdapter);
@@ -131,7 +131,7 @@ public class ReportTsmFragment extends Fragment implements  ReportTsmView{
                 return (view);
                   }
              else {
-                 //dseid=sharedPrefs.setDsmId()
+                 dseid=sharedPrefs.getUserId();
                  ((home_page)getContext()).setFragment(new ReportFragment(),"report customer list");
                   }
         }

@@ -297,8 +297,6 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
     @Override
     public void showSpinners(AddCustomerData addCustomerData)
     {
-                        sharedPrefs.setUserType("0");
-
 
                         if (sharedPrefs.getUserType().equals("0"))
                         {
@@ -308,7 +306,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
                         }
                         else if (sharedPrefs.getUserType().equals("1"))
                         {
-//                            dsm_spinner.setVisibility(View.GONE);
+                           dsm_spinner.setVisibility(View.GONE);
                             showSpinnerDse(addCustomerData);
                             dsm_id = sharedPrefs.getUserId();
                         }
@@ -318,9 +316,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
                             dse_id = sharedPrefs.getUserId();
                         }
 
-//                        showSpinnerDsm(addCustomerData);
-
-
+//                      showSpinnerDsm(addCustomerData);
                         showSpinnerApplication(addCustomerData);
                         showSpinnerDistrict(addCustomerData);
                         showSpinnerTown(addCustomerData);
@@ -642,7 +638,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
     private void hideKeyboard() {
         View view = getActivity().getCurrentFocus();
         if (view != null) {
-            InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }

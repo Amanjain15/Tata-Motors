@@ -47,11 +47,11 @@ public class ReportTsmFragment extends Fragment implements  ReportTsmView{
     private String mParam2;
 
 
-    @BindView(R.id.reportTsmRecyclerView)
+//    @BindView(R.id.reportTsmRecyclerView)
     RecyclerView recyclerView;
-    @BindView(R.id.reportTsmToolbar)
+//    @BindView(R.id.reportTsmToolbar)
     Toolbar toolbar;
-    @BindView(R.id.reportTsmProgressbar)
+//    @BindView(R.id.reportTsmProgressbar)
     ProgressBar progressBar;
 
     private ReportTsmPresenter reportTsmPresenter;
@@ -112,18 +112,18 @@ public class ReportTsmFragment extends Fragment implements  ReportTsmView{
         employee = sharedPrefs.getKeyEmployeeType();
         access_token = sharedPrefs.getAccessToken();
         userid = sharedPrefs.getUserId();
-        dsmid = sharedPrefs.getDsmId();
-        dseid = sharedPrefs.getDseId();
-        usertype=sharedPrefs.getUserId();
+///       dsmid = sharedPrefs.getDsmId();
+///        dseid = sharedPrefs.getDseId();
+        usertype=sharedPrefs.getUserType();
 
-        if (usertype == "0") {
+        if (usertype.equals("0")) {
             reportTsmPresenter = new ReportTsmPresenterImpl(new RetrofitReportTsmProvider(), this);
-            reportTsmPresenter.requestTsmReport(access_token,usertype,dsmid,dseid);
+            reportTsmPresenter.requestTsmReport(access_token,userid,dsmid,dseid);
 
-                 if (employee != "2")
+                 if (employee.equals("2"))
                  {
 
-                reportTsmAdapter = new ReportTsmAdapter(getContext(), this);
+//                reportTsmAdapter = new ReportTsmAdapter(getContext(), this);
                 linearLayoutManager = new LinearLayoutManager(getContext());
                 recyclerView.setLayoutManager(linearLayoutManager);
                 recyclerView.setAdapter(reportTsmAdapter);
@@ -135,15 +135,30 @@ public class ReportTsmFragment extends Fragment implements  ReportTsmView{
                  ((home_page)getContext()).setFragment(new ReportFragment(),"report customer list");
                   }
         }
-        else if (usertype=="1")
+        else if (usertype.equals("1"))
         {
-            dsmid=sharedPrefs.setDsmId(access_token);
+            dsmid=sharedPrefs.getUserId();
             reportTsmPresenter = new ReportTsmPresenterImpl(new RetrofitReportTsmProvider(), this);
-            reportTsmPresenter.requestTsmReport(access_token,usertype,dsmid,dseid);
+            reportTsmPresenter.requestTsmReport(access_token,userid,dsmid,dseid);
+            if (employee.equals("2"))
+            {
+
+//                reportTsmAdapter = new ReportTsmAdapter(getContext(), this);
+                linearLayoutManager = new LinearLayoutManager(getContext());
+                recyclerView.setLayoutManager(linearLayoutManager);
+                recyclerView.setAdapter(reportTsmAdapter);
+                ((home_page) getActivity()).getSupportActionBar().hide();
+                return (view);
+            }
+            else
+            {
+
+                ((home_page)getContext()).setFragment(new ReportFragment(),"report customer list");
+            }
         }
-        else if (usertype=="2")
+        else if (usertype.equals("2"))
         {
-            dseid=sharedPrefs.setDseId(access_token);
+            dseid=sharedPrefs.getUserId();
             ((home_page)getContext()).setFragment(new ReportFragment(),"report customer list");
         }
 

@@ -6,24 +6,8 @@ import android.view.ViewGroup;
 /**
  * Created by aman on 8/3/17.
  */
-public class ReportTsmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class ReportTsmAdapter{
 
-
-
-    @Override
-    public ReportTsmAdapter onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
-    }
-
-    @Override
-    public void onBindViewHolder(ReportTsmAdapter holder, int position) {
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return 0;
-    }
 
 
 }

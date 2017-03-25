@@ -14,11 +14,12 @@ public class SharedPrefs {
     private static final String KEY_IS_LOGGEDIN = "isLoggedIn";
     private static final String KEY_USERNAME = "username";
     private static final String KEY_EMAIL = "email";
-    private static final String KEY_USER_ID = "userId";
+    private static final String KEY_USER_ID = "user_id";
     private static final String KEY_LOGIN_TYPE = "loginType";
     private static final String KEY_ACCESS_TOKEN = "access_token";
     private static final int KEY_VERSION = 1;
-    private  static final String KEY_EMPLOYEE_TYPE="employee";
+    private static final String KEY_EMPLOYEE_TYPE="employee";
+    private static final String KEY_USER_TYPE = "user_type";
 
 
     // LogCat tag
@@ -80,9 +81,9 @@ public class SharedPrefs {
 
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(String user_id) {
 
-        editor.putString(KEY_USER_ID, userId);
+        editor.putString(KEY_USER_ID, user_id);
         editor.commit();
 
     }

@@ -12,4 +12,8 @@ public class Urls {
     public static final String REQUEST_LOGIN = "LOGIN";
     public  static final String REQUEST_PROFILE="PROFILE";
     public  static final String REQUEST_SEND_PROFILE="SEND_PROFILE";
+    public static final String REPORT = "report";
+    public static final String REQUEST_CHANGE_PASS="report_change_pass";
+    public static final String REQUEST_EMPLOYEE="employee";
+
 }

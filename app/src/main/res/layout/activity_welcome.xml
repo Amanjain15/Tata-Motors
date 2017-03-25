@@ -19,7 +19,7 @@
             android:alpha=".5"
             android:background="@color/white"
             android:visibility="gone"
-            android:layout_above="@+id/login"
+            android:layout_above="@+id/button_login"
             />
 
         <ProgressBar
@@ -36,7 +36,7 @@
         <Button
             style="@style/Base.Widget.AppCompat.Button.Colored"
             android:id="@+id/button_login"
-            android:text="LOGIN"
+            android:text="@string/login"
             android:textSize="30dp"
             android:onClick="button"
             android:gravity="center"

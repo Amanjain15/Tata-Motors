@@ -33,8 +33,8 @@ public class RetrofitEmployeeProvider implements EmployeeProvider {
                 .create();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Urls.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(client)
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         employeeApi = retrofit.create(EmployeeApi.class);
     }
@@ -42,7 +42,7 @@ public class RetrofitEmployeeProvider implements EmployeeProvider {
     @Override
     public void requestEmployee(String token, String Employee, final EmployeeCallBack employeeCallBack) {
 
-        Call<EmployeeData> call= employeeApi.getemployee(token,Employee);
+        Call<EmployeeData>call=employeeApi.getemployee(token,Employee);
             call.enqueue(new Callback<EmployeeData>() {
                 @Override
                 public void onResponse(Call<EmployeeData> call, Response<EmployeeData> response) {

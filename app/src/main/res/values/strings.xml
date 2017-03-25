@@ -2,6 +2,7 @@
     <string name="app_name">Tata-Motors</string>
     <string name="title_activity_home_page">home_page</string>
     <string name="title_activity_welcome_page">welcome_page</string>
+    <string name="tagline"> Stay Updated</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -9,5 +10,38 @@
     <string name="action_settings">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
+
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_mobile">Contact No.</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_quantity">Quantity</string>
+    <string name="hint_follow_up">Follow Up</string>
+    <string name="hint_tehsil">Tehsil</string>
+
+    <string name="login">LOGIN</string>
+
+    <string name="add_dsm">Add DSM</string>
+    <string name="application">Application</string>
+    <string name="district">District</string>
+    <string name="town">Town</string>
+
+    <string name="model_interested">Model Interested</string>
+    <string name="financier">Financier</string>
+
+    <string name="vehicle">Vehicle</string>
+    <string name="location">Location</string>
+    <string name="submit">Submit</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="developers">Developers</string>
+    <string name="about_developers">About Developers</string>
+    <string name="failure_message">Unable to connect to Server</string>
+    <string name="ok_text">Ok</string>
+    <string name="developed"><![CDATA[Powered by]]></string>
+    <string name="description">Description</string>
+
+
 </resources>

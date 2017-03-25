@@ -1,6 +1,7 @@
 package com.tata.motors.change_password.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -24,6 +25,7 @@ import com.tata.motors.employee.presenter.EmployeePresenterImpl;
 import com.tata.motors.employee.view.EmployeeAdapter;
 import com.tata.motors.helper.SharedPrefs;
 import com.tata.motors.home.home_page;
+import com.tata.motors.login.view.LoginScreenActivity;
 
 import butterknife.BindView;
 
@@ -41,8 +43,7 @@ public class ChangePassFragment extends Fragment implements ChangePassView {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    @BindView(R.id.passToolbar)
-    Toolbar toolbar;
+
     @BindView(R.id.passProgressbar)
     ProgressBar progressBar;
     @BindView(R.id.editText1)
@@ -121,7 +122,6 @@ public class ChangePassFragment extends Fragment implements ChangePassView {
 
 
             changePassPresenter = new ChangePassPresenterImpl(new RetrofitChangePassProvider(),this);
-
             changePassPresenter.requestChangePass(access_token, oldpassword1, newpassword1);
 
             ((home_page) getActivity()).getSupportActionBar().hide();
@@ -150,6 +150,13 @@ public class ChangePassFragment extends Fragment implements ChangePassView {
 
     @Override
     public void showLoading(boolean show) {
+        if(show) {
+            progressBar.setVisibility(View.VISIBLE);
+
+        }
+        else{
+            progressBar.setVisibility(View.GONE);
+        }
 
 
 
@@ -159,7 +166,7 @@ public class ChangePassFragment extends Fragment implements ChangePassView {
     @Override
     public void showMessage(String message) {
 
-
+        Toast.makeText(getContext()," "+message,Toast.LENGTH_SHORT).show();
 
 
     }
@@ -167,7 +174,7 @@ public class ChangePassFragment extends Fragment implements ChangePassView {
     @Override
     public void onVerified() {
 
-
+        ((home_page) getContext()).setFragment(new ChangePassFragment(), "Home");
 
     }
 

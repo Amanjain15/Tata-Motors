@@ -131,6 +131,11 @@ public class LoginScreenActivity extends Activity implements LoginScreenView {
 
     }
 
+    @Override
+    public void onLoginVerified() {
+        //yet to be made
+    }
+
    /* @Override
     public void onLoginVerified() {
         Intent in = new Intent(LoginScreenActivity.this, OtpViewImpl.class);

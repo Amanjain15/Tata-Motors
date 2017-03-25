@@ -10,7 +10,7 @@ public interface LoginScreenView {
 
     void showMessage(String message);
 
-    //void onLoginVerified();
+    void onLoginVerified();
 
 
 }

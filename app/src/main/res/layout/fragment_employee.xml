@@ -19,8 +19,8 @@
             android:layout_height="wrap_content"
 
             app:titleTextColor="@color/white"
-            app:title="Select City"
-            android:title="Employee List"
+            app:title="Employee List"
+
 
             />
     </android.support.design.widget.AppBarLayout>

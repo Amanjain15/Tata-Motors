@@ -58,16 +58,6 @@ public class EmployeeFragment extends Fragment implements EmployeeView {
     private SharedPrefs sharedPrefs;
     private String  access_token,employee;
     private EmployeeAdapter employeeAdapter;
-
-
-
-
-
-
-
-
-
-
     private OnFragmentInteractionListener mListener;
 
     public EmployeeFragment() {

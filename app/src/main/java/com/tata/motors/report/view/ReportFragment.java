@@ -86,9 +86,6 @@ public class ReportFragment extends Fragment implements ReportView {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
-
-
         View view = inflater.inflate(R.layout.fragment_report, container, false);
         ButterKnife.bind(this, view);
         recyclerView=(RecyclerView)view.findViewById(R.id.report_recycler);

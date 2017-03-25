@@ -9,7 +9,7 @@ import com.tata.motors.change_password.view.ChangePassView;
 /**
  * Created by aman on 5/3/17.
  */
-public class ChangePassPresenterImpl implements ChangePassProvider {
+public class ChangePassPresenterImpl implements ChangePassPresenter {
     private ChangePassProvider changePassProvider;
     private ChangePassView changePassView;
 
@@ -19,8 +19,8 @@ public class ChangePassPresenterImpl implements ChangePassProvider {
     }
 
     @Override
-    public void requestChangePass(String token, String oldPassword, String newPassword, final ChangePassCallBack changePasswordCallBack)
-    {
+    public void requestChangePass(String token, String oldPassword, String newPassword) {
+
         changePassView.showLoading(true);
         changePassProvider.requestChangePass(token, oldPassword, newPassword, new ChangePassCallBack() {
             @Override
@@ -44,6 +44,7 @@ public class ChangePassPresenterImpl implements ChangePassProvider {
             }
 
         });
+
 
 
     }

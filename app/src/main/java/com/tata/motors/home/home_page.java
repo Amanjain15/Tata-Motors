@@ -86,7 +86,8 @@ public class home_page extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_sign_out) {
-            // Handle the camera action
+
+
         } else if (id == R.id.nav_profile) {
 
         } else if (id == R.id.nav_dsm) {

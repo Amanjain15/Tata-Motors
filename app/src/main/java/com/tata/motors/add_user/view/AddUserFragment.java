@@ -1,5 +1,6 @@
 package com.tata.motors.add_user.view;
 
+import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.Context;
 import android.net.Uri;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.tata.motors.R;
 import com.tata.motors.add_user.model.AddUserRetrofitProvider;
@@ -60,6 +62,9 @@ public class AddUserFragment extends Fragment implements AddUserView {
     @BindView(R.id.input_name)
     TextView editTextName;
 
+    @BindView(R.id.add_user_toolbar)
+    Toolbar toolbar;
+
 
     private SharedPrefs prefs;
     private AddUserPresenter addUserPresenter;
@@ -67,6 +72,7 @@ public class AddUserFragment extends Fragment implements AddUserView {
     private DsmListDetails dsmListDetails;
     private DealerListDetails dealerListDetails;
     private String dealer_id,dsm_id,name,username;
+
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -122,20 +128,22 @@ public class AddUserFragment extends Fragment implements AddUserView {
 
         ButterKnife.bind(this, view);
 
-
         addUserPresenter= new AddUserPresenterImpl(this,new AddUserRetrofitProvider());
         addUserPresenter.requestAddUser(prefs.getAccessToken(),prefs.getUserId(),
                 prefs.getUserType() , prefs.getKeyEmployeeType());
 
 
 
-        if(prefs.getKeyEmployeeType().equals("2"))
+        if(prefs.getKeyEmployeeType().equals("2"))        //adding dse
         {
+
+            toolbar.setTitle("Add DSE");
             showSpinnerDsm(dsmListDetails);
         }
 
-        if(prefs.getKeyEmployeeType().equals("1"))
+        if(prefs.getKeyEmployeeType().equals("1"))        //adding dsm
         {
+            toolbar.setTitle("Add DSM");
             showSpinnerDealer(dealerListDetails);
         }
         button_submit.setOnClickListener(

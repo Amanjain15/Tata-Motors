@@ -23,26 +23,41 @@ public class RetrofitEmployeeProvider implements EmployeeProvider {
     private EmployeeApi employeeApi;
     private EmployeeCallBack employeeCallBack;
 
-    public RetrofitEmployeeProvider() {
+//    public RetrofitEmployeeProvider() {
+//        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+//        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+//
+//        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+//        Gson gson = new GsonBuilder()
+//                .setLenient()
+//                .create();
+//        Retrofit retrofit = new Retrofit.Builder()
+//                .baseUrl(Urls.BASE_URL)
+//                .client(client)
+//                .addConverterFactory(GsonConverterFactory.create(gson))
+//                .build();
+//        employeeApi = retrofit.create(EmployeeApi.class);
+//    }
+
+    @Override
+    public void requestEmployee(String token, String Employee, final EmployeeCallBack employeeCallBack) {
+
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
+
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Urls.BASE_URL)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         employeeApi = retrofit.create(EmployeeApi.class);
-    }
-
-    @Override
-    public void requestEmployee(String token, String Employee, final EmployeeCallBack employeeCallBack) {
-
-        Call<EmployeeData>call=employeeApi.getemployee(token,Employee);
+        Call<EmployeeData> call = employeeApi.getemployee(token,Employee);
             call.enqueue(new Callback<EmployeeData>() {
                 @Override
                 public void onResponse(Call<EmployeeData> call, Response<EmployeeData> response) {

@@ -21,6 +21,7 @@ import android.widget.Toolbar;
 
 import com.tata.motors.R;
 import com.tata.motors.add_user.model.AddUserRetrofitProvider;
+import com.tata.motors.add_user.model.MockUser;
 import com.tata.motors.add_user.model.UserAddedRetrofitProvider;
 import com.tata.motors.add_user.model.data.AddUserData;
 import com.tata.motors.add_user.model.data.DealerListDetails;
@@ -50,19 +51,19 @@ public class AddUserFragment extends Fragment implements AddUserView {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
-    @BindView(R.id.spinner)
+    //@BindView(R.id.spinner)
     Spinner spinner;
 
-    @BindView(R.id.input_username)
+//    @BindView(R.id.input_username)
     TextView editTextUsername;
 
-    @BindView(R.id.button_submit)
+  //  @BindView(R.id.button_submit)
     Button button_submit;
 
-    @BindView(R.id.input_name)
+    //@BindView(R.id.input_name)
     TextView editTextName;
 
-    @BindView(R.id.add_user_toolbar)
+    //@BindView(R.id.add_user_toolbar)
     Toolbar toolbar;
 
 
@@ -126,26 +127,20 @@ public class AddUserFragment extends Fragment implements AddUserView {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add_user, container, false);
 
-        ButterKnife.bind(this, view);
+        //ButterKnife.bind(this, view);
+        spinner = (Spinner)view.findViewById(R.id.spinner);
+        editTextUsername=(TextView) view.findViewById(R.id.input_username);
+        button_submit= (Button) view.findViewById(R.id.button_submit);
+        editTextName = (TextView)view.findViewById(R.id.input_name);
+        prefs = new SharedPrefs(getContext());
+        ///toolbar = (Toolbar)view.findViewById(R.id.add_user_toolbar);
+        //addUserPresenter= new AddUserPresenterImpl(this,new AddUserRetrofitProvider());
+        addUserPresenter= new AddUserPresenterImpl(this,new MockUser());
 
-        addUserPresenter= new AddUserPresenterImpl(this,new AddUserRetrofitProvider());
-        addUserPresenter.requestAddUser(prefs.getAccessToken(),prefs.getUserId(),
-                prefs.getUserType() , prefs.getKeyEmployeeType());
 
+        //addUserPresenter.requestAddUser(prefs.getAccessToken(),prefs.getUserId(),prefs.getUserType() , prefs.getKeyEmployeeType());
+        addUserPresenter.requestAddUser("","","","2");
 
-
-        if(prefs.getKeyEmployeeType().equals("2"))        //adding dse
-        {
-
-            toolbar.setTitle("Add DSE");
-            showSpinnerDsm(dsmListDetails);
-        }
-
-        if(prefs.getKeyEmployeeType().equals("1"))        //adding dsm
-        {
-            toolbar.setTitle("Add DSM");
-            showSpinnerDealer(dealerListDetails);
-        }
         button_submit.setOnClickListener(
                 new Button.OnClickListener(){                       /*Interface*/
                     public void onClick(View v){                                               /*Call Baack Method*/
@@ -157,12 +152,6 @@ public class AddUserFragment extends Fragment implements AddUserView {
 
                 }
         );
-
-
-
-
-
-
 
 
         return view;
@@ -179,12 +168,12 @@ public class AddUserFragment extends Fragment implements AddUserView {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+//        if (context instanceof OnFragmentInteractionListener) {
+//            mListener = (OnFragmentInteractionListener) context;
+//        } else {
+//            throw new RuntimeException(context.toString()
+//                    + " must implement OnFragmentInteractionListener");
+//        }
     }
 
     @Override
@@ -194,10 +183,10 @@ public class AddUserFragment extends Fragment implements AddUserView {
     }
 
     @Override
-    public void showSpinnerDsm(DsmListDetails dsmListDetails) {
+    public void showSpinnerDsm(AddUserData addUserData) {
 
        // spinner.setVisibility(View.VISIBLE);
-        List<DsmListDetails> dsmListDetailsList = new ArrayList<DsmListDetails>();
+        List<DsmListDetails> dsmListDetailsList = new ArrayList<DsmListDetails>(addUserData.getDsm_list());
         ArrayAdapter<String> adapter;
         int n= dsmListDetailsList.size();
         final String dsm_id_ar[]=new String[n];
@@ -237,9 +226,9 @@ public class AddUserFragment extends Fragment implements AddUserView {
     }
 
     @Override
-    public void showSpinnerDealer(DealerListDetails dealerListDetails) {
+    public void showSpinnerDealer(AddUserData addUserData)  {
 
-        List<DealerListDetails> dealerListDetailsList = new ArrayList<DealerListDetails>();
+        List<DealerListDetails> dealerListDetailsList = new ArrayList<DealerListDetails>(addUserData.getDealer_list());
         ArrayAdapter<String> adapter;
         int n= dealerListDetailsList.size();
         final String dealer_id_ar[]=new String[n];
@@ -310,6 +299,27 @@ public class AddUserFragment extends Fragment implements AddUserView {
         dialog.setTitle("PASSWORD");
         password.setText(userAddedData.getPassword());
 
+
+    }
+
+    @Override
+    public void check(AddUserData addUserData) {
+        if(prefs.getKeyEmployeeType().equals("2"))        //adding dse
+        {
+
+            toolbar.setTitle("Add DSE");
+            showSpinnerDsm(addUserData);
+            //dsm_id=prefs.getUserId();
+        }
+
+        if(prefs.getKeyEmployeeType().equals("1"))        //adding dsm
+        {
+            toolbar.setTitle("Add DSM");
+            showSpinnerDealer(addUserData);
+            dsm_id="";
+        }
+//        toolbar.setTitle("Add DSE");
+//          showSpinnerDsm(addUserData);
 
     }
 

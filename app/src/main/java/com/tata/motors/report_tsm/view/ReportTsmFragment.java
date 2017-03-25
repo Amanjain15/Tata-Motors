@@ -27,6 +27,7 @@ import com.tata.motors.report_tsm.presenter.ReportTsmPresenterImpl;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,12 +63,7 @@ public class ReportTsmFragment extends Fragment implements  ReportTsmView{
     private OnFragmentInteractionListener mListener;
 
     //sharedPrefs = new SharedPrefs(getContext());
-    employee = sharedPrefs.getKeyEmployeeType();
-    access_token = sharedPrefs.getAccessToken();
-    userid = sharedPrefs.getUserId();
-    dsmid = sharedPrefs.getDsmId();
-    dseid = sharedPrefs.getDseId();
-    usertype=sharedPrefs.getUserId();
+
 
 
 
@@ -111,7 +107,7 @@ public class ReportTsmFragment extends Fragment implements  ReportTsmView{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_report_tsm, container, false);
-
+        ButterKnife.bind(this,view);
         sharedPrefs = new SharedPrefs(getContext());
         employee = sharedPrefs.getKeyEmployeeType();
         access_token = sharedPrefs.getAccessToken();
@@ -119,10 +115,6 @@ public class ReportTsmFragment extends Fragment implements  ReportTsmView{
         dsmid = sharedPrefs.getDsmId();
         dseid = sharedPrefs.getDseId();
         usertype=sharedPrefs.getUserId();
-
-
-
-
 
         if (usertype == "0") {
             reportTsmPresenter = new ReportTsmPresenterImpl(new RetrofitReportTsmProvider(), this);
@@ -154,7 +146,10 @@ public class ReportTsmFragment extends Fragment implements  ReportTsmView{
             dseid=sharedPrefs.setDseId(access_token);
             ((home_page)getContext()).setFragment(new ReportFragment(),"report customer list");
         }
+
+        return view;
     }
+
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {

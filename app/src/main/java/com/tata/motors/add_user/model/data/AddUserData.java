@@ -19,12 +19,14 @@ public class AddUserData {
     }
 
 
-    public AddUserData(boolean success, String message, int user_type, List<DsmListDetails> dsm_list)
+    public AddUserData(boolean success, String message, int user_type, List<DsmListDetails> dsm_list,
+                       List<DealerListDetails> dealer_list)
     {
         this.success = success;
         this.message = message;
         this.user_type = user_type;
         this.dsm_list = dsm_list;
+        this.dealer_list = dealer_list;
     }
 
     public boolean isSuccess() {

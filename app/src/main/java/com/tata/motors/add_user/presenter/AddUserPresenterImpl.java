@@ -1,6 +1,7 @@
 package com.tata.motors.add_user.presenter;
 
 import com.tata.motors.add_user.AddUserCallBack;
+import com.tata.motors.add_user.model.AddUserProvider;
 import com.tata.motors.add_user.model.AddUserRetrofitProvider;
 import com.tata.motors.add_user.model.data.AddUserData;
 import com.tata.motors.add_user.view.AddUserFragment;
@@ -12,10 +13,10 @@ import com.tata.motors.add_user.view.AddUserView;
 
 public class AddUserPresenterImpl implements AddUserPresenter{
 
-    private AddUserRetrofitProvider addUserRetrofitProvider;
+    private AddUserProvider addUserRetrofitProvider;
     private AddUserView addUserView;
 
-    public AddUserPresenterImpl(AddUserFragment addUserView , AddUserRetrofitProvider addUserRetrofitProvider) {
+    public AddUserPresenterImpl(AddUserFragment addUserView , AddUserProvider addUserRetrofitProvider) {
         this.addUserView = addUserView;
         this.addUserRetrofitProvider = addUserRetrofitProvider;
 
@@ -30,11 +31,23 @@ public class AddUserPresenterImpl implements AddUserPresenter{
             @Override
             public void onSuccess(AddUserData addUserData) {
 
+                if(addUserData.isSuccess())
+                {
+                    //addCustomerView.showSpinners(addCustomerData);
+                    addUserView.check(addUserData);
+                }
+
+                else
+                {
+                    //addCustomerView.showError("Something Went Wrong");
+                    addUserView.showError(addUserData.getMessage());
+                }
+
             }
 
             @Override
             public void onFailure() {
-
+                addUserView.showError("No Internet Connection");
             }
         });
 

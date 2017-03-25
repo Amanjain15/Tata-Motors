@@ -9,6 +9,12 @@ public class Urls {
     public static final String BASE_URL = "http://192.168.43.19:8080/";
     public static final String REQUEST_SPLASH_SCREEN = "version/";
     public static final String REQUEST_WELCOME_SCREEN = "url/";
+    public static final String REQUEST_ADD_USER = "add_user";
+    public static final String RESPONSE_ADD_USER = "add_user_response";
+    public static final String REQUEST_ADD_CUSTOMER = "add_customer_request";
+    public static final String RESPONSE_ADD_CUSTOMER = "add_customer_response";
+    public static final String REQUEST_TARGET = "target";
+    public static final String REQUEST_SET_TARGET = "set_target";
     public static final String REQUEST_LOGIN = "LOGIN";
     public  static final String REQUEST_PROFILE="PROFILE";
     public  static final String REQUEST_SEND_PROFILE="SEND_PROFILE";
@@ -16,4 +22,5 @@ public class Urls {
     public static final String REQUEST_CHANGE_PASS="report_change_pass";
     public static final String REQUEST_EMPLOYEE="employee";
 
+    public static final String REQUEST_REPORT_TSM = "request_report_tsm";
 }

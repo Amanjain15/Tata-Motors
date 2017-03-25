@@ -97,6 +97,14 @@ public class SharedPrefs {
         editor.commit();
     }
 
+    public String getUserType() {
+        return KEY_USER_TYPE;
+    }
+    public void setUserType(String userType) {
+        editor.putString(KEY_USER_TYPE, userType);
+        editor.commit();
+    }
+
 
     public  String getKeyEmployeeType() {
         return pref.getString(KEY_EMPLOYEE_TYPE,null);

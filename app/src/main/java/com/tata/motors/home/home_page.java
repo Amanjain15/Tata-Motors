@@ -1,5 +1,6 @@
 package com.tata.motors.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -10,11 +11,19 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.tata.motors.R;
+import com.tata.motors.add_customer.view.AddCustomerFragment;
+import com.tata.motors.add_user.view.AddUserFragment;
+import com.tata.motors.employee.view.EmployeeFragment;
 import com.tata.motors.helper.Keys;
+import com.tata.motors.login.view.LoginScreenActivity;
+import com.tata.motors.profile.view.ProfileFragment;
+import com.tata.motors.targets.view.TargetFragment;
+import com.tata.motors.welcome_screen.view.WelcomeScreenActivity;
 
 public class home_page extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -43,6 +52,8 @@ public class home_page extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        Log.d("","HOME");
+        //setFragment(new TargetFragment(), "Targets");
 
 
     }
@@ -86,20 +97,25 @@ public class home_page extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_sign_out) {
-
-
+            Intent i =new Intent(home_page.this, WelcomeScreenActivity.class);
+            startActivity(i);
+            finish();
         } else if (id == R.id.nav_profile) {
+            setFragment(new ProfileFragment(),"Profile");
 
         } else if (id == R.id.nav_dsm) {
             Keys.Key_id=1;
+            setFragment(new AddCustomerFragment(),"Add Customer");
 
         } else if (id == R.id.nav_dse) {
             Keys.Key_id=2;
+            setFragment(new AddUserFragment(),"Add User");
 
         } else if (id == R.id.nav_share) {
+            setFragment(new EmployeeFragment(), "Employe");
 
         } else if (id == R.id.nav_send) {
-
+            setFragment(new TargetFragment(), "Targets");
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

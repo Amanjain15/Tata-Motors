@@ -8,6 +8,6 @@ import com.tata.motors.add_customer.model.data.AddCustomerData;
 
 public interface AddCustomerCallback {
 
-    void onSuccess(AddCustomerData addCustomerData);
-    void onFailure(String error);
+        void onSuccess(AddCustomerData addCustomerData);
+        void onFailure(String error);
 }

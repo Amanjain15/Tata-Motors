@@ -54,10 +54,12 @@ public class EmployeeFragment extends Fragment implements EmployeeView {
     ProgressBar progressBar;
 
     private EmployeePresenter employeePresenter;
+
     private LinearLayoutManager linearLayoutManager;
     private SharedPrefs sharedPrefs;
     private String  access_token,employee;
     private EmployeeAdapter employeeAdapter;
+
     private OnFragmentInteractionListener mListener;
 
     public EmployeeFragment() {
@@ -102,7 +104,9 @@ public class EmployeeFragment extends Fragment implements EmployeeView {
         access_token=sharedPrefs.getAccessToken();
         employeePresenter=new EmployeePresenterImpl(new RetrofitEmployeeProvider(),this);
         employeeAdapter=new EmployeeAdapter(getContext(),this);
+
         linearLayoutManager= new LinearLayoutManager(getContext());
+
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(employeeAdapter);
         employeePresenter.requestEmployee(access_token,employee);

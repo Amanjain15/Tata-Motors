@@ -31,6 +31,7 @@ public class LoginScreenPresenterImpl implements LoginScreenPresenter {
             public void onSuccess(LoginData loginData) {
                 if (loginData.isSuccess()) {
                     loginView.showLoading(false);
+                    loginView.showMessage(loginData.getMessage());
                     loginView.onLoginVerified();
                 } else {
                     loginView.showLoading(false);

@@ -20,7 +20,7 @@ public class SplashScreenPresenterImpl implements SplashScreenPresenter {
     private SplashScreenView splashScreenView;
 
     public SplashScreenPresenterImpl(SplashScreenActivity splashScreenView,
-                                     RetrofitSplashScreenProvider retrofitSplashScreenProvider) {
+                                     SplashScreenProvider retrofitSplashScreenProvider) {
         this.splashScreenView = splashScreenView;
         this.splashScreenProvider = retrofitSplashScreenProvider;
     }

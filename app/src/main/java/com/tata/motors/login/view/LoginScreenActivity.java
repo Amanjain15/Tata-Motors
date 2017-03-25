@@ -5,7 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.multidex.MultiDex;
+//import android.support.multidex.MultiDex;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -16,10 +16,12 @@ import android.widget.Toast;
 
 import com.tata.motors.R;
 import com.tata.motors.helper.SharedPrefs;
+import com.tata.motors.home.home_page;
 import com.tata.motors.login.models.MockLoginProvider;
 import com.tata.motors.login.models.RetrofitLoginScreenProvider;
 import com.tata.motors.login.presenter.LoginScreenPresenter;
 import com.tata.motors.login.presenter.LoginScreenPresenterImpl;
+import com.tata.motors.welcome_screen.view.WelcomeScreenActivity;
 
 
 import java.util.regex.Matcher;
@@ -53,7 +55,7 @@ public class LoginScreenActivity extends Activity implements LoginScreenView {
     @Override
     protected void attachBaseContext(Context context) {
         super.attachBaseContext(context);
-        MultiDex.install(this);
+//        MultiDex.install(this);
     }
 
     @Override
@@ -95,8 +97,14 @@ public class LoginScreenActivity extends Activity implements LoginScreenView {
                 name1 = name.getText().toString();
                 password1 = password.getText().toString();
 
+                sharedPrefs.setUserType("0");
+                sharedPrefs.setAccessToken("A0123");
+                sharedPrefs.setUserId("Danny");
+                sharedPrefs.setKeyEmployeeType("1");
+
                 Log.d("Response", "b1");
                 if (name1.equals("") || name1.equals(null)) {
+
                     name.setError("Please fill name");
                     name.requestFocus();
                 } else if (password1.equals("") || password1.equals(null)) {
@@ -110,8 +118,6 @@ public class LoginScreenActivity extends Activity implements LoginScreenView {
                         )
 
                 {
-
-
                 } else {
                     loginScreenPresenter.requestLogin(name1,password1);
                 }
@@ -141,10 +147,10 @@ public class LoginScreenActivity extends Activity implements LoginScreenView {
 
     }
 
-   /* @Override
+    @Override
     public void onLoginVerified() {
-        Intent in = new Intent(LoginScreenActivity.this, OtpViewImpl.class);
-        in.putExtra("mobile", mobile1);
+        Intent in = new Intent(LoginScreenActivity.this, home_page.class);
+        //in.putExtra("mobile", mobile1);
         startActivity(in);
         finish();
 
@@ -157,5 +163,5 @@ public class LoginScreenActivity extends Activity implements LoginScreenView {
         startActivity(intent);
         finish();
 
-    } */
+    }
 }

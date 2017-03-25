@@ -3,12 +3,23 @@ package com.tata.motors.targets.view;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.tata.motors.R;
+import com.tata.motors.helper.SharedPrefs;
+import com.tata.motors.targets.model.MockTargetProvider;
+import com.tata.motors.targets.model.RetrofitTargetProvider;
+import com.tata.motors.targets.model.data.TargetData;
+import com.tata.motors.targets.model.data.TargetDataTsm;
+import com.tata.motors.targets.presenter.TargetPresenter;
+import com.tata.motors.targets.presenter.TargetPresenterImpl;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,7 +29,7 @@ import com.tata.motors.R;
  * Use the {@link TargetFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TargetFragment extends Fragment {
+public class TargetFragment extends Fragment implements TargetView{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -27,6 +38,13 @@ public class TargetFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private TabLayout tabLayout;
+    private ProgressBar progressBar;
+    private ViewPager viewPager;
+    private ViewPagerAdapter viewPagerAdapter;
+    private TargetPresenter targetPresenter;
+    private SharedPrefs sharedPrefs;
 
     private OnFragmentInteractionListener mListener;
 
@@ -64,14 +82,38 @@ public class TargetFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_target, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_target, container, false);
+        tabLayout = (TabLayout)view.findViewById(R.id.tabLayout);
+        progressBar=(ProgressBar)view.findViewById(R.id.progressBar) ;
+        viewPager = (ViewPager)view.findViewById(R.id.viewpager);
+        viewPagerAdapter = new ViewPagerAdapter(getContext());
+        viewPager.setAdapter(viewPagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
+        sharedPrefs = new SharedPrefs(getContext());
+//      targetPresenter = new TargetPresenterImpl(this, new RetrofitTargetProvider());
+        targetPresenter = new TargetPresenterImpl(this, new MockTargetProvider());
+        targetPresenter.requestTarget(sharedPrefs.getUserId(),sharedPrefs.getUsername());
+
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
 
 
+            }
 
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
 
+            }
 
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
         return view;
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -96,6 +138,33 @@ public class TargetFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void showError(String error) {
+        Toast.makeText(getContext() , error , Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showProgressBar(boolean show) {
+        if(show)
+        {
+            progressBar.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            progressBar.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    @Override
+    public void setData(TargetData targetData) {
+
+        tabLayout.setVisibility(View.VISIBLE);
+        viewPager.setVisibility(View.VISIBLE);
+        viewPagerAdapter.setData(targetData.getTargetDaily(),targetData.getTargetMonthly());
+        viewPagerAdapter.notifyDataSetChanged();
+
     }
 
     /**

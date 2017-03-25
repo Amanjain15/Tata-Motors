@@ -2,6 +2,7 @@ package com.tata.motors.targets.api;
 
 import com.tata.motors.helper.Urls;
 import com.tata.motors.targets.model.data.TargetData;
+import com.tata.motors.targets.model.data.TargetDataTsm;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

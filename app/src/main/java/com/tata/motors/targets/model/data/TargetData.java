@@ -1,22 +1,23 @@
 package com.tata.motors.targets.model.data;
 
-import java.util.List;
-
 /**
- * Created by aman on 6/3/17.
+ * Created by aman on 12/3/17.
  */
 
 public class TargetData {
 
     private boolean success;
     private String message;
-    private List<TargetListDetails> targetListDetails;
+    private String targetDaily;
+    private String targetMonthly;
 
-    public TargetData(boolean success, String message, List<TargetListDetails> targetListDetails) {
+    public TargetData(boolean success, String message, String targetDaily, String targetMonthly) {
         this.success = success;
         this.message = message;
-        this.targetListDetails = targetListDetails;
+        this.targetDaily = targetDaily;
+        this.targetMonthly = targetMonthly;
     }
+
 
     public boolean isSuccess() {
         return success;
@@ -26,11 +27,11 @@ public class TargetData {
         return message;
     }
 
-    public List<TargetListDetails> getTargetListDetails() {
-        return targetListDetails;
+    public String getTargetDaily() {
+        return targetDaily;
     }
 
-    public void setTargetListDetails(List<TargetListDetails> targetListDetails) {
-        this.targetListDetails = targetListDetails;
+    public String getTargetMonthly() {
+        return targetMonthly;
     }
 }

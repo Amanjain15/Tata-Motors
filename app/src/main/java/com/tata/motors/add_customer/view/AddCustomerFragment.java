@@ -4,9 +4,12 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -110,6 +113,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
     private AddCustomerPresenter addCustomerPresenter;
     private DsmListDetails dsmListDetails;
 
+
     private ProgressBar progressBar;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -162,6 +166,27 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
         ButterKnife.bind(this, view);
         initialize();
         progressBar = (ProgressBar)view.findViewById(R.id.submitBar);
+        mobile.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (s.length() == 10) {
+                    hideKeyboard();
+
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         addCustomerPresenter.requestAddCustomer(sharedPrefs.getAccessToken(),sharedPrefs.getUserId(),
                                                 sharedPrefs.getUserType());
 
@@ -272,25 +297,30 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
     @Override
     public void showSpinners(AddCustomerData addCustomerData)
     {
-//                        sharedPrefs.setUserType("1");
+                        sharedPrefs.setUserType("0");
 
 
                         if (sharedPrefs.getUserType().equals("0"))
                         {
+//                            dsm_spinner.setVisibility(View.GONE);
                             showSpinnerDsm(addCustomerData);
                             showSpinnerDse(addCustomerData);
                         }
                         else if (sharedPrefs.getUserType().equals("1"))
                         {
+//                            dsm_spinner.setVisibility(View.GONE);
                             showSpinnerDse(addCustomerData);
                             dsm_id = sharedPrefs.getUserId();
                         }
-                        else if(sharedPrefs.getUserType().equals("2"))
-                        {
-                            dse_id=sharedPrefs.getUserId();
+                        else if(sharedPrefs.getUserType().equals("2")) {
+                            dsm_spinner.setVisibility(View.GONE);
+                            dse_spinner.setVisibility(View.GONE);
+                            dse_id = sharedPrefs.getUserId();
                         }
 
-;
+//                        showSpinnerDsm(addCustomerData);
+
+
                         showSpinnerApplication(addCustomerData);
                         showSpinnerDistrict(addCustomerData);
                         showSpinnerTown(addCustomerData);
@@ -302,6 +332,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
 
     @Override
     public String showSpinnerDsm(AddCustomerData addCustomerData) {
+
 
         List<DsmListDetails> dsmListDetailsList= new ArrayList<DsmListDetails>(addCustomerData.getDsmListDetails());
         ArrayAdapter<String>    adapter;
@@ -606,5 +637,13 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    private void hideKeyboard() {
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 }

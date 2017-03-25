@@ -14,7 +14,8 @@ public class Urls {
     public static final String REQUEST_ADD_CUSTOMER = "add_customer_request";
     public static final String RESPONSE_ADD_CUSTOMER = "add_customer_response";
     public static final String REQUEST_TARGET = "target";
-
+    public static final String REQUEST_SET_TARGET = "set_target";
+    public static final String REQUEST_EMPLOYEE = "employee";
 
 
     public static final String REPORT = "url/";

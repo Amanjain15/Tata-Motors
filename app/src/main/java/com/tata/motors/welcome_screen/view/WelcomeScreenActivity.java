@@ -12,6 +12,8 @@ import android.widget.Toast;
 import com.tata.motors.R;
 
 import com.tata.motors.home.home_page;
+import com.tata.motors.login.view.LoginScreenActivity;
+import com.tata.motors.login.view.LoginScreenView;
 import com.tata.motors.welcome_screen.model.RetrofitWelcomeScreenProvider;
 import com.tata.motors.welcome_screen.model.data.WelcomeImageDetails;
 import com.tata.motors.welcome_screen.presenter.WelcomeScreenPresenter;
@@ -56,7 +58,7 @@ public class WelcomeScreenActivity extends AppCompatActivity implements WelcomeS
     }
 
     public void button(View v) {
-        Intent i = new Intent(WelcomeScreenActivity.this, home_page.class); //activity yet to be made
+        Intent i = new Intent(WelcomeScreenActivity.this, LoginScreenActivity.class); //activity yet to be made
         startActivity(i);
         finish();
     }

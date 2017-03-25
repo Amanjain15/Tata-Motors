@@ -3,7 +3,9 @@ package com.tata.motors.targets.presenter;
 import com.tata.motors.targets.TargetCallBack;
 import com.tata.motors.targets.model.TargetProvider;
 import com.tata.motors.targets.model.data.TargetData;
+import com.tata.motors.targets.view.SetTargetView;
 import com.tata.motors.targets.view.TargetView;
+
 
 /**
  * Created by aman on 6/3/17.
@@ -13,10 +15,16 @@ public class TargetPresenterImpl implements TargetPresenter {
 
     private TargetView targetView;
     private TargetProvider targetProvider;
+    private SetTargetView setTargetView;
 
     public TargetPresenterImpl(TargetView targetView, TargetProvider targetProvider) {
         this.targetView = targetView;
         this.targetProvider = targetProvider;
+    }
+
+    public TargetPresenterImpl(TargetProvider targetProvider, SetTargetView setTargetView) {
+        this.targetProvider = targetProvider;
+        this.setTargetView = setTargetView;
     }
 
     @Override
@@ -26,14 +34,7 @@ public class TargetPresenterImpl implements TargetPresenter {
             @Override
             public void onSuccess(TargetData targetData) {
                 if(targetData.isSuccess()){
-
-
-
-
-
-
-
-
+                    targetView.setData(targetData);
                     targetView.showProgressBar(false);
                 }
                 else
@@ -49,5 +50,10 @@ public class TargetPresenterImpl implements TargetPresenter {
                 targetView.showError("Something Went Wrong");
             }
         });
+    }
+
+    @Override
+    public void requestSetTarget(String user_id, String username) {
+
     }
 }

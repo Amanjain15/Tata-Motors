@@ -32,7 +32,7 @@ public class LoginScreenPresenterImpl implements LoginScreenPresenter {
                 if (loginData.isSuccess()) {
                     loginView.showLoading(false);
                     loginView.showMessage(loginData.getMessage());
-//                    loginView.onLoginVerified();
+                    loginView.onLoginVerified();
                 } else {
                     loginView.showLoading(false);
                     loginView.showMessage(loginData.getMessage());

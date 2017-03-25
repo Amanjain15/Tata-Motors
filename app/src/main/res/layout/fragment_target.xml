@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
-        android:layout_margin="10dp"
+        android:layout_margin="4dp"
         >
 
         <LinearLayout
@@ -19,23 +19,42 @@
             android:orientation="vertical"
 
             >
-            <TextView
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="USERNAME"
-                android:textSize="20dp"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_gravity="bottom"
                 android:background="#dbfdfd"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text=""
-                android:textSize="20dp"
-                android:background="#dbfdfd"
+                app:tabMode="scrollable"
                 />
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                android:scrollbarAlwaysDrawVerticalTrack="true"
+                android:background="#FFFFFF"
+                >
+
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    >
+                </android.support.v4.view.ViewPager>
+
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="200dp"
+                    android:layout_centerInParent="true"
+                    />
+            </RelativeLayout>
 
 
         </LinearLayout>

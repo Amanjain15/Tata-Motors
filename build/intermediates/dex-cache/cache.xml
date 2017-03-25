@@ -79,7 +79,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
-        sha1="4852c35031ac3cbe3f4798600f41b0e2f37b0537">
+        sha1="dfc4606d02778a6f9698c92b0a415ce42c6bd16e">
         <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_5f76372c15f350f73ce128ab142cd3bdce1dc753/classes.dex" />
     </item>
     <item
@@ -637,7 +637,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
-        sha1="6459e3159acad5f3b2abdd7aac9c887177dae947">
+        sha1="9d2f9b5a07bf324034162dc12d08b4d117244893">
         <dex dex="/home/aman/AndroidStudioProjects/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_d796cdd2332ec712ae803562f33d8c42c861dbd2/classes.dex" />
     </item>
     <item

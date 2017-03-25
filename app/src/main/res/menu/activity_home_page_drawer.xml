@@ -13,23 +13,23 @@
         <item
             android:id="@+id/nav_dsm"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="DSM" />
+            android:title="Customer" />
         <item
             android:id="@+id/nav_dse"
             android:icon="@drawable/ic_menu_manage"
-            android:title="DSE" />
+            android:title="User" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Extras">
         <menu>
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:title="Employee" />
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="Targets" />
         </menu>
     </item>
 

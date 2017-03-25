@@ -1,13 +1,14 @@
 package com.tata.motors.targets.model;
 
-import android.annotation.TargetApi;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.tata.motors.helper.Urls;
+import com.tata.motors.targets.SetTargetCallBack;
 import com.tata.motors.targets.TargetCallBack;
+import com.tata.motors.targets.api.SetTargetRequestApi;
 import com.tata.motors.targets.api.TargetRequestApi;
 import com.tata.motors.targets.model.data.TargetData;
+import com.tata.motors.targets.model.data.TargetDataTsm;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -24,6 +25,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitTargetProvider implements TargetProvider{
 
     private TargetRequestApi targetRequestApi;
+    private SetTargetRequestApi setTargetRequestApi;
     private Retrofit retrofit;
 
     @Override
@@ -56,5 +58,37 @@ public class RetrofitTargetProvider implements TargetProvider{
             }
         });
 
+    }
+
+    @Override
+    public void requestSetTarget(String user_id, String username, final SetTargetCallBack setTargetCallBack) {
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl(Urls.BASE_URL)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+        setTargetRequestApi = retrofit.create(SetTargetRequestApi.class);
+        Call<TargetDataTsm> call = setTargetRequestApi.requestSetTarget(user_id,username);
+        call.enqueue(new Callback<TargetDataTsm>() {
+            @Override
+            public void onResponse(Call<TargetDataTsm> call, Response<TargetDataTsm> response) {
+                setTargetCallBack.onSuccess(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<TargetDataTsm> call, Throwable t) {
+                t.printStackTrace();
+                setTargetCallBack.onFailure("Unable to Connect");
+
+            }
+        });
     }
 }

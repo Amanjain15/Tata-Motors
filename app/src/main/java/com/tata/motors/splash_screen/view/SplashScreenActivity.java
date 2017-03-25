@@ -17,6 +17,7 @@ import com.tata.motors.R;
 
 import com.tata.motors.BuildConfig;
 import com.tata.motors.helper.SharedPrefs;
+import com.tata.motors.splash_screen.model.MockSplash;
 import com.tata.motors.splash_screen.model.RetrofitSplashScreenProvider;
 import com.tata.motors.splash_screen.model.data.SplashScreenData;
 import com.tata.motors.splash_screen.presenter.SplashScreenPresenter;
@@ -48,8 +49,9 @@ public class SplashScreenActivity extends Activity implements SplashScreenView {
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
         sharedPrefs = new SharedPrefs(this);
+        //splashScreenPresenter=new SplashScreenPresenterImpl(this, new RetrofitSplashScreenProvider());
         splashScreenPresenter=new SplashScreenPresenterImpl(this,
-                new RetrofitSplashScreenProvider());
+                new MockSplash());
         splashScreenPresenter.requestSplash();
     }
 

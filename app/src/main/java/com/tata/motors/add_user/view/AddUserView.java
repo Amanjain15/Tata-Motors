@@ -1,5 +1,6 @@
 package com.tata.motors.add_user.view;
 
+import com.tata.motors.add_user.model.data.AddUserData;
 import com.tata.motors.add_user.model.data.DealerListDetails;
 import com.tata.motors.add_user.model.data.DsmListDetails;
 
@@ -10,11 +11,11 @@ import com.tata.motors.add_user.model.data.DsmListDetails;
 public interface AddUserView {
 
 
-    void showSpinnerDsm(DsmListDetails dsmListDetails);
-    void showSpinnerDealer(DealerListDetails dealerListDetails);
+    void showSpinnerDsm(AddUserData addUserData);
+    void showSpinnerDealer(AddUserData addUserData);
     void showError(String message);
     void showDialog();
-    void check();
+    void check(AddUserData addUserData);
 
 
 

@@ -102,7 +102,7 @@ public class SharedPrefs {
     }
 
     public String getUserType() {
-        return KEY_USER_TYPE;
+        return pref.getString(KEY_USER_TYPE, null);
     }
     public void setUserType(String userType) {
         editor.putString(KEY_USER_TYPE, userType);

@@ -2,6 +2,7 @@ package com.tata.motors.targets.view;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,7 @@ public class ViewPagerAdapter extends PagerAdapter {
     private String targetDaily;
     private String targetMonthly;
     private Context context;
-
+    LayoutInflater layoutInflater;
 
     public ViewPagerAdapter(Context context) {
         this.context = context;
@@ -28,20 +29,22 @@ public class ViewPagerAdapter extends PagerAdapter {
 
     public void setData(String targetDaily,String targetMonthly){
         this.targetDaily=targetDaily;
+        Log.d("viewpager",targetDaily+""+this.targetDaily);
         this.targetMonthly=targetMonthly;
     }
 
     @Override
     public Object instantiateItem(ViewGroup container, int position){
-        LayoutInflater layoutInflater = LayoutInflater.from(context);
-
+        layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.target_view_pager_item,container,false);
         container.addView(view);
         TextView textView = (TextView) view.findViewById(R.id.txtTarget);
-        if(position==1)
-            textView.setText(targetMonthly);
-        else
+        Log.d("viewpager",targetDaily+"");
+        textView.setText(targetDaily);
+        if(position==0)
             textView.setText(targetDaily);
+        else
+            textView.setText(targetMonthly);
         return  view;
     }
 
@@ -59,6 +62,19 @@ public class ViewPagerAdapter extends PagerAdapter {
     @Override
     public boolean isViewFromObject(View view, Object object) {
         return view == object;
+    }
+
+    @Override
+    public int getItemPosition(Object object)
+    {
+
+        return POSITION_NONE;
+    }
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        View view=(View) object;
+        container.removeView(view);
+
     }
 
 }

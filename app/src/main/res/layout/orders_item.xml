@@ -9,6 +9,5 @@
     android:layout_height="wrap_content"
     android:text="Hello"
     android:id="@+id/test"
-
     />
 </LinearLayout>

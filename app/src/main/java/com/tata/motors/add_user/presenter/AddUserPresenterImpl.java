@@ -23,10 +23,10 @@ public class AddUserPresenterImpl implements AddUserPresenter{
     }
 
     @Override
-    public void requestAddUser(String access_token, String user_id, String user_type,
+    public void requestAddUser(String access_token, String user_id,
                                String key_employee_type) {
 
-        addUserRetrofitProvider.requestAddUser(access_token, user_id, user_type,
+        addUserRetrofitProvider.requestAddUser(access_token, user_id,
                 key_employee_type, new AddUserCallBack() {
             @Override
             public void onSuccess(AddUserData addUserData) {

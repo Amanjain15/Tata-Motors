@@ -15,7 +15,8 @@ import retrofit2.http.Query;
 public interface TargetRequestApi {
 
     @GET(Urls.REQUEST_TARGET)
-    Call<TargetData> requestTarget(@Query("user_id")String user_id,
+    Call<TargetData> requestTarget(@Query("user_type")String user_type,
+                                   @Query("user_id")String user_id,
                                    @Query("username") String username);
 
 }

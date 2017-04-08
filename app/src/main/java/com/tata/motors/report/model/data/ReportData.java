@@ -12,7 +12,8 @@ public class ReportData {
     private boolean success;
     private String message;
 
-    public ReportData(List<Monthly> monthly, List<Daily> daily, boolean success, String message) {
+    public ReportData(List<Monthly> monthly, List<Daily> daily, boolean success, String message)
+    {
         this.monthly = monthly;
         this.daily = daily;
         this.success = success;

@@ -1,14 +1,33 @@
 package com.tata.motors.targets.view;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.tata.motors.R;
+import com.tata.motors.helper.SharedPrefs;
+import com.tata.motors.report.model.MockReportProvider;
+import com.tata.motors.report.presenter.ReportPresenterImpl;
+import com.tata.motors.report.view.ReportAdapter;
+import com.tata.motors.targets.model.MockTargetProvider;
+import com.tata.motors.targets.model.RetrofitTargetProvider;
+import com.tata.motors.targets.model.data.TargetDataTsm;
+import com.tata.motors.targets.model.data.TargetListDetails;
+import com.tata.motors.targets.presenter.TargetPresenter;
+import com.tata.motors.targets.presenter.TargetPresenterImpl;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,7 +37,7 @@ import com.tata.motors.R;
  * Use the {@link SetTargets#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SetTargets extends Fragment {
+public class SetTargets extends Fragment implements SetTargetView{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -27,6 +46,13 @@ public class SetTargets extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private ProgressBar progressBar;
+    private RecyclerView recyclerView;
+    private SharedPrefs sharedPrefs;
+    LinearLayoutManager linearLayoutManager;
+    private SetTargetAdapter setTargetAdapter;
+    private TargetPresenter targetPresenter;
+
 
     private OnFragmentInteractionListener mListener;
 
@@ -66,7 +92,12 @@ public class SetTargets extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_set_targets, container, false);
-
+        Log.d("setTarget","1");
+        progressBar=(ProgressBar)view.findViewById(R.id.target_bar);
+        recyclerView = (RecyclerView)view.findViewById(R.id.setTargetRecycler);
+        initialize();
+        Log.d("setTarget","2");
+        targetPresenter.requestSetTarget(sharedPrefs.getUserId(),sharedPrefs.getUsername());
         return view;
     }
 
@@ -76,7 +107,18 @@ public class SetTargets extends Fragment {
             mListener.onFragmentInteraction(uri);
         }
     }
+    void initialize() {
 
+        sharedPrefs = new SharedPrefs(getContext());
+//        targetPresenter = new TargetPresenterImpl(new RetrofitTargetProvider(),this);
+        targetPresenter = new TargetPresenterImpl(new MockTargetProvider(),this);
+        setTargetAdapter= new SetTargetAdapter(getContext(),this);
+        linearLayoutManager=new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(setTargetAdapter);
+        Log.d("setTarget","3");
+
+    }
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -92,6 +134,69 @@ public class SetTargets extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void showError(String error) {
+        Toast.makeText(getContext() , error , Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showProgressBar(boolean show) {
+        if(show)
+        {
+            progressBar.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            progressBar.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    @Override
+    public void setData(TargetDataTsm targetDataTsm) {
+        setTargetAdapter.setData(targetDataTsm.getTargetListDetails());
+        setTargetAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void dialog(final TargetListDetails targetListDetails)
+    {
+        final String target_monthly,target_daily;
+//        final DialogFragment dialogFragment = new DialogFragment();
+
+        //// TODO: 5/4/17 Dialog Error to be corrected
+        final Dialog dialog = new Dialog(getContext());
+        dialog.setContentView(R.layout.fragment_target_response);
+        dialog.setTitle(targetListDetails.getUsername());
+        final EditText monthly = (EditText)dialog.findViewById(R.id.monthly_target);
+        final EditText daily = (EditText)dialog.findViewById(R.id.daily_target);
+        Button okButton = (Button)dialog.findViewById(R.id.ok);
+        target_monthly = monthly.getText().toString();
+        target_daily = daily.getText().toString();
+        dialog.show();
+        okButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (target_monthly.equals("") || target_monthly.equals(null))
+                {
+                    monthly.setError("Please fill it");
+                    monthly.requestFocus();
+
+                }
+                else if (target_daily.equals("") || target_daily.equals(null))
+                {
+                    daily.setError("Please fill it");
+                    daily.requestFocus();
+                }
+                else
+                {
+                        targetPresenter.responseSetTarget(sharedPrefs.getAccessToken(),
+                        targetListDetails.getUser_id(),targetListDetails.getUsername(),
+                        target_monthly,target_daily);
+                }
+            }
+        });
     }
 
     /**

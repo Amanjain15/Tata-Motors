@@ -47,6 +47,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.MyView
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         final EmployeeListDetails employeeListDetails=detailsList.get(position);
         holder.employeeName.setText(employeeListDetails.getUsername());
+
         holder.employeeName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

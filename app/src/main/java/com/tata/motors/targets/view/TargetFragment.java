@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -93,7 +94,8 @@ public class TargetFragment extends Fragment implements TargetView{
         sharedPrefs = new SharedPrefs(getContext());
 //      targetPresenter = new TargetPresenterImpl(this, new RetrofitTargetProvider());
         targetPresenter = new TargetPresenterImpl(this, new MockTargetProvider());
-        targetPresenter.requestTarget(sharedPrefs.getUserId(),sharedPrefs.getUsername());
+        targetPresenter.requestTarget(sharedPrefs.getUserType(),
+                sharedPrefs.getUserId(),sharedPrefs.getUsername());
 
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -162,6 +164,7 @@ public class TargetFragment extends Fragment implements TargetView{
 
         tabLayout.setVisibility(View.VISIBLE);
         viewPager.setVisibility(View.VISIBLE);
+        Log.d("targetFragment",targetData.getTargetDaily()+" "+targetData.getTargetMonthly());
         viewPagerAdapter.setData(targetData.getTargetDaily(),targetData.getTargetMonthly());
         viewPagerAdapter.notifyDataSetChanged();
 

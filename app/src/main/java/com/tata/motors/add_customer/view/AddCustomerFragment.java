@@ -243,7 +243,10 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
                 try
                 {
                     follow_up = Integer.parseInt(follow.getText().toString());
-                }catch(NumberFormatException nfe){}
+                }catch(NumberFormatException nfe){
+
+
+                }
 
                 if(customer_name.equals("") || customer_name.equals(null) )
                 {
@@ -264,6 +267,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
                     follow.requestFocus();
                 }
                 else{
+
                     addCustomerPresenter.responseAddCustomer(dsm_id,dse_id,customer_name,
                             application_id,contact_no, district_id, town_id, tehsil_id, model_id,
                             quantity,vehicle_id, financier_id, follow_up, geo_tag);

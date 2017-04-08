@@ -28,8 +28,8 @@ public class UserAddedRetrofitProvider implements UserAddedProvider {
 
 
     @Override
-    public void responseAddUser(String dealer_id,String dsm_id, String username, String name,
-                                final UserAddedCallBack userAddedCallBack)
+    public void responseAddUser(String access_token,int dealer_id, String username, String name,
+                                String key_employee_type,final UserAddedCallBack userAddedCallBack)
 
     {
 
@@ -48,7 +48,8 @@ public class UserAddedRetrofitProvider implements UserAddedProvider {
                 .build();
         addUserResponseApi = retrofit.create(AddUserResponseApi.class);
 
-        final Call<UserAddedData> userAddedDataCall = addUserResponseApi.responseAddUser(dealer_id,dsm_id,username,name);
+        final Call<UserAddedData> userAddedDataCall = addUserResponseApi.responseAddUser(access_token
+                ,dealer_id,username,name,key_employee_type);
 
         userAddedDataCall.enqueue(new Callback<UserAddedData>() {
             @Override

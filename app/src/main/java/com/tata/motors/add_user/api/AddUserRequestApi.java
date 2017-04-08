@@ -16,8 +16,5 @@ public interface AddUserRequestApi {
     @GET(Urls.REQUEST_ADD_USER)
     Call<AddUserData> requestAddUser(@Query("access_token") String access_token,
                                      @Query("user_id") String user_id,
-                                     @Query("user_type") String user_type,
-                                     @Query("employee") String key_employee_type
-                                        );
-
+                                     @Query("user_make_type") String key_employee_type);
 }

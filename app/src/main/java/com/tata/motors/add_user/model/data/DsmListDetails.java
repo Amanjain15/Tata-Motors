@@ -6,20 +6,19 @@ package com.tata.motors.add_user.model.data;
 
 public class DsmListDetails {
 
-    private String dsm_id;
-    private String dsm_name;
+    private int id;
+    private String name;
 
-    public DsmListDetails(String dsm_id, String dsm_name) {
-        this.dsm_id = dsm_id;
-        this.dsm_name = dsm_name;
+    public DsmListDetails(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
-
-    public String getDsm_id() {
-        return dsm_id;
+    public int getDsm_id() {
+        return id;
     }
 
     public String getDsm_name() {
-        return dsm_name;
+        return name;
     }
 }

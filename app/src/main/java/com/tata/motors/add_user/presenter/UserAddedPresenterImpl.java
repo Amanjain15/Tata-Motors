@@ -21,12 +21,16 @@ public class UserAddedPresenterImpl implements UserAddedPresenter{
     }
 
     @Override
-    public void responseAddUser(String dealer_id,String dsm_id, String username, String name ) {
-        userAddedProvider.responseAddUser(dealer_id,dsm_id, username, name,new UserAddedCallBack() {
+    public void responseAddUser(String access_token,int dealer_id, String username, String name ,
+                                String key_employee_type) {
+        userAddedProvider.responseAddUser(access_token,dealer_id, username, name,key_employee_type,new UserAddedCallBack() {
             @Override
             public void onSuccess(UserAddedData userAddedData) {
 
-                addUserView.showDialog();
+                if(userAddedData.isSuccess())
+                addUserView.showDialog(userAddedData);
+                else
+                    addUserView.showError(userAddedData.getMessage());
             }
 
             @Override

@@ -54,19 +54,11 @@ public class EmployeeFragment extends Fragment implements EmployeeView {
     ProgressBar progressBar;
 
     private EmployeePresenter employeePresenter;
-    //private LinearLayoutManager linearLayoutManager;
+
+    private LinearLayoutManager linearLayoutManager;
     private SharedPrefs sharedPrefs;
     private String  access_token,employee;
     private EmployeeAdapter employeeAdapter;
-
-
-
-
-
-
-
-
-
 
     private OnFragmentInteractionListener mListener;
 
@@ -112,8 +104,9 @@ public class EmployeeFragment extends Fragment implements EmployeeView {
         access_token=sharedPrefs.getAccessToken();
         employeePresenter=new EmployeePresenterImpl(new RetrofitEmployeeProvider(),this);
         employeeAdapter=new EmployeeAdapter(getContext(),this);
-        //linearLayoutManager= new LinearLayoutManager(getContext());
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+
+        linearLayoutManager= new LinearLayoutManager(getContext());
+
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(employeeAdapter);
         employeePresenter.requestEmployee(access_token,employee);
@@ -132,9 +125,6 @@ public class EmployeeFragment extends Fragment implements EmployeeView {
            toolbar.setTitle("DSE");
        }
         return view;
-
-
-
     }
     @Override
     public void showProgressbar(boolean show) {

@@ -1,23 +1,23 @@
 package com.tata.motors.add_user.view;
 
-import android.annotation.TargetApi;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
+import android.support.v7.widget.Toolbar;
 
 import com.tata.motors.R;
 import com.tata.motors.add_user.model.AddUserRetrofitProvider;
@@ -32,6 +32,8 @@ import com.tata.motors.add_user.presenter.AddUserPresenterImpl;
 import com.tata.motors.add_user.presenter.UserAddedPresenter;
 import com.tata.motors.add_user.presenter.UserAddedPresenterImpl;
 import com.tata.motors.helper.SharedPrefs;
+import com.tata.motors.home.home_page;
+import com.tata.motors.targets.view.TargetFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,7 +74,8 @@ public class AddUserFragment extends Fragment implements AddUserView {
     private UserAddedPresenter userAddedPresenter;
     private DsmListDetails dsmListDetails;
     private DealerListDetails dealerListDetails;
-    private String dealer_id,dsm_id,name,username;
+    private String name,username;
+    private int dealer_id,dsm_id;
 
 
     private static final String ARG_PARAM1 = "param1";
@@ -133,23 +136,18 @@ public class AddUserFragment extends Fragment implements AddUserView {
         button_submit= (Button) view.findViewById(R.id.button_submit);
         editTextName = (TextView)view.findViewById(R.id.input_name);
         prefs = new SharedPrefs(getContext());
-        ///toolbar = (Toolbar)view.findViewById(R.id.add_user_toolbar);
-        //addUserPresenter= new AddUserPresenterImpl(this,new AddUserRetrofitProvider());
-        addUserPresenter= new AddUserPresenterImpl(this,new MockUser());
+        toolbar = (Toolbar)view.findViewById(R.id.add_user_toolbar);
+        addUserPresenter= new AddUserPresenterImpl(this,new AddUserRetrofitProvider());
+//        addUserPresenter= new AddUserPresenterImpl(this,new MockUser());
 
-
-        //addUserPresenter.requestAddUser(prefs.getAccessToken(),prefs.getUserId(),prefs.getUserType() , prefs.getKeyEmployeeType());
-        addUserPresenter.requestAddUser("","","","2");
+        addUserPresenter.requestAddUser(prefs.getAccessToken(),prefs.getUserId(), prefs.getKeyEmployeeType());
 
         button_submit.setOnClickListener(
                 new Button.OnClickListener(){                       /*Interface*/
                     public void onClick(View v){                                               /*Call Baack Method*/
 
                         submit();
-
-
                     }
-
                 }
         );
 
@@ -189,7 +187,7 @@ public class AddUserFragment extends Fragment implements AddUserView {
         List<DsmListDetails> dsmListDetailsList = new ArrayList<DsmListDetails>(addUserData.getDsm_list());
         ArrayAdapter<String> adapter;
         int n= dsmListDetailsList.size();
-        final String dsm_id_ar[]=new String[n];
+        final int dsm_id_ar[]=new int[n];
         String dsm_name_ar[]=new String[n];
 
         int i=0;
@@ -214,7 +212,7 @@ public class AddUserFragment extends Fragment implements AddUserView {
 
                 //userAddedData.setName(spinner.getItemAtPosition(t).toString());
                 //userAddedData.setDsm_id(dsm_id_ar[t]);
-                dsm_id=dsm_id_ar[t].toString();
+                dealer_id=dsm_id_ar[t];
             }
 
             @Override
@@ -231,7 +229,7 @@ public class AddUserFragment extends Fragment implements AddUserView {
         List<DealerListDetails> dealerListDetailsList = new ArrayList<DealerListDetails>(addUserData.getDealer_list());
         ArrayAdapter<String> adapter;
         int n= dealerListDetailsList.size();
-        final String dealer_id_ar[]=new String[n];
+        final int dealer_id_ar[]=new int[n];
         String dealer_name_ar[]=new String[n];
 
         int i=0;
@@ -256,7 +254,7 @@ public class AddUserFragment extends Fragment implements AddUserView {
 
                 //userAddedData.setName(spinner.getItemAtPosition(t).toString());
                 //userAddedData.setDsm_id(dsm_id_ar[t]);
-                dealer_id=dealer_id_ar[t].toString();
+                dealer_id=dealer_id_ar[t];
             }
 
             @Override
@@ -279,10 +277,10 @@ public class AddUserFragment extends Fragment implements AddUserView {
         else
         {
             userAddedPresenter = new UserAddedPresenterImpl(this , new UserAddedRetrofitProvider());
-            userAddedPresenter.responseAddUser(dealer_id,dsm_id,username,name);
-
+            Log.d("submit()",dealer_id+" "+username+" "+name+" "+" "+prefs.getKeyEmployeeType());
+            userAddedPresenter.responseAddUser(prefs.getAccessToken(),dealer_id,username,name,prefs.getKeyEmployeeType());
         }
-        prefs.setKeyEmployeeType(prefs.getUserType());
+//        prefs.setKeyEmployeeType(prefs.getUserType());
 
     }
 
@@ -292,33 +290,58 @@ public class AddUserFragment extends Fragment implements AddUserView {
     }
 
     @Override
-    public void showDialog(){
+    public void showDialog(UserAddedData userAddedData){
         final Dialog dialog= new Dialog(getContext());
         dialog.setContentView(R.layout.fragment_add_user_dialog);
         TextView password = (TextView)dialog.findViewById(R.id.password);
         dialog.setTitle("PASSWORD");
+        Log.d("add_user_showDialog()",userAddedData.getPassword()+"");
         password.setText(userAddedData.getPassword());
+//        prefs.setKeyEmployeeType(prefs.getUserType());
+        dialog.show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ((home_page)getContext()).setFragment(new TargetFragment(),"Target");
+            }
+        },15000);
 
 
     }
 
     @Override
     public void check(AddUserData addUserData) {
-        if(prefs.getKeyEmployeeType().equals("2"))        //adding dse
+        if(prefs.getKeyEmployeeType().equals("2"))        //adding dse by tsm
         {
 
             toolbar.setTitle("Add DSE");
-            showSpinnerDsm(addUserData);
-            //dsm_id=prefs.getUserId();
+            if(prefs.getUserType().equals("0"))
+
+            {
+                spinner.setVisibility(View.VISIBLE);
+                showSpinnerDsm(addUserData);
+            }
+            else{
+                spinner.setVisibility(View.GONE);
+            }
+
         }
 
-        if(prefs.getKeyEmployeeType().equals("1"))        //adding dsm
+        if(prefs.getKeyEmployeeType().equals("1"))        //adding dsm by tsm
         {
+            Log.d("adduserfragmentcheck()","1");
             toolbar.setTitle("Add DSM");
+            if(prefs.getUserType().equals("0"))
             showSpinnerDealer(addUserData);
-            dsm_id="";
+            else{
+                spinner.setVisibility(View.GONE);
+            }
         }
-//        toolbar.setTitle("Add DSE");
+
+
+
+
+        //        toolbar.setTitle("Add DSE");
 //          showSpinnerDsm(addUserData);
 
     }

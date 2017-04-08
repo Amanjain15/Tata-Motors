@@ -1,6 +1,8 @@
 package com.tata.motors.login.models;
 
 
+import android.util.Log;
+
 import com.tata.motors.helper.Urls;
 import com.tata.motors.login.LoginCallback;
 import com.tata.motors.login.api.LoginApi;
@@ -49,15 +51,14 @@ public class RetrofitLoginScreenProvider implements LoginProvider {
             @Override
             public void onResponse(Call<LoginData> call, Response<LoginData> response) {
 
-
+                Log.d("login","retrofit_success");
                 loginCallback.onSuccess(response.body());
 
             }
 
             @Override
             public void onFailure(Call<LoginData> call, Throwable t) {
-
-
+                Log.d("login","retrofit_failure");
                 t.printStackTrace();
             }
         });

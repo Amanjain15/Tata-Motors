@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -26,8 +28,10 @@ import com.tata.motors.employee.view.EmployeeAdapter;
 import com.tata.motors.helper.SharedPrefs;
 import com.tata.motors.home.home_page;
 import com.tata.motors.login.view.LoginScreenActivity;
+import com.tata.motors.targets.view.TargetFragment;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -52,6 +56,8 @@ public class ChangePassFragment extends Fragment implements ChangePassView {
     EditText newpassword;
     @BindView(R.id.editText3)
     EditText confirmpassword;
+    @BindView(R.id.button)
+    Button submit;
     String oldpassword1;
     String newpassword1;
     String confirmpassword1;
@@ -105,33 +111,34 @@ public class ChangePassFragment extends Fragment implements ChangePassView {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =inflater.inflate(R.layout.fragment_change_pass, container, false);
+        ButterKnife.bind(this,view);
         sharedPrefs = new SharedPrefs(getContext());
         access_token=sharedPrefs.getAccessToken();
-        oldpassword1=oldpassword.getText().toString();
-        newpassword1=newpassword.getText().toString();
-        confirmpassword1=confirmpassword.getText().toString();
-        if(confirmpassword1!=newpassword1)
-        {
-            Toast.makeText(getContext(),"confirmpassword is not same as new password",Toast.LENGTH_SHORT).show();
-        }
-        else {
+        changePassPresenter = new ChangePassPresenterImpl(new RetrofitChangePassProvider(),this);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                oldpassword1 = oldpassword.getText().toString();
+                newpassword1 = newpassword.getText().toString();
+                confirmpassword1 = confirmpassword.getText().toString();
 
 
-            changePassPresenter = new ChangePassPresenterImpl(new RetrofitChangePassProvider(),this);
-            changePassPresenter.requestChangePass(access_token, oldpassword1, newpassword1);
+                if(!(confirmpassword1.equals("") && newpassword1.equals("")))
+                {
+                if (confirmpassword1.equals(newpassword1)) {
 
-            ((home_page) getActivity()).getSupportActionBar().hide();
+                    changePassPresenter.requestChangePass(access_token, oldpassword1, newpassword1);
+                } else {
 
-
-        }
-
-
-
-
+                    Toast.makeText(getContext(), "Confirm Password is not same as New Password", Toast.LENGTH_SHORT).show();
+                }
+            }
+            }
+        });
         return(view);
     }
 
@@ -166,16 +173,19 @@ public class ChangePassFragment extends Fragment implements ChangePassView {
     @Override
     public void showMessage(String message) {
 
-        Toast.makeText(getContext()," "+message,Toast.LENGTH_SHORT).show();
-
-
+        Toast.makeText(getContext(),message,Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onVerified() {
 
-        ((home_page) getContext()).setFragment(new ChangePassFragment(), "Home");
-
+        Toast.makeText(getContext(),"Your Password has changed",Toast.LENGTH_SHORT).show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                onDestroy();
+            }
+        },15000);
     }
 
     @Override

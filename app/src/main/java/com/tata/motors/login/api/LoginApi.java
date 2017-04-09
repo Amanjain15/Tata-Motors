@@ -16,7 +16,7 @@ public interface LoginApi {
 
     @FormUrlEncoded
     @POST(Urls.REQUEST_LOGIN)
-    Call<LoginData> requestLogin(@Field("name") String name, @Field("password")String password);
+    Call<LoginData> requestLogin(@Field("user_name") String name, @Field("password")String password);
 
 
 }

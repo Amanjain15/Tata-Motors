@@ -29,7 +29,7 @@ public class RetrofitAddCustomerProvider implements AddCustomerProvider{
 
 
     @Override
-    public void requestAddCustomer(String acces_token, String user_id, String user_type,
+    public void requestAddCustomer(String acces_token, int user_id, String user_type,
                                    final AddCustomerCallback addCustomerCallback) {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

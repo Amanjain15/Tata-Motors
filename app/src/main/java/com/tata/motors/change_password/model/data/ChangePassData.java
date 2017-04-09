@@ -4,9 +4,13 @@ package com.tata.motors.change_password.model.data;
  * Created by aman on 5/3/17.
  */
 public class ChangePassData {
-    boolean success;
-    String message;
+    private  boolean success;
+    private  String message;
+    public ChangePassData(boolean success, String message) {
 
+        this.success = success;
+        this.message = message;
+    }
     public boolean isSuccess() {
         return success;
     }
@@ -23,9 +27,5 @@ public class ChangePassData {
         this.message = message;
     }
 
-    public ChangePassData(boolean success, String message) {
 
-        this.success = success;
-        this.message = message;
-    }
 }

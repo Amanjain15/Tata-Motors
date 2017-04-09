@@ -5,7 +5,10 @@ import com.tata.motors.helper.Urls;
 
 import okhttp3.Response;
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 /**
@@ -13,10 +16,12 @@ import retrofit2.http.Query;
  */
 public interface ChangePassApi {
 
-    @GET(Urls.REQUEST_CHANGE_PASS)
-    Call<ChangePassData> changePassword(@Query("access_token")String token,
-                                        @Query("old_password")String oldPassword,
-                                        @Query("new_password")String newPassword );
+
+    @FormUrlEncoded
+    @POST(Urls.REQUEST_CHANGE_PASS)
+    Call<ChangePassData> changePassword(@Field("access_token") String token,
+                                        @Field("password") String oldPassword,
+                                        @Field("new_password") String newPassword );
 
 
 

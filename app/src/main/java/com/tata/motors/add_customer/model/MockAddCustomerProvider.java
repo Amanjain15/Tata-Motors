@@ -23,7 +23,7 @@ import java.util.List;
 
 public class MockAddCustomerProvider implements AddCustomerProvider {
     @Override
-    public void requestAddCustomer(String access_token, String user_id,
+    public void requestAddCustomer(String access_token, int user_id,
                                    String user_type, final AddCustomerCallback addCustomerCallback) {
 
         new Handler().postDelayed(new Runnable() {
@@ -52,21 +52,21 @@ public class MockAddCustomerProvider implements AddCustomerProvider {
 
         for(int i=0;i<5;i++)
         {
-            ApplicationListDetails applicationListDetails = new ApplicationListDetails(i+"","Mahindra");
+            ApplicationListDetails applicationListDetails = new ApplicationListDetails(i,"Mahindra");
             applicationListDetailsList.add(applicationListDetails);
-            DistrictListDetails districtListDetails = new DistrictListDetails(i+"","Raipur");
+            DistrictListDetails districtListDetails = new DistrictListDetails(i,"Raipur");
             districtListDetailsList.add(districtListDetails);
-            TownListDetails townListDetails = new TownListDetails(i+"","Bilaspur");
+            TownListDetails townListDetails = new TownListDetails(i,"Bilaspur");
             townListDetailsList.add(townListDetails);
-            FinancierListDetails financierListDetails = new FinancierListDetails(i+"","ICICI");
+            FinancierListDetails financierListDetails = new FinancierListDetails(i,"ICICI");
             financierListDetailsList.add(financierListDetails);
-            ModelListDetails modelListDetails = new ModelListDetails(i+"","A0123");
+            ModelListDetails modelListDetails = new ModelListDetails(i,"A0123");
             modelListDetailsList.add(modelListDetails);
-            VehicleListDetails vehicleListDetails = new VehicleListDetails(i+"" ,"SUV");
+            VehicleListDetails vehicleListDetails = new VehicleListDetails(i,"SUV");
             vehicleListDetailsList.add(vehicleListDetails);
-            DsmListDetails dsmListDetails = new DsmListDetails(i+ "","Jim Priestin");
+            DsmListDetails dsmListDetails = new DsmListDetails(i,"Jim Priestin");
             dsmListDetailsList.add(dsmListDetails);
-            DseListDetails dseListDetails = new DseListDetails(i+"","Klieve Yorkin");
+            DseListDetails dseListDetails = new DseListDetails(i,"Klieve Yorkin");
             dseListDetailsList.add(dseListDetails);
 
         }

@@ -18,20 +18,41 @@ import android.view.MenuItem;
 import com.tata.motors.R;
 import com.tata.motors.add_customer.view.AddCustomerFragment;
 import com.tata.motors.add_user.view.AddUserFragment;
+import com.tata.motors.change_password.view.ChangePassFragment;
 import com.tata.motors.employee.view.EmployeeFragment;
 import com.tata.motors.helper.Keys;
+import com.tata.motors.helper.SharedPrefs;
 import com.tata.motors.login.view.LoginScreenActivity;
 import com.tata.motors.profile.view.ProfileFragment;
+import com.tata.motors.splash_screen.view.SplashScreenActivity;
+import com.tata.motors.targets.view.SetTargets;
 import com.tata.motors.targets.view.TargetFragment;
 import com.tata.motors.welcome_screen.view.WelcomeScreenActivity;
 
 public class home_page extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private  SharedPrefs sharedPrefs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_page);
+        sharedPrefs = new SharedPrefs(this);
+        switch (sharedPrefs.getUserType())
+        {
+            case "0":
+                setContentView(R.layout.activity_home_page);
+                break;
+            case "1":
+                setContentView(R.layout.activity_home_page_dsm);
+                break;
+            case "2":
+                setContentView(R.layout.activity_home_page_dse);
+                break;
+            default:
+                setContentView(R.layout.activity_home_page);
+                break;
+        }
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -53,8 +74,8 @@ public class home_page extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         Log.d("","HOME");
-        //setFragment(new TargetFragment(), "Targets");
-
+//        setFragment(new SetTargets(), "SetTargets");
+        setFragment(new TargetFragment(),"Targets");
 
     }
 
@@ -96,38 +117,48 @@ public class home_page extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        sharedPrefs = new SharedPrefs(this);
         if (id == R.id.nav_sign_out) {
-            Intent i =new Intent(home_page.this, WelcomeScreenActivity.class);
+            sharedPrefs.setUserType("");
+            sharedPrefs.setAccessToken("");
+            sharedPrefs.setUserId(0);
+            sharedPrefs.setKeyEmployeeType("");//equals to UserType
+            sharedPrefs.setLogin(false);
+            Intent i =new Intent(home_page.this, SplashScreenActivity.class);
             startActivity(i);
             finish();
+
         } else if (id == R.id.nav_profile) {
-            setFragment(new ProfileFragment(),"Profile");//// TODO: 9/4/17 USER_ID BUNDLE DAALNA
+            ProfileFragment profileFragment=ProfileFragment.newInstance(sharedPrefs.getUserId());
+            Log.d("drawer",sharedPrefs.getUserId()+" ");
+            setFragment(profileFragment,"Profile");
         } else if (id == R.id.nav_customer) {
 
             setFragment(new AddCustomerFragment(),"Add Customer");
 
         } else if (id == R.id.nav_dsm) {
 
-            EmployeeFragment fragment = EmployeeFragment.newInstance("1",10);
+            EmployeeFragment fragment = EmployeeFragment.newInstance("1",-1);
             setFragment(fragment ,"Add DSM");
 
         }else if (id == R.id.nav_dse) {
 
-            EmployeeFragment fragment = EmployeeFragment.newInstance("2",10);
+            EmployeeFragment fragment = EmployeeFragment.newInstance("2",-1);
             setFragment(fragment,"Add DSE");
 
         }else if (id == R.id.nav_dealer) {
 
-            EmployeeFragment fragment = EmployeeFragment.newInstance("3",10);
+            EmployeeFragment fragment = EmployeeFragment.newInstance("3",-1);
             setFragment(fragment,"Add DSE");
 
-        } else if (id == R.id.nav_share) {
-
-
-        } else if (id == R.id.nav_send) {
-            setFragment(new TargetFragment(), "Targets");
         }
 
+        else if (id == R.id.nav_targets) {
+            setFragment(new TargetFragment(), "Targets");
+        }
+        else if (id == R.id.nav_pass) {
+            setFragment(new ChangePassFragment(), "Change Password");
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

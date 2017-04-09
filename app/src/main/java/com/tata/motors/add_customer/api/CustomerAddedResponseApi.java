@@ -17,20 +17,20 @@ public interface CustomerAddedResponseApi {
 
     @FormUrlEncoded
     @POST(Urls.RESPONSE_ADD_CUSTOMER)
-    Call<CustomerAddedData> responseAddCustomer(@Field("dsm_id") String dsm_id,
-                                                @Field("dse_id") String dse_id,
+    Call<CustomerAddedData> responseAddCustomer(@Field("dsm_id") int dsm_id,
+                                                @Field("dse_id") int dse_id,
                                                 @Field("customer_name") String customer_name,
-                                                @Field("application_id") String application_id,
+                                                @Field("application_id") int application_id,
                                                 @Field("contact_no") String contact_no,
-                                                @Field("district_id") String district_id,
-                                                @Field("town_id") String town_id,
+                                                @Field("district_id") int district_id,
+                                                @Field("town_id") int town_id,
                                                 @Field("tehsil")String tehsil,
-                                                @Field("model_id") String model_id,
-                                                @Field("quantity")String quantity,
-                                                @Field("vehicle_id")String vehicle_id,
-                                                @Field("financier_id")String financier_id,
+                                                @Field("model_id") int model_id,
+                                                @Field("quantity")int quantity,
+                                                @Field("vehicle_id")int vehicle_id,
+                                                @Field("financier_id")int financier_id,
                                                 @Field("follow_up")int follow_up,
-                                                @Field("geo_tag") String geo_tag
+                                                @Field("geo_tag") int geo_tag
                                                 );
 
 }

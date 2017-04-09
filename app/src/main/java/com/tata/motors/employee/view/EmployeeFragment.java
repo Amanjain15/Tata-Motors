@@ -108,6 +108,7 @@ public class EmployeeFragment extends Fragment implements EmployeeView {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(employeeAdapter);
 
+
         FloatingActionButton fab = (FloatingActionButton)view.findViewById(R.id.fab_employee);
         fab.setVisibility(View.GONE);
         if(user_c_type.equals("1")||user_c_type.equals("2"))
@@ -147,10 +148,8 @@ public class EmployeeFragment extends Fragment implements EmployeeView {
         employeePresenter.requestEmployee(access_token,choose_id,user_c_type);
 //        if(user_c_type)
 //        ((home_page)getActivity()).getSupportActionBar().hide();
+
         return view;
-
-
-
     }
     @Override
     public void showProgressbar(boolean show) {

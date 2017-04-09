@@ -8,6 +8,6 @@ import com.tata.motors.add_user.AddUserCallBack;
 
 public interface AddUserPresenter {
 
-    void requestAddUser(String access_token, String user_id, String user_type,
+    void requestAddUser(String access_token, int user_id,
                         String key_employee_type);
 }

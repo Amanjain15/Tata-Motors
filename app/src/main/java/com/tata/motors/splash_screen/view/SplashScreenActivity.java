@@ -17,6 +17,8 @@ import com.tata.motors.R;
 
 import com.tata.motors.BuildConfig;
 import com.tata.motors.helper.SharedPrefs;
+import com.tata.motors.home.home_page;
+import com.tata.motors.login.view.LoginScreenActivity;
 import com.tata.motors.splash_screen.model.MockSplash;
 import com.tata.motors.splash_screen.model.RetrofitSplashScreenProvider;
 import com.tata.motors.splash_screen.model.data.SplashScreenData;
@@ -49,9 +51,8 @@ public class SplashScreenActivity extends Activity implements SplashScreenView {
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
         sharedPrefs = new SharedPrefs(this);
-        //splashScreenPresenter=new SplashScreenPresenterImpl(this, new RetrofitSplashScreenProvider());
-        splashScreenPresenter=new SplashScreenPresenterImpl(this,
-                new MockSplash());
+//        splashScreenPresenter=new SplashScreenPresenterImpl(this, new RetrofitSplashScreenProvider());
+        splashScreenPresenter=new SplashScreenPresenterImpl(this, new MockSplash());
         splashScreenPresenter.requestSplash();
     }
 
@@ -131,16 +132,16 @@ public class SplashScreenActivity extends Activity implements SplashScreenView {
 
                     if(sharedPrefs.isLoggedIn()){
                         Log.d("Res", "" + sharedPrefs.isLoggedIn());
-           //           Intent home = new Intent(SplashScreenActivity.this, Homepage.class);
-           //           startActivity(home);
-            //          finish();
+                      Intent home = new Intent(SplashScreenActivity.this, home_page.class);
+                      startActivity(home);
+                      finish();
 
                     }
                     else
                     {
                         Log.d("Res", "" + sharedPrefs.isLoggedIn());
 
-                        Intent welcome = new Intent(SplashScreenActivity.this, WelcomeScreenActivity.class);
+                        Intent welcome = new Intent(SplashScreenActivity.this, LoginScreenActivity.class);
                         startActivity(welcome);
                         finish();
 
@@ -149,11 +150,5 @@ public class SplashScreenActivity extends Activity implements SplashScreenView {
 
                 }
 
-
-
-
         }
-
-
-
 }

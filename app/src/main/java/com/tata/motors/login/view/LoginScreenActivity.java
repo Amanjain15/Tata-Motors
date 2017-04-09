@@ -19,6 +19,7 @@ import com.tata.motors.helper.SharedPrefs;
 import com.tata.motors.home.home_page;
 import com.tata.motors.login.models.MockLoginProvider;
 import com.tata.motors.login.models.RetrofitLoginScreenProvider;
+import com.tata.motors.login.models.data.LoginData;
 import com.tata.motors.login.presenter.LoginScreenPresenter;
 import com.tata.motors.login.presenter.LoginScreenPresenterImpl;
 import com.tata.motors.welcome_screen.view.WelcomeScreenActivity;
@@ -42,10 +43,6 @@ public class LoginScreenActivity extends Activity implements LoginScreenView {
     EditText password;
     String password1;
 
-
-//    @BindView(R.id.toolbar)
-//    Toolbar toolbar;
-
     private SharedPrefs sharedPrefs;
     private ProgressBar progressbar;
 
@@ -64,8 +61,7 @@ public class LoginScreenActivity extends Activity implements LoginScreenView {
 
         setContentView(R.layout.activity_loginscreen);
 
-        ButterKnife.bind(this);
-
+//        ButterKnife.bind(this);
 //        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -87,8 +83,8 @@ public class LoginScreenActivity extends Activity implements LoginScreenView {
         ButterKnife.bind(this);
         Log.d("Response", "4");
 
-        loginScreenPresenter = new LoginScreenPresenterImpl(this,
-                new MockLoginProvider());
+//        loginScreenPresenter = new LoginScreenPresenterImpl(this, new MockLoginProvider());
+        loginScreenPresenter = new LoginScreenPresenterImpl(this, new RetrofitLoginScreenProvider());
 
         Log.d("Response", "5");
         login_button.setOnClickListener(new View.OnClickListener() {
@@ -97,10 +93,10 @@ public class LoginScreenActivity extends Activity implements LoginScreenView {
                 name1 = name.getText().toString();
                 password1 = password.getText().toString();
 
-                sharedPrefs.setUserType("0");
-                sharedPrefs.setAccessToken("A0123");
-                sharedPrefs.setUserId("Danny");
-                sharedPrefs.setKeyEmployeeType("1");
+//                sharedPrefs.setUserType("0");
+//                sharedPrefs.setAccessToken("A0123");
+//                sharedPrefs.setUserId("Danny");
+//                sharedPrefs.setKeyEmployeeType("1");
 
                 Log.d("Response", "b1");
                 if (name1.equals("") || name1.equals(null)) {
@@ -123,10 +119,10 @@ public class LoginScreenActivity extends Activity implements LoginScreenView {
                 }
 
 
-                Log.d("Response", "b2");
+                Log.d("login", "oncreate_1");
             }
         });
-        Log.d("Response", "6");
+        Log.d("login", "oncreate_2");
 
 
     }
@@ -148,12 +144,19 @@ public class LoginScreenActivity extends Activity implements LoginScreenView {
     }
 
      @Override
-    public void onLoginVerified() {
+    public void onLoginVerified(LoginData loginData) {
+
+
+         sharedPrefs.setUserType(loginData.getUser_type());
+         sharedPrefs.setAccessToken(loginData.getAccess_token());
+         sharedPrefs.setUserId(loginData.getUser_id());
+         Log.d("login",sharedPrefs.getUserId()+" ");
+         sharedPrefs.setKeyEmployeeType(loginData.getUser_type());//equals to UserType
+         sharedPrefs.setLogin(true);
+
         Intent in = new Intent(LoginScreenActivity.this, home_page.class);
-        //in.putExtra("mobile", mobile1);
         startActivity(in);
         finish();
-
     }
 
     @Override

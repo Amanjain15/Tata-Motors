@@ -33,7 +33,6 @@ public class ChangePassPresenterImpl implements ChangePassPresenter {
                     changePassView.showMessage(changePassData.getMessage());
                 }
 
-
             }
 
             @Override

@@ -19,6 +19,7 @@ import com.tata.motors.welcome_screen.model.data.WelcomeImageDetails;
 import com.tata.motors.welcome_screen.presenter.WelcomeScreenPresenter;
 import com.tata.motors.welcome_screen.presenter.WelcomeScreenPresenterImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -33,16 +34,25 @@ public class WelcomeScreenActivity extends AppCompatActivity implements WelcomeS
     private ProgressBar progressBar;
     private ViewPagerAdapter viewPagerAdapter;
     private WelcomeScreenPresenter welcomeScreenPresenter;
-    private Button button;
+    private Button button,button_next ;
+    List<WelcomeImageDetails> welcomeImageDetailses = new ArrayList<>();
     Timer timer;
     int page=1;
-
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        button = (Button)findViewById(R.id.button_login);
+        button_next = (Button)findViewById(R.id.button_next);
         initialise();
+
+        if(viewPager.getCurrentItem()==welcomeImageDetailses.size())
+        {
+            button_next.setVisibility(View.GONE);
+            button.setVisibility(View.VISIBLE);
+
+        }
     }
 
     public void initialise() {
@@ -53,7 +63,7 @@ public class WelcomeScreenActivity extends AppCompatActivity implements WelcomeS
         welcomeScreenPresenter.getWelcomeData();
         viewPagerAdapter= new ViewPagerAdapter(this);
         viewPager.setAdapter(viewPagerAdapter);
-        button = (Button)findViewById(R.id.button_login);
+
 
     }
 
@@ -61,6 +71,9 @@ public class WelcomeScreenActivity extends AppCompatActivity implements WelcomeS
         Intent i = new Intent(WelcomeScreenActivity.this, LoginScreenActivity.class); //activity yet to be made
         startActivity(i);
         finish();
+    }
+    public void button_next(View v) {
+        viewPager.arrowScroll(View.FOCUS_LEFT);
     }
 
     @Override
@@ -77,6 +90,8 @@ public class WelcomeScreenActivity extends AppCompatActivity implements WelcomeS
 
     @Override
     public void setData(List<WelcomeImageDetails> welcomeImageDetails) {
+        welcomeImageDetailses = welcomeImageDetails;
+
         viewPagerAdapter.setImageList(welcomeImageDetails);
         viewPagerAdapter.notifyDataSetChanged();
         pageSwitcher(3);

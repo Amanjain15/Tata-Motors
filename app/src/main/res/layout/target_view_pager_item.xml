@@ -15,6 +15,7 @@
             android:padding="10dp"
             android:textSize="20dp"
             android:text="TARGET"
+            android:gravity="center"
             android:id="@+id/txtTarget"
             />
     </RelativeLayout>

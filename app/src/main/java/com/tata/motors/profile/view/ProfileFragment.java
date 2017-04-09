@@ -93,7 +93,7 @@ public class ProfileFragment extends Fragment implements ProfileView{
         email=(EditText)view.findViewById(R.id.editText4);
         address=(EditText)view.findViewById(R.id.editText5);
         designation=(EditText)view.findViewById(R.id.editText6);
-        dealers=(EditText)view.findViewById(R.id.editText7);
+      //  dealers=(EditText)view.findViewById(R.id.editText7);
         progressBar=(ProgressBar)view.findViewById(R.id.profileProgressBar);
         button=(Button)view.findViewById(R.id.buttonEdit);
         button1=(Button)view.findViewById(R.id.buttonSubmit);
@@ -105,9 +105,10 @@ public class ProfileFragment extends Fragment implements ProfileView{
         //profilePresenter=new ProfilePresenterImpl(this,new MockProfileProvider());
       profilePresenter.requestProfile(token,user_id);
         //profilePresenter.requestProfile("abcd");
-        if(check.equals("1"))
+        if(sharedPrefs.getUserId()==user_id)
        {
            button.setVisibility(View.VISIBLE);   button1.setVisibility(View.VISIBLE);
+
         }
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,9 +128,9 @@ public class ProfileFragment extends Fragment implements ProfileView{
                 address.setFocusable(true);
                 address.setClickable(true);
                 address.setFocusableInTouchMode(true);
-                dealers.setFocusable(true);
-                dealers.setClickable(true);
-                dealers.setFocusableInTouchMode(true);
+              //  dealers.setFocusable(true);
+                //dealers.setClickable(true);
+                //dealers.setFocusableInTouchMode(true);
                 designation.setFocusable(true);
                 designation.setClickable(true);
                 designation.setFocusableInTouchMode(true);
@@ -146,8 +147,8 @@ public class ProfileFragment extends Fragment implements ProfileView{
                 email1=email.getText().toString();
                 address1=address.getText().toString();
                 designation1=designation.getText().toString();
-                dealers1=dealers.getText().toString();
-                profilePresenter.requestSendProfile(token,userName1,name1,mobileNo1,email1,address1,designation1,dealers1);
+              //  dealers1=dealers.getText().toString();
+                profilePresenter.requestSendProfile(token,userName1,name1,mobileNo1,email1,address1,designation1);
               //  profilePresenter.requestSendProfile("sd","sd","fdfc","dd","vv","sdv","dcd","sv");
             }
         });
@@ -208,28 +209,28 @@ public class ProfileFragment extends Fragment implements ProfileView{
             }
         try {
 
-            userName.setText(profileData.getName());
+            userName.setText(profileData.getUserName());
         }
         catch(NullPointerException e){
             userName.setText("");
         }
         try {
 
-            email.setText(profileData.getName());
+            email.setText(profileData.getEmail());
         }
         catch(NullPointerException e){
             email.setText("");
         }
         try {
 
-            address.setText(profileData.getName());
+            address.setText(profileData.getAddress());
         }
         catch(NullPointerException e){
             address.setText("");
         }
         try {
 
-            mobileNo.setText(profileData.getName());
+            mobileNo.setText(profileData.getMobile_no());
         }
         catch(NullPointerException e){
             mobileNo.setText("");
@@ -237,19 +238,19 @@ public class ProfileFragment extends Fragment implements ProfileView{
 
         try {
 
-            designation.setText(profileData.getName());
+            designation.setText(profileData.getDesignation());
         }
         catch(NullPointerException e){
             designation.setText("");
         }
 
-        try {
+    /*    try {
 
             dealers.setText(profileData.getName());
         }
         catch(NullPointerException e){
             dealers.setText("");
-        }
+        }*/
         /*
 
         userName.setText(profileData.getUserName());

@@ -6,15 +6,15 @@ package com.tata.motors.add_customer.model.data;
 
 public class DseListDetails {
 
-    private String dse_id;
+    private int  dse_id;
     private String dse_name;
 
-    public DseListDetails(String dse_id, String dse_name) {
+    public DseListDetails(int dse_id, String dse_name) {
         this.dse_id = dse_id;
         this.dse_name = dse_name;
     }
 
-    public String getDse_id() {
+    public int getDse_id() {
         return dse_id;
     }
 

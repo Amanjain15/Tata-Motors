@@ -29,7 +29,7 @@ public class MockProfileProvider implements ProfileProvider {
     }
 
     @Override
-    public void requestSendProfile(String access_token, String user_name, String name, String mobile_no, String email, String address, String designation, String dealer, final SendProfileCallBack sendProfileCallBack) {
+    public void requestSendProfile(String access_token, String user_name, String name, String mobile_no, String email, String address, String designation, final SendProfileCallBack sendProfileCallBack) {
         Log.d("Mock","1");
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -45,7 +45,7 @@ public class MockProfileProvider implements ProfileProvider {
 
 
    ProfileData getMockProfile()
-    {  ProfileData profileData=new ProfileData("aman","aman ag","987","@gmail","sadar","professor","mangalam",true,"abcd","mgg");
+    {  ProfileData profileData=new ProfileData("aman","aman ag","987","@gmail","sadar","professor",true,"abcd","mgg");
       return(profileData);
     }
 

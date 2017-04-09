@@ -14,7 +14,7 @@ public class SharedPrefs {
     private static final String KEY_IS_LOGGEDIN = "isLoggedIn";
     private static final String KEY_USERNAME = "username";
     private static final String KEY_EMAIL = "email";
-    private static final String KEY_USER_ID = "user_id";
+    private static final String KEY_USER_ID ="0";
     private static final String KEY_LOGIN_TYPE = "loginType";
     private static final String KEY_ACCESS_TOKEN = "access_token";
     private static final int KEY_VERSION = 1;
@@ -94,15 +94,14 @@ public class SharedPrefs {
 
     }
 
-    public String getUserId() {
+    public int getUserId() {
 
-        return pref.getString(KEY_USER_ID, "Not Available");
-
+        return pref.getInt(KEY_USER_ID, 0);
     }
 
-    public void setUserId(String user_id) {
+    public void setUserId(int user_id) {
 
-        editor.putString(KEY_USER_ID, user_id);
+        editor.putInt(KEY_USER_ID, user_id);
         editor.commit();
 
     }

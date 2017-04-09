@@ -32,7 +32,7 @@ public class RetrofitAchievementProvider implements AchievementProvider {
                 .setLenient()
                 .create();
 
-        retrofit= new Retrofit.Builder()
+        Retrofit retrofit= new Retrofit.Builder()
                 .baseUrl(Urls.BASE_URL)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create(gson))
@@ -47,7 +47,7 @@ public class RetrofitAchievementProvider implements AchievementProvider {
 
     @Override
     public void requestAchievement(String access_token) {
-        Call<AchievementData> call=achievementApi.requestAddCustomer(access_token);
+        Call<AchievementData> call=achievementApi.requestAchievement(access_token);
 
 
 

@@ -25,14 +25,16 @@ public class LoginScreenPresenterImpl implements LoginScreenPresenter {
     public void requestLogin(String name, String password) {
 
         loginView.showLoading(true);
-        Log.d("Resp", "1");
+        Log.d("login","presenter");
         loginProvider.requestLogin(name,password,new LoginCallback() {
             @Override
             public void onSuccess(LoginData loginData) {
                 if (loginData.isSuccess()) {
                     loginView.showLoading(false);
                     loginView.showMessage(loginData.getMessage());
-                    loginView.onLoginVerified();
+                    Log.d("login","presenter_success");
+                    loginView.onLoginVerified(loginData);
+
                 } else {
                     loginView.showLoading(false);
                     loginView.showMessage(loginData.getMessage());
@@ -42,7 +44,7 @@ public class LoginScreenPresenterImpl implements LoginScreenPresenter {
             }
 
             public void onFailure(String error) {
-                Log.d("Response", "false");
+                Log.d("login", "presenter_failure");
                 loginView.showLoading(false);
                 loginView.showMessage("Failed");
 

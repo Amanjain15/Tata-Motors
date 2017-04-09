@@ -19,7 +19,6 @@ Call<ProfileSendData> requestSendData(@Query("access_token")String token,
                                       @Query("mobile") String sendMobileNo,
                                       @Query("email") String sendEmail,
                                       @Query("address") String sendAddress,
-                                       @Query("designation") String designation,
-                                      @Query("dealer") String dealer);
+                                       @Query("designation") String designation);
 
 }

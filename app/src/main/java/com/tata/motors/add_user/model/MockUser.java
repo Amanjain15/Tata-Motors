@@ -24,7 +24,7 @@ import java.util.List;
 
 public class MockUser implements AddUserProvider {
     @Override
-    public void requestAddUser(String access_token, String user_id, String user_type, String key_employee_type, final AddUserCallBack addUserCallBack) {
+    public void requestAddUser(String access_token,int user_id, String key_employee_type, final AddUserCallBack addUserCallBack) {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -44,9 +44,9 @@ public class MockUser implements AddUserProvider {
 
         for(int i=0;i<5;i++)
         {
-            DsmListDetails dsmListDetails = new DsmListDetails(i+"","Jack");
+            DsmListDetails dsmListDetails = new DsmListDetails(i,"Jack");
             dsmListDetailses.add(dsmListDetails);
-            DealerListDetails dealerListDetails = new DealerListDetails(i+"","Tata");
+            DealerListDetails dealerListDetails = new DealerListDetails(i,"Tata");
             dealerListDetailses.add(dealerListDetails);
         }
 

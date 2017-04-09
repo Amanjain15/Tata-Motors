@@ -10,7 +10,7 @@ public class ProfileData {
     private String email;
     private String address;
     private String designation;
-   // private String dealer;
+
 private boolean success;
     private String message;
     private String image;

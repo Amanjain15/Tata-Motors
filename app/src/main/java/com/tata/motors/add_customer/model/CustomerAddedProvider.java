@@ -8,19 +8,19 @@ import com.tata.motors.add_customer.CustomerAddedCallBack;
 
 public interface CustomerAddedProvider {
 
-    void responseAddCustomer(String dsm_id,
-                             String dse_id,
+    void responseAddCustomer(int dsm_id,
+                             int dse_id,
                              String customer_name,
-                             String application_id,
+                             int application_id,
                              String contact_no,
-                             String district_id,
-                             String town_id,
+                             int district_id,
+                             int town_id,
                              String tehsil,
-                             String model_id,
-                             String quantity,
-                             String vehicle_id,
-                             String financier_id,
+                             int model_id,
+                             int quantity,
+                             int vehicle_id,
+                             int financier_id,
                              int follow_up,
-                             String geo_tag, CustomerAddedCallBack customerAddedCallBack);
+                             int geo_tag, CustomerAddedCallBack customerAddedCallBack);
 
 }

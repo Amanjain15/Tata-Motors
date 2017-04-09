@@ -7,5 +7,5 @@ import com.tata.motors.profile.ProfileCallBack;
  */
 public interface ProfilePresenter {
     public void requestProfile(String access_token,int user_id );
-    public void requestSendProfile(String access_token,String userName,String name,String mobileNo,String email,String address,String designation,String dealer);
+    public void requestSendProfile(String access_token,String userName,String name,String mobileNo,String email,String address,String designation);
 }

@@ -6,5 +6,5 @@ package com.tata.motors.add_user.presenter;
 
 public interface UserAddedPresenter {
 
-    void responseAddUser(String dealer_id,String dsm_id, String username,String name);
+    void responseAddUser(String access_token,int dealer_id,String key_employee_type, String username,String name);
 }

@@ -33,18 +33,35 @@
             android:visibility="visible"
             android:layout_marginLeft="180dp" />
 
-        <Button
+    <Button
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/welcome_button"
+        android:text="NEXT"
+        android:textSize="25dp"
+        android:textColor="#FFFFFF"
+        android:id="@+id/button_next"
+        android:layout_alignParentBottom="true"
+        android:onClick="button_next"
+
+        />
+
+    <Button
             style="@style/Base.Widget.AppCompat.Button.Colored"
             android:id="@+id/button_login"
             android:text="@string/login"
             android:textSize="30dp"
             android:onClick="button"
             android:gravity="center"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/white"
+            android:background="@drawable/welcome_button"
+            android:visibility="gone"
+
 
             />
 

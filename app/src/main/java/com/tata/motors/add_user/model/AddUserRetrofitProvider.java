@@ -26,7 +26,7 @@ public class AddUserRetrofitProvider implements AddUserProvider{
     private Retrofit retrofit;
 
     @Override
-    public void requestAddUser(String access_token, String user_id, String user_type,
+    public void requestAddUser(String access_token, int user_id,
                                String key_employee_type,
                                final AddUserCallBack addUserCallBack) {
 
@@ -46,7 +46,7 @@ public class AddUserRetrofitProvider implements AddUserProvider{
 
         addUserRequestApi = retrofit.create(AddUserRequestApi.class);
         Call<AddUserData> addUserDataCall= addUserRequestApi.requestAddUser(access_token,
-                                                    user_id,user_type, key_employee_type);
+                                                    user_id, key_employee_type);
 
         addUserDataCall.enqueue(new Callback<AddUserData>() {
             @Override

@@ -34,7 +34,7 @@ public class TargetPresenterImpl implements TargetPresenter {
     }
 
     @Override
-    public void requestTarget(String user_type,String user_id, String username) {
+    public void requestTarget(String user_type,int user_id, String username) {
         targetView.showProgressBar(true);
         targetProvider.requestTarget(user_type,user_id, username, new TargetCallBack() {
             @Override
@@ -60,7 +60,7 @@ public class TargetPresenterImpl implements TargetPresenter {
     }
 
     @Override
-    public void requestSetTarget(String user_id, String username) {
+    public void requestSetTarget(int user_id, String username) {
         setTargetView.showProgressBar(true);
         targetProvider.requestSetTarget(user_id, username, new SetTargetCallBack() {
             @Override
@@ -89,7 +89,7 @@ public class TargetPresenterImpl implements TargetPresenter {
     }
 
     @Override
-    public void responseSetTarget(String access_token, String user_id, String username, String monthly, String daily) {
+    public void responseSetTarget(String access_token, int user_id, String username, String monthly, String daily) {
         targetProvider.responseSetTarget(access_token, user_id, username, monthly, daily, new ResponseTargetCallBack() {
             @Override
             public void onSuccess(TargetResponseData targetResponseData) {

@@ -10,8 +10,8 @@ import com.tata.motors.targets.TargetCallBack;
 
 public interface TargetProvider {
 
-    void requestTarget(String user_type,String user_id, String username, TargetCallBack targetCallBack);
-    void requestSetTarget(String user_id, String username, SetTargetCallBack setTargetCallBack);
-    void responseSetTarget(String access_token, String user_id, String username, String monthly,
+    void requestTarget(String user_type,int user_id, String username, TargetCallBack targetCallBack);
+    void requestSetTarget(int user_id, String username, SetTargetCallBack setTargetCallBack);
+    void responseSetTarget(String access_token, int user_id, String username, String monthly,
                            String daily, ResponseTargetCallBack responseTargetCallBack);
 }

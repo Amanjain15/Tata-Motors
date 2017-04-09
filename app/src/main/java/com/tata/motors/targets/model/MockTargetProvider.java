@@ -21,7 +21,7 @@ import java.util.List;
 public class MockTargetProvider implements TargetProvider {
 
     @Override
-    public void requestTarget(String user_type, String user_id, String username,final TargetCallBack targetCallBack) {
+    public void requestTarget(String user_type, int user_id, String username,final TargetCallBack targetCallBack) {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -33,7 +33,7 @@ public class MockTargetProvider implements TargetProvider {
     }
 
     @Override
-    public void requestSetTarget(String user_id, String username,final SetTargetCallBack setTargetCallBack) {
+    public void requestSetTarget(int user_id, String username,final SetTargetCallBack setTargetCallBack) {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -44,7 +44,7 @@ public class MockTargetProvider implements TargetProvider {
     }
 
     @Override
-    public void responseSetTarget(String access_token, String user_id, String username,
+    public void responseSetTarget(String access_token, int user_id, String username,
                                   String monthly, String daily,
                                   final ResponseTargetCallBack responseTargetCallBack) {
         new Handler().postDelayed(new Runnable() {
@@ -71,7 +71,7 @@ public class MockTargetProvider implements TargetProvider {
 
         for(int i=0;i<5;i++)
         {
-            TargetListDetails targetListDetails = new TargetListDetails(i + "","DSM","30","1");
+            TargetListDetails targetListDetails = new TargetListDetails(i,"DSM","30","1");
             targetListDetailses.add(targetListDetails);
         }
 

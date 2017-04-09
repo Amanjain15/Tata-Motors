@@ -9,10 +9,10 @@ public class LoginData {
     private boolean success;
     private String access_token;
     private String user_type;
-    private String user_id;
+    private int user_id;
     private boolean change_password ;
 
-    public LoginData(String message, boolean success, String access_token, String user_type, String user_id, boolean change_password) {
+    public LoginData(String message, boolean success, String access_token, String user_type, int user_id, boolean change_password) {
         this.message = message;
         this.success = success;
         this.access_token = access_token;
@@ -38,7 +38,7 @@ public class LoginData {
         return user_type;
     }
 
-    public String getUser_id() {
+    public int getUser_id() {
         return user_id;
     }
 

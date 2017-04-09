@@ -16,7 +16,7 @@ public interface TargetRequestApi {
 
     @GET(Urls.REQUEST_TARGET)
     Call<TargetData> requestTarget(@Query("user_type")String user_type,
-                                   @Query("user_id")String user_id,
+                                   @Query("user_id")int user_id,
                                    @Query("username") String username);
 
 }

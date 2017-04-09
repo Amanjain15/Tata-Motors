@@ -6,16 +6,15 @@ package com.tata.motors.add_customer.model.data;
 
 public class FinancierListDetails {
 
-    private String financier_id;
+    private int financier_id;
     private String financier_name;
 
-    public FinancierListDetails(String financier_id, String financier_name) {
+    public FinancierListDetails(int financier_id, String financier_name) {
         this.financier_id = financier_id;
         this.financier_name = financier_name;
     }
 
-
-    public String getFinancier_id() {
+    public int getFinancier_id() {
         return financier_id;
     }
 

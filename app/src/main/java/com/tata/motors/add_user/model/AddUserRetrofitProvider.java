@@ -26,7 +26,7 @@ public class AddUserRetrofitProvider implements AddUserProvider{
     private Retrofit retrofit;
 
     @Override
-    public void requestAddUser(String access_token, String user_id,
+    public void requestAddUser(String access_token, int user_id,
                                String key_employee_type,
                                final AddUserCallBack addUserCallBack) {
 

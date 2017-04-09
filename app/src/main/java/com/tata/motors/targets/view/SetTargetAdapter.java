@@ -12,8 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.tata.motors.R;
-import com.tata.motors.report.model.data.ReportData;
-import com.tata.motors.report.view.ReportAdapter;
+
 import com.tata.motors.targets.model.data.TargetDataTsm;
 import com.tata.motors.targets.model.data.TargetListDetails;
 

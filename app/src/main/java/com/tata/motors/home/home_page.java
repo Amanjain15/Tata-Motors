@@ -36,7 +36,23 @@ public class home_page extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_page);
+        sharedPrefs = new SharedPrefs(this);
+        switch (sharedPrefs.getUserType())
+        {
+            case "0":
+                setContentView(R.layout.activity_home_page);
+                break;
+            case "1":
+                setContentView(R.layout.activity_home_page_dsm);
+                break;
+            case "2":
+                setContentView(R.layout.activity_home_page_dse);
+                break;
+            default:
+                setContentView(R.layout.activity_home_page);
+                break;
+        }
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -100,36 +116,38 @@ public class home_page extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+
         sharedPrefs = new SharedPrefs(this);
         if (id == R.id.nav_sign_out) {
-            sharedPrefs.setUserType("$");
-            sharedPrefs.setAccessToken("0");
-            sharedPrefs.setUserId("0");
-            sharedPrefs.setKeyEmployeeType("0");//equals to UserType
+            sharedPrefs.setUserType("");
+            sharedPrefs.setAccessToken("");
+            sharedPrefs.setUserId(0);
+            sharedPrefs.setKeyEmployeeType("");//equals to UserType
             sharedPrefs.setLogin(false);
             Intent i =new Intent(home_page.this, SplashScreenActivity.class);
             startActivity(i);
             finish();
-        } else if (id == R.id.nav_profile) {
+        }
+        else if (id == R.id.nav_profile) {
             setFragment(new ProfileFragment(),"Profile");
 
-        } else if (id == R.id.nav_customer) {
+        }
+        else if (id == R.id.nav_customer) {
             Keys.Key_id=1;
             setFragment(new AddCustomerFragment(),"Add Customer");
 
-        } else if (id == R.id.nav_dsm) {
+        }
+        else if (id == R.id.nav_dsm) {
             sharedPrefs.setKeyEmployeeType("1");
             setFragment(new AddUserFragment(),"Add DSM");
 
-        }else if (id == R.id.nav_dse) {
+        }
+        else if (id == R.id.nav_dse) {
             sharedPrefs.setKeyEmployeeType("2");
             setFragment(new AddUserFragment(),"Add DSE");
 
         }
-        else if (id == R.id.nav_share) {
-            setFragment(new EmployeeFragment(), "Employe");
-
-        } else if (id == R.id.nav_send) {
+        else if (id == R.id.nav_targets) {
             setFragment(new TargetFragment(), "Targets");
         }
         else if (id == R.id.nav_pass) {

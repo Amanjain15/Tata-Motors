@@ -100,8 +100,9 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
     @BindView(R.id.submitButton)
     Button submit;
 
-    private String dsm_id,dse_id,application_id,customer_name,contact_no,district_id, town_id;
-    private String tehsil_id,model_id,quantity,vehicle_id,financier_id,geo_tag;
+    private String tehsil_id,customer_name,contact_no;
+    private int dsm_id,dse_id,application_id,district_id, town_id;
+    private int model_id,quantity,vehicle_id,financier_id,geo_tag;
     private int follow_up;
     private ApplicationListDetails applicationListDetails;
     private DistrictListDetails districtListDetails;
@@ -239,12 +240,11 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
                 customer_name = name.getText().toString();
                 contact_no = mobile.getText().toString();
                 tehsil_id = tehsil.getText().toString();
-                quantity = quantity_tv.getText().toString();
+                quantity =  Integer.parseInt(quantity_tv.getText().toString());
                 try
                 {
                     follow_up = Integer.parseInt(follow.getText().toString());
                 }catch(NumberFormatException nfe){
-
 
                 }
 
@@ -331,13 +331,13 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
     }
 
     @Override
-    public String showSpinnerDsm(AddCustomerData addCustomerData) {
+    public void showSpinnerDsm(AddCustomerData addCustomerData) {
 
 
         List<DsmListDetails> dsmListDetailsList= new ArrayList<DsmListDetails>(addCustomerData.getDsmListDetails());
         ArrayAdapter<String>    adapter;
         int n= dsmListDetailsList.size();
-        final String dsm_id_ar[]=new String[n];
+        final int dsm_id_ar[]=new int[n];
         String dsm_name_ar[]=new String[n];
 
         int i=0;
@@ -362,7 +362,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
 
                 //userAddedData.setName(spinner.getItemAtPosition(t).toString());
                 //userAddedData.setDsm_id(dsm_id_ar[t]);
-                dsm_id= dsm_id_ar[t].toString();
+                dsm_id= dsm_id_ar[t];
             }
 
             @Override
@@ -370,17 +370,17 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
 
             }
         });
-        return dsm_id;
+
     }
 
 
     @Override
-    public String showSpinnerDse(AddCustomerData addCustomerData) {
+    public int showSpinnerDse(AddCustomerData addCustomerData) {
         DseListDetails dseListDetails;
         List<DseListDetails> dseListDetailsList= new ArrayList<DseListDetails>(addCustomerData.getDseListDetails());
         ArrayAdapter<String>    adapter;
         int n= dseListDetailsList.size();
-        final String dse_id_ar[]=new String[n];
+        final int dse_id_ar[]=new int[n];
         String dse_name_ar[]=new String[n];
 
         int i=0;
@@ -405,7 +405,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
 
                 //userAddedData.setName(spinner.getItemAtPosition(t).toString());
                 //userAddedData.setDsm_id(dsm_id_ar[t]);
-                dse_id=dse_id_ar[t].toString();
+                dse_id=dse_id_ar[t];
             }
 
             @Override
@@ -418,12 +418,12 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
     }
 
     @Override
-    public String showSpinnerApplication(AddCustomerData addCustomerData) {
+    public int showSpinnerApplication(AddCustomerData addCustomerData) {
         List<ApplicationListDetails> applicationListDetailsList = new ArrayList<ApplicationListDetails>(addCustomerData.getApplicationListDetails());
         ArrayAdapter<String>    adapter;
         int n= applicationListDetailsList.size();
         String application_name_ar[] = new String[n];
-        final String application_id_ar[] = new String[n];
+        final int application_id_ar[] = new int[n];
         int i=0;
         while(i<n)
         {
@@ -441,7 +441,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
         application_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int t, long l) {
-                application_id= application_id_ar[t].toString();
+                application_id= application_id_ar[t];
             }
 
             @Override
@@ -455,12 +455,12 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
     }
 
     @Override
-    public String showSpinnerDistrict(AddCustomerData addCustomerData) {
+    public int showSpinnerDistrict(AddCustomerData addCustomerData) {
         List<DistrictListDetails> districtListDetailsList = new ArrayList<DistrictListDetails>(addCustomerData.getDistrictListDetails());
         ArrayAdapter<String> adapter;
         int n= districtListDetailsList.size();
         String district_name_ar[] = new String[n];
-        final String district_id_ar[] = new String[n];
+        final int district_id_ar[] = new int[n];
         int i=0;
         while(i<n){
             districtListDetails = districtListDetailsList.get(i);
@@ -477,7 +477,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
         district_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int t, long l) {
-                district_id = district_id_ar[t].toString();
+                district_id = district_id_ar[t];
             }
 
             @Override
@@ -489,12 +489,12 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
     }
 
     @Override
-    public String showSpinnerTown(AddCustomerData addCustomerData) {
+    public int showSpinnerTown(AddCustomerData addCustomerData) {
         List<TownListDetails> townListDetailsList = new ArrayList<TownListDetails>(addCustomerData.getTownListDetails());
         ArrayAdapter<String> adapter;
         int n= townListDetailsList.size();
         String town_name_ar[] = new String[n];
-        final String town_id_ar[] = new String[n];
+        final int town_id_ar[] = new int[n];
         int i=0;
         while(i<n){
             townListDetails = townListDetailsList.get(i);
@@ -510,7 +510,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
         town_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int t, long l) {
-                town_id = town_id_ar[t].toString();
+                town_id = town_id_ar[t];
             }
 
             @Override
@@ -523,11 +523,11 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
     }
 
     @Override
-    public String showSpinnerModel(AddCustomerData addCustomerData) {
+    public int showSpinnerModel(AddCustomerData addCustomerData) {
         List<ModelListDetails> modelListDetailsList = new ArrayList<ModelListDetails>(addCustomerData.getModelListDetails());
         ArrayAdapter<String> adapter;
         int n= modelListDetailsList.size();
-        final String model_id_ar[] = new String [n];
+        final int model_id_ar[] = new int [n];
         String model_name_ar[] = new String [n];
 
         int i=0;
@@ -546,7 +546,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
         model_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int t, long l) {
-                model_id = model_id_ar[t].toString();
+                model_id = model_id_ar[t];
             }
 
             @Override
@@ -559,11 +559,11 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
     }
 
     @Override
-    public String showSpinnerVehicle(AddCustomerData addCustomerData) {
+    public int showSpinnerVehicle(AddCustomerData addCustomerData) {
         List<VehicleListDetails> vehicleListDetailsList = new ArrayList<VehicleListDetails>(addCustomerData.getVehicleListDetails());
         ArrayAdapter<String> adapter;
         int n= vehicleListDetailsList.size();
-        final String vehicle_id_ar[] = new String[n];
+        final int vehicle_id_ar[] = new int[n];
         final String  vehicle_name_ar[] =  new String[n];
         int i=0;
         while(i<n)
@@ -580,7 +580,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
         vehicle_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int t, long l) {
-                vehicle_id = vehicle_id_ar[t].toString();
+                vehicle_id = vehicle_id_ar[t];
             }
 
             @Override
@@ -593,12 +593,12 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
     }
 
     @Override
-    public String showSpinnerFinancier(AddCustomerData addCustomerData) {
+    public int showSpinnerFinancier(AddCustomerData addCustomerData) {
         List<FinancierListDetails> financierListDetailsList = new ArrayList<FinancierListDetails>(addCustomerData.getFinancierListDetails());
         ArrayAdapter<String> adapter;
         int n = financierListDetailsList.size();
         int i=0;
-        final String financier_id_ar[] = new String[n];
+        final int financier_id_ar[] = new int[n];
         String financier_name_ar[] = new String [n];
         while(i<n){
             financierListDetails = financierListDetailsList.get(i);
@@ -612,7 +612,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
         financier_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int t, long l) {
-                financier_id =  financier_id_ar[t].toString();
+                financier_id =  financier_id_ar[t];
             }
 
             @Override

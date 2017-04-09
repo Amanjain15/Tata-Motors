@@ -18,7 +18,7 @@ public interface SetTargetResponseApi {
     @FormUrlEncoded
     @POST(Urls.RESPONSE_SET_TARGET)
     Call<TargetResponseData> responseSetTarget(@Field("access_token")String access_token,
-                                               @Field("user_id")String user_id,
+                                               @Field("user_id")int user_id,
                                                @Field("username")String user_name,
                                                @Field("monthly")String monthly,
                                                @Field("daily")String daily

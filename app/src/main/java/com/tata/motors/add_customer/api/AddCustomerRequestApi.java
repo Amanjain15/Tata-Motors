@@ -15,7 +15,7 @@ public interface AddCustomerRequestApi {
 
     @GET(Urls.REQUEST_ADD_CUSTOMER)
     Call<AddCustomerData> requestAddCustomer(@Query("access_token") String access_token,
-                                             @Query("user_id") String user_id,
+                                             @Query("user_id") int user_id,
                                              @Query("user_type") String user_type);
 
 }

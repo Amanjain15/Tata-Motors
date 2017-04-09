@@ -6,19 +6,19 @@ package com.tata.motors.targets.model.data;
 
 public class TargetListDetails {
 
-    private String user_id;
+    private int user_id;
     private String username;
     private String monthly;
     private String daily;
 
-    public TargetListDetails(String user_id, String username, String monthly, String daily) {
+    public TargetListDetails(int user_id, String username, String monthly, String daily) {
         this.user_id = user_id;
         this.username = username;
         this.monthly = monthly;
         this.daily = daily;
     }
 
-    public String getUser_id() {
+    public int  getUser_id() {
 
         return user_id;
     }

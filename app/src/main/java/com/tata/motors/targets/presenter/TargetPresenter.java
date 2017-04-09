@@ -7,8 +7,8 @@ package com.tata.motors.targets.presenter;
 
 public interface TargetPresenter {
 
-    void requestTarget(String user_type,String user_id, String username);
-    void requestSetTarget(String user_id, String username);
-    void responseSetTarget(String access_token, String user_id, String username, String monthly,
+    void requestTarget(String user_type,int user_id, String username);
+    void requestSetTarget(int user_id, String username);
+    void responseSetTarget(String access_token, int user_id, String username, String monthly,
                            String daily);
 }

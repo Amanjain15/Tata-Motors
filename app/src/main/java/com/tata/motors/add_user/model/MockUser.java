@@ -24,7 +24,7 @@ import java.util.List;
 
 public class MockUser implements AddUserProvider {
     @Override
-    public void requestAddUser(String access_token, String user_id, String key_employee_type, final AddUserCallBack addUserCallBack) {
+    public void requestAddUser(String access_token,int user_id, String key_employee_type, final AddUserCallBack addUserCallBack) {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

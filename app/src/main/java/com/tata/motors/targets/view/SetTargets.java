@@ -19,9 +19,6 @@ import android.widget.Toast;
 
 import com.tata.motors.R;
 import com.tata.motors.helper.SharedPrefs;
-import com.tata.motors.report.model.MockReportProvider;
-import com.tata.motors.report.presenter.ReportPresenterImpl;
-import com.tata.motors.report.view.ReportAdapter;
 import com.tata.motors.targets.model.MockTargetProvider;
 import com.tata.motors.targets.model.RetrofitTargetProvider;
 import com.tata.motors.targets.model.data.TargetDataTsm;

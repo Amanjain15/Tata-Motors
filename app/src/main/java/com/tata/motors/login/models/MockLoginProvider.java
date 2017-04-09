@@ -31,7 +31,7 @@ public class MockLoginProvider implements LoginProvider{
 
     private LoginData getMockLoginData(){
 
-        LoginData loginData = new LoginData("Success",true,"A12A200","0","A2133AS1",false);
+        LoginData loginData = new LoginData("Success",true,"A12A200","0",1234,false);
         return loginData;
 
     }

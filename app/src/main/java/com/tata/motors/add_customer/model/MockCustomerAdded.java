@@ -11,11 +11,11 @@ import com.tata.motors.add_customer.model.data.CustomerAddedData;
 
 public class MockCustomerAdded implements CustomerAddedProvider {
     @Override
-    public void responseAddCustomer(String dsm_id, String dse_id, String customer_name,
-                                    String application_id, String contact_no, String district_id,
-                                    String town_id, String tehsil, String model_id, String quantity,
-                                    String vehicle_id, String financier_id, int follow_up,
-                                    String geo_tag,
+    public void responseAddCustomer(int dsm_id, int dse_id, String customer_name,
+                                    int  application_id, String contact_no, int district_id,
+                                    int town_id, String tehsil, int model_id,int quantity,
+                                    int vehicle_id, int financier_id, int follow_up,
+                                    int geo_tag,
                                     final CustomerAddedCallBack customerAddedCallBack)
 
     {

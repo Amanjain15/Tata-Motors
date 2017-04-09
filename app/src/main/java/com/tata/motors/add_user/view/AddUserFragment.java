@@ -299,12 +299,12 @@ public class AddUserFragment extends Fragment implements AddUserView {
         password.setText(userAddedData.getPassword());
 //        prefs.setKeyEmployeeType(prefs.getUserType());
         dialog.show();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                ((home_page)getContext()).setFragment(new TargetFragment(),"Target");
-            }
-        },15000);
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                ((home_page)getContext()).setFragment(new TargetFragment(),"Target");
+//            }
+//        },15000);
 
 
     }

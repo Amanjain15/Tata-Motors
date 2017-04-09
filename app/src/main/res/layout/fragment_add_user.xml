@@ -78,6 +78,7 @@
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
+
                         <EditText
                             android:id="@+id/input_name"
                             android:layout_width="match_parent"
@@ -85,9 +86,8 @@
                             android:layout_gravity="center"
                             android:hint="@string/hint_name"
                             android:maxEms="6"
-                            android:textSize="20dp"
 
-                            />
+                            android:textSize="20dp" />
                     </android.support.design.widget.TextInputLayout>
 
                     <android.support.design.widget.TextInputLayout

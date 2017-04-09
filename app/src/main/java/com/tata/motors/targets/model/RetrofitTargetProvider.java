@@ -33,7 +33,7 @@ public class RetrofitTargetProvider implements TargetProvider{
     private Retrofit retrofit;
 
     @Override
-    public void requestTarget(String user_type,String user_id, String username, final TargetCallBack targetCallBack) {
+    public void requestTarget(String user_type,int user_id, String username, final TargetCallBack targetCallBack) {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
@@ -65,7 +65,7 @@ public class RetrofitTargetProvider implements TargetProvider{
     }
 
     @Override
-    public void requestSetTarget(String user_id, String username, final SetTargetCallBack setTargetCallBack) {
+    public void requestSetTarget(int user_id, String username, final SetTargetCallBack setTargetCallBack) {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
@@ -97,7 +97,7 @@ public class RetrofitTargetProvider implements TargetProvider{
     }
 
     @Override
-    public void responseSetTarget(String access_token, String user_id, String username,
+    public void responseSetTarget(String access_token, int user_id, String username,
                                   String monthly, String daily,
                                   final ResponseTargetCallBack responseTargetCallBack) {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();

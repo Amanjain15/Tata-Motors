@@ -14,6 +14,6 @@ import retrofit2.http.Query;
 public interface SetTargetRequestApi {
 
     @GET(Urls.REQUEST_SET_TARGET)
-    Call<TargetDataTsm> requestSetTarget(@Query("user_id")String user_id,
+    Call<TargetDataTsm> requestSetTarget(@Query("user_id")int user_id,
                                          @Query("username") String username);
 }

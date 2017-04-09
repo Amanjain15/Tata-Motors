@@ -22,23 +22,15 @@
             android:id="@+id/nav_dse"
             android:icon="@drawable/ic_menu_manage"
             android:title="DSE" />
+        <item
+            android:id="@+id/nav_targets"
+            android:icon="@drawable/ic_menu_send"
+            android:title="Targets" />
+        <item
+            android:id="@+id/nav_pass"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Change Password" />
     </group>
 
-    <item android:title="Extras">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Employee" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Targets" />
-            <item
-                android:id="@+id/nav_pass"
-                android:icon="@drawable/ic_menu_manage"
-                android:title="Change Password" />
-        </menu>
-    </item>
 
 </menu>

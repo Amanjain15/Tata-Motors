@@ -1,0 +1,60 @@
+package com.tata.motors.achievement.model;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.tata.motors.achievement.api.AchievementApi;
+import com.tata.motors.achievement.model.data.AchievementData;
+import com.tata.motors.add_customer.api.CustomerAddedResponseApi;
+import com.tata.motors.helper.Urls;
+
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+/**
+ * Created by aman on 9/4/17.
+ */
+
+public class RetrofitAchievementProvider implements AchievementProvider {
+
+
+    private AchievementApi achievementApi;
+
+    public RetrofitAchievementProvider() {
+
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+        retrofit= new Retrofit.Builder()
+                .baseUrl(Urls.BASE_URL)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+        achievementApi = retrofit.create(AchievementApi.class);
+
+
+
+
+
+    }
+
+    @Override
+    public void requestAchievement(String access_token) {
+        Call<AchievementData> call=achievementApi.requestAddCustomer(access_token);
+
+
+
+
+
+
+
+
+    }
+}

@@ -40,7 +40,7 @@ public class RetrofitEmployeeProvider implements EmployeeProvider {
 //    }
 
     @Override
-    public void requestEmployee(String token, String Employee, final EmployeeCallBack employeeCallBack) {
+    public void requestEmployee(String token, int choose_id,String user_c_type, final EmployeeCallBack employeeCallBack) {
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -57,7 +57,7 @@ public class RetrofitEmployeeProvider implements EmployeeProvider {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         employeeApi = retrofit.create(EmployeeApi.class);
-        Call<EmployeeData> call = employeeApi.getemployee(token,Employee);
+        Call<EmployeeData> call = employeeApi.getemployee(token,choose_id,user_c_type);
             call.enqueue(new Callback<EmployeeData>() {
                 @Override
                 public void onResponse(Call<EmployeeData> call, Response<EmployeeData> response) {

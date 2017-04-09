@@ -16,7 +16,7 @@ public interface ChangePassApi {
     @GET(Urls.REQUEST_CHANGE_PASS)
     Call<ChangePassData> changePassword(@Query("access_token")String token,
                                         @Query("old_password")String oldPassword,
-                                        @Query("newpassword")String newPassword );
+                                        @Query("new_password")String newPassword );
 
 
 

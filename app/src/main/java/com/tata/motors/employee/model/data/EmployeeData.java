@@ -8,7 +8,7 @@ import java.util.List;
 public class EmployeeData {
     private boolean success;
     private String message;
-    private List<EmployeeListDetails> employeeListDetails;
+    private List<EmployeeListDetails> employeeListDetails;//user_list
 
     public EmployeeData(boolean success, String message, List<EmployeeListDetails> employeeListDetails) {
         this.success = success;

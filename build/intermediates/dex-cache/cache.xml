@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/home/aman/.android/build-cache/a273655a9a01c4c5e73ac0f5a301a49f7ace5fe5/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/home/aman/android studio project/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_437e2709fc836428e8ba3eeb9215d433ee21464b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.android/build-cache/acfc7b5b2e22670529e9188195ca889d1149322b/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c5e6490573cd2cc8018417f60ddd251138b6ed61">
+        <dex dex="/home/aman/android studio project/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_0e1b6c388de37e60a21f17c67c91faf06ac6a297/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.android/build-cache/d27247c5d45b38ea3f03a9725d30f4e0e3e03a99/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="/home/aman/android studio project/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5bbbf0ba4de1263bfc9e612e7dd4a3fd52a7a9e4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.android/build-cache/748415b745b55cf55609269d19fd0b5e770d49c3/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="/home/aman/android studio project/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_f8900da6415ffa233d7d1ebb2661a9fe93da22a5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.android/build-cache/5a93e15f9f56f05d1b995b308222b24ea4771ffe/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="/home/aman/android studio project/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_c85d13b1ea614ab6c489926c473263e0c5813a26/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.android/build-cache/eedb2423cb93d78a7d36a03b62418533d5ca2d5a/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="/home/aman/android studio project/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_14fc8d5ebed0b0989a07d121c9350a76b5d9eed2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.android/build-cache/cd62da2dbf5ff35aa2cb4b6d089f80decc3c63af/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="/home/aman/android studio project/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_8218f9fc8610eaf30587e8dfac0bafc32fadedd3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.android/build-cache/1fb6a00c42cb034e2168697a671e70b7ac4c1f2d/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="/home/aman/android studio project/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7bf7b98d55ef8a7cb20f13795cded6bef59871a1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.android/build-cache/b0c0412ef68d468a06254ee85aff4b75fd9113ac/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/home/aman/android studio project/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_895e18b787929cd1545fe2fbb60c8bc12956615a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.android/build-cache/46be54ed115962a37f7d8ecd8b109b16416a1b14/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b327fbe2fad414bc38cf0ce8f7efe1a38f572837">
+        <dex dex="/home/aman/android studio project/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5288c92bc7eea8e5fcb129d481b4dbf206cf9a36/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.android/build-cache/2e520169d4381b369b2817c0a4d557bc96ad9a89/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="734e80dffea7bd76c18ae256822a124c30d85850">
+        <dex dex="/home/aman/android studio project/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_f977974f7542cb700e6be474b3ebcc0dd59e159e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.android/build-cache/f8596199d3e02edc4cf4adb674fbfe3638a971dd/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="/home/aman/android studio project/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_181cae4118146e30ed20fb2e1b21adc50aa2508c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.android/build-cache/1da576a8e7d1872304adf98f8b1a0a7b13c5fbcb/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="78ea232052df889856dcb7b7b542707c89bb3bfb">
+        <dex dex="/home/aman/android studio project/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5e2b3583119c68e564cdebb3bb594f43694a1563/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.android/build-cache/f64c8acb2adc0f937747cb2db55704008b763c5c/output/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/home/aman/android studio project/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_a1681eac6b7747f33d4b0c72c182320733582c65/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.android/build-cache/b0c0412ef68d468a06254ee85aff4b75fd9113ac/output/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="/home/aman/android studio project/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_ee4a2c5a05b69afdbc0bdb1662e9d6a78f0a52d1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.android/build-cache/29c8e6a02371d8683074d8caa5eeac2f7da43919/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/aman/android studio project/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ff1f453e85c995b18c0d93065efa0adf8d99c24b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.android/build-cache/f64c8acb2adc0f937747cb2db55704008b763c5c/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="/home/aman/android studio project/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_fd34ae17d7e5edfeff64cd968897e4d69b5f5baf/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.android/build-cache/a273655a9a01c4c5e73ac0f5a301a49f7ace5fe5/output/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/home/aman/android studio project/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_f0b16d17fcbd614dd9cc5a8ecf344b643e3b9c4a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.android/build-cache/d27247c5d45b38ea3f03a9725d30f4e0e3e03a99/output/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="/home/aman/android studio project/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_77d51c43e000d7bc6eda7ef30b499f7a3fd70585/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.android/build-cache/46be54ed115962a37f7d8ecd8b109b16416a1b14/output/jars/libs/internal_impl-24.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b6763651ec29b4c95e7bbe63fc393ffcc8c4c2c5">
+        <dex dex="/home/aman/android studio project/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.0.0_d654a85fe94357bd0b660cd24660b21c21ad378c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/aman/.android/build-cache/f8596199d3e02edc4cf4adb674fbfe3638a971dd/output/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="/home/aman/android studio project/Tata-Motors/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_9afe373b40b97316a67030f903e80d054ae06aba/classes.dex" />
+    </item>
+
+</items>

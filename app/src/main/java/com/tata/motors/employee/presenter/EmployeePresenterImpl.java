@@ -20,10 +20,10 @@ public class EmployeePresenterImpl implements EmployeePresenter
          }
 
          @Override
-    public void requestEmployee(String token, String employee) {
+    public void requestEmployee(String token, int choose_id,String user_c_type) {
              employeeView.showProgressbar(true);
 
-             employeeProvider.requestEmployee(token, employee, new EmployeeCallBack() {
+             employeeProvider.requestEmployee(token, choose_id,user_c_type, new EmployeeCallBack() {
                  @Override
                  public void onSuccess(EmployeeData employeeData) {
                      if(employeeData.isSuccess()){

@@ -11,13 +11,21 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="Profile" />
         <item
-            android:id="@+id/nav_dsm"
+            android:id="@+id/nav_customer"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Customer" />
         <item
+            android:id="@+id/nav_dsm"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="DSM" />
+        <item
             android:id="@+id/nav_dse"
             android:icon="@drawable/ic_menu_manage"
-            android:title="User" />
+            android:title="DSE" />
+        <item
+            android:id="@+id/nav_dealer"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="DEALER" />
     </group>
 
     <item android:title="Extras">

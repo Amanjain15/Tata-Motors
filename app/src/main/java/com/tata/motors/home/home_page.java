@@ -101,18 +101,28 @@ public class home_page extends AppCompatActivity
             startActivity(i);
             finish();
         } else if (id == R.id.nav_profile) {
-            setFragment(new ProfileFragment(),"Profile");
+            setFragment(new ProfileFragment(),"Profile");//// TODO: 9/4/17 USER_ID BUNDLE DAALNA
+        } else if (id == R.id.nav_customer) {
 
-        } else if (id == R.id.nav_dsm) {
-            Keys.Key_id=1;
             setFragment(new AddCustomerFragment(),"Add Customer");
 
-        } else if (id == R.id.nav_dse) {
-            Keys.Key_id=2;
-            setFragment(new AddUserFragment(),"Add User");
+        } else if (id == R.id.nav_dsm) {
+
+            EmployeeFragment fragment = EmployeeFragment.newInstance("1",10);
+            setFragment(fragment ,"Add DSM");
+
+        }else if (id == R.id.nav_dse) {
+
+            EmployeeFragment fragment = EmployeeFragment.newInstance("2",10);
+            setFragment(fragment,"Add DSE");
+
+        }else if (id == R.id.nav_dealer) {
+
+            EmployeeFragment fragment = EmployeeFragment.newInstance("3",10);
+            setFragment(fragment,"Add DSE");
 
         } else if (id == R.id.nav_share) {
-            setFragment(new EmployeeFragment(), "Employe");
+
 
         } else if (id == R.id.nav_send) {
             setFragment(new TargetFragment(), "Targets");

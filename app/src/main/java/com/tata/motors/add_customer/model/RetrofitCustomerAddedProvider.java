@@ -25,19 +25,16 @@ public class RetrofitCustomerAddedProvider implements  CustomerAddedProvider{
 
     @Override
     public void responseAddCustomer(int dsm_id,
-                                    int dse_id,
                                     String customer_name,
-                                    int application_id,
+                                    String application_name,
                                     String contact_no,
-                                    int district_id,
-                                    int town_id,
+                                    String district_name,
+                                    String town_name,
                                     String tehsil,
-                                    int model_id,
-                                    int quantity,
-                                    int vehicle_id,
-                                    int financier_id,
-                                    int follow_up,
-                                    int geo_tag, final CustomerAddedCallBack customerAddedCallBack)
+                                    String json,
+                                    String financier_name,
+                                    String follow_up,
+                                    int status,String location, final CustomerAddedCallBack customerAddedCallBack)
     {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -54,9 +51,9 @@ public class RetrofitCustomerAddedProvider implements  CustomerAddedProvider{
                 .build();
         customerAddedResponseApi = retrofit.create(CustomerAddedResponseApi.class);
         Call<CustomerAddedData> call = customerAddedResponseApi.responseAddCustomer(
-                                dsm_id,dse_id,customer_name, application_id,contact_no, district_id,
-                                town_id, tehsil, model_id, quantity,vehicle_id, financier_id, follow_up,
-                                geo_tag);
+                                dsm_id,customer_name, application_name,contact_no, district_name,
+                                town_name, tehsil,json, financier_name, follow_up,
+                                status,location);
         call.enqueue(new Callback<CustomerAddedData>() {
             @Override
             public void onResponse(Call<CustomerAddedData> call, Response<CustomerAddedData> response) {

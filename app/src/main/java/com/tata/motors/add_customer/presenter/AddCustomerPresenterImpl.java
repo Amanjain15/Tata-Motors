@@ -29,21 +29,22 @@ public class AddCustomerPresenterImpl implements AddCustomerPresenter {
     }
 
     @Override
-    public void requestAddCustomer(String access_token, int user_id, String user_type) {
+    public void requestAddCustomer(String access_token) {
 
-        addCustomerProvider.requestAddCustomer(access_token, user_id, user_type, new AddCustomerCallback() {
+        addCustomerProvider.requestAddCustomer(access_token, new AddCustomerCallback() {
             @Override
             public void onSuccess(AddCustomerData addCustomerData) {
                 if(addCustomerData.isSuccess())
                 {
                     addCustomerView.showSpinners(addCustomerData);
+                    addCustomerView.showError(addCustomerData.getMessage());
 //                    addCustomerView.showSpinnerDsm(addCustomerData.getDsmListDetails());
 //                    addCustomerView.showSpinnerDse(addCustomerData);
                 }
 
                 else
                 {
-                    addCustomerView.showError("Something Went Wrong");
+                    addCustomerView.showError(addCustomerData.getMessage());
 
                 }
             }
@@ -57,24 +58,21 @@ public class AddCustomerPresenterImpl implements AddCustomerPresenter {
 
     @Override
     public void responseAddCustomer(int dsm_id,
-                                    int dse_id,
                                     String customer_name,
-                                    int application_id,
+                                    String application_name,
                                     String contact_no,
-                                    int district_id,
-                                    int town_id,
+                                    String district_name,
+                                    String town_name,
                                     String tehsil,
-                                    int model_id,
-                                    int quantity,
-                                    int vehicle_id,
-                                    int financier_id,
-                                    int follow_up,
-                                    int geo_tag)
+                                    String json,
+                                    String financier_name,
+                                    String follow_up,
+                                    int status ,String location)
     {
         addCustomerView.showProgressBar(true);
-        customerAddedProvider.responseAddCustomer(dsm_id, dse_id, customer_name, application_id, contact_no, district_id,
-                town_id, tehsil, model_id, quantity, vehicle_id, financier_id, follow_up,
-                geo_tag, new CustomerAddedCallBack() {
+        customerAddedProvider.responseAddCustomer(dsm_id,customer_name, application_name,contact_no, district_name,
+                town_name, tehsil, json, financier_name, follow_up,
+                status,location, new CustomerAddedCallBack() {
                     @Override
                     public void onSuccess(CustomerAddedData customerAddedData) {
                         if(customerAddedData.isSuccess())
@@ -82,6 +80,7 @@ public class AddCustomerPresenterImpl implements AddCustomerPresenter {
 
                             addCustomerView.showError(customerAddedData.getMessage());
                             addCustomerView.showProgressBar(false);
+                            //// TODO: 10/4/17 HAVE to intent to another fragment necessary
                         }
                         else{
 

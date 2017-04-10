@@ -10,23 +10,19 @@ import com.tata.motors.add_customer.model.data.CustomerAddedData;
  */
 
 public class MockCustomerAdded implements CustomerAddedProvider {
+
+
     @Override
-    public void responseAddCustomer(int dsm_id, int dse_id, String customer_name,
-                                    int  application_id, String contact_no, int district_id,
-                                    int town_id, String tehsil, int model_id,int quantity,
-                                    int vehicle_id, int financier_id, int follow_up,
-                                    int geo_tag,
-                                    final CustomerAddedCallBack customerAddedCallBack)
-
-    {
-
+    public void responseAddCustomer(int dsm_id, String customer_name, String application_name,
+                                    String contact_no, String district_name, String town_name,
+                                    String tehsil, String json, String financier_name,
+                                    String follow_up, int status, String location,final CustomerAddedCallBack customerAddedCallBack) {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 customerAddedCallBack.onSuccess(getMockCustomerAdded());
             }
         },500);
-
     }
 
     private CustomerAddedData getMockCustomerAdded(){
@@ -34,7 +30,5 @@ public class MockCustomerAdded implements CustomerAddedProvider {
         CustomerAddedData customerAddedData = new CustomerAddedData(true,"Success");
         return customerAddedData;
     }
-
-
 
 }

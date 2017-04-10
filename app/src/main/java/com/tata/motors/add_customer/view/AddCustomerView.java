@@ -25,11 +25,11 @@ public interface AddCustomerView {
     //List-Spinners
     void showSpinners(AddCustomerData addCustomerData);
     void showSpinnerDsm(AddCustomerData addCustomerData);
-    int showSpinnerDse(AddCustomerData addCustomerData);
     int showSpinnerApplication(AddCustomerData addCustomerData);
     int showSpinnerDistrict(AddCustomerData addCustomerData);
     int showSpinnerTown(AddCustomerData addCustomerData);
-    int showSpinnerModel(AddCustomerData addCustomerData);
-    int showSpinnerVehicle(AddCustomerData addCustomerData);
+//    int showSpinnerModel(AddCustomerData addCustomerData);
+//    int showSpinnerVehicle(AddCustomerData addCustomerData);
     int showSpinnerFinancier(AddCustomerData addCustomerData);
+    void setValues(int i,String vehicle,String model,int quantity);
 }

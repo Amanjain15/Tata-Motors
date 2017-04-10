@@ -29,7 +29,7 @@ public class RetrofitAddCustomerProvider implements AddCustomerProvider{
 
 
     @Override
-    public void requestAddCustomer(String acces_token, int user_id, String user_type,
+    public void requestAddCustomer(String acces_token,
                                    final AddCustomerCallback addCustomerCallback) {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -45,7 +45,7 @@ public class RetrofitAddCustomerProvider implements AddCustomerProvider{
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         addCustomerRequestApi= retrofit.create(AddCustomerRequestApi.class);
-        Call<AddCustomerData> call= addCustomerRequestApi.requestAddCustomer(acces_token,user_id,user_type);
+        Call<AddCustomerData> call= addCustomerRequestApi.requestAddCustomer(acces_token);
         call.enqueue(new Callback<AddCustomerData>() {
             @Override
             public void onResponse(Call<AddCustomerData> call, Response<AddCustomerData> response) {

@@ -6,19 +6,17 @@ package com.tata.motors.add_customer.presenter;
 
 public interface AddCustomerPresenter {
 
-    void requestAddCustomer(String access_token, int user_id, String user_type);
+    void requestAddCustomer(String access_token);
     void responseAddCustomer( int dsm_id,
-                              int dse_id,
                               String customer_name,
-                              int application_id,
+                              String application_name,
                               String contact_no,
-                              int district_id,
-                              int town_id,
+                              String district_name,
+                              String town_name,
                               String tehsil,
-                              int model_id,
-                              int quantity,
-                              int vehicle_id,
-                              int financier_id,
-                              int follow_up,
-                              int geo_tag);
+                              String json,
+                              String financier_name,
+                              String follow_up,
+                              int status,
+                              String location);
 }

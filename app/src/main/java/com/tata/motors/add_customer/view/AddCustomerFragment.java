@@ -1,9 +1,13 @@
 package com.tata.motors.add_customer.view;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -13,20 +17,18 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tata.motors.R;
-import com.tata.motors.add_customer.model.AddCustomerProvider;
-import com.tata.motors.add_customer.model.CustomerAddedProvider;
 import com.tata.motors.add_customer.model.MockAddCustomerProvider;
 import com.tata.motors.add_customer.model.RetrofitAddCustomerProvider;
 import com.tata.motors.add_customer.model.data.AddCustomerData;
 import com.tata.motors.add_customer.model.data.ApplicationListDetails;
 import com.tata.motors.add_customer.model.data.DistrictListDetails;
-import com.tata.motors.add_customer.model.data.DseListDetails;
 import com.tata.motors.add_customer.model.data.DsmListDetails;
 import com.tata.motors.add_customer.model.data.FinancierListDetails;
 import com.tata.motors.add_customer.model.data.ModelListDetails;
@@ -34,12 +36,16 @@ import com.tata.motors.add_customer.model.data.TownListDetails;
 import com.tata.motors.add_customer.model.data.VehicleListDetails;
 import com.tata.motors.add_customer.presenter.AddCustomerPresenter;
 import com.tata.motors.add_customer.presenter.AddCustomerPresenterImpl;
-import com.tata.motors.add_user.model.data.DealerListDetails;
 import com.tata.motors.helper.SharedPrefs;
 
-import java.io.StringBufferInputStream;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -80,6 +86,12 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
     @BindView(R.id.financier_spinner)
     Spinner financier_spinner;
 
+    @BindView(R.id.location_spinner)
+    Spinner location_spinner;
+
+    @BindView(R.id.status_spinner)
+    Spinner status_spinner;
+
     @BindView(R.id.customer_name)
     TextView name;
 
@@ -100,29 +112,45 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
     @BindView(R.id.submitButton)
     Button submit;
 
-    private String tehsil_id,customer_name,contact_no;
-    private int dsm_id,dse_id,application_id,district_id, town_id;
-    private int model_id,quantity,vehicle_id,financier_id,geo_tag;
-    private int follow_up;
+    @BindView(R.id.recycler_customer)
+    RecyclerView recyclerView;
+
+    private ProgressBar progressBar;
+
+    private int dsm_id,application_id,district_id, town_id;
+    private int financier_id;
+
+    private DatePickerDialog datePicker;
+    private Calendar calendar;
+    private DatePickerDialog.OnDateSetListener datePickerListener;
+
+    private String customer_name, application_name,contact_no, district_name,
+            town_name, tehsil_name, financier_name, follow_up,location;
+    private int status;
+
     private ApplicationListDetails applicationListDetails;
     private DistrictListDetails districtListDetails;
     private TownListDetails townListDetails;
-    private ModelListDetails modelListDetails;
-    private VehicleListDetails vehicleListDetails;
     private FinancierListDetails financierListDetails;
     private SharedPrefs sharedPrefs;
     private AddCustomerPresenter addCustomerPresenter;
     private DsmListDetails dsmListDetails;
+    private RecyclerAdapter recyclerAdapter;
+    private LinearLayoutManager linearLayoutManager;
+    private String model_id1[] = new String[10],vehicle_id1[] = new String[10];
+    private int quantity1[] = new int[10];
+
+    private JSONObject jsonObject=null;
+    private int size;
 
 
-    private ProgressBar progressBar;
 
-    // TODO: Rename parameter arguments, choose names that match
+
+
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -140,7 +168,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
      * @param param2 Parameter 2.
      * @return A new instance of fragment AddCustomerFragment.
      */
-    // TODO: Rename and change types and number of parameters
+
     public static AddCustomerFragment newInstance(String param1, String param2) {
         AddCustomerFragment fragment = new AddCustomerFragment();
         Bundle args = new Bundle();
@@ -188,14 +216,43 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
 
             }
         });
-        addCustomerPresenter.requestAddCustomer(sharedPrefs.getAccessToken(),sharedPrefs.getUserId(),
-                                                sharedPrefs.getUserType());
+        showSpinnerLocation();showSpinnerStatus();
+        addCustomerPresenter.requestAddCustomer(sharedPrefs.getAccessToken());
 
-        showAdd();
+        calendar = Calendar.getInstance(TimeZone.getDefault()); // Get current date
+
+        datePickerListener = new DatePickerDialog.OnDateSetListener() {
+
+            // when dialog box is closed, below method will be called.
+            public void onDateSet(DatePicker view, int selectedYear,
+                                  int selectedMonth, int selectedDay) {
+                String year1 = String.valueOf(selectedYear);
+                String month1 = String.valueOf(selectedMonth + 1);
+                String day1 = String.valueOf(selectedDay);
+
+                follow.setText(day1 + "/" + month1 + "/" + year1);
+
+            }
+        };
+
+        follow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                datePicker = new DatePickerDialog(getContext(),
+                        R.style.AppTheme, datePickerListener,
+                        calendar.get(Calendar.YEAR),
+                        calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePicker.setCancelable(false);
+                datePicker.setTitle("Select the date");
+                datePicker.show();
+            }
+        });
+
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -226,6 +283,10 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
         sharedPrefs = new SharedPrefs(getContext());
 //        addCustomerPresenter = new AddCustomerPresenterImpl(new RetrofitAddCustomerProvider(),this);
         addCustomerPresenter = new AddCustomerPresenterImpl(new MockAddCustomerProvider(),this);
+        recyclerAdapter = new RecyclerAdapter(getContext(),this);
+        linearLayoutManager= new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(recyclerAdapter);
 
     }
 
@@ -236,17 +297,22 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                jsonObject=new JSONObject();
 
-                customer_name = name.getText().toString();
-                contact_no = mobile.getText().toString();
-                tehsil_id = tehsil.getText().toString();
-                quantity =  Integer.parseInt(quantity_tv.getText().toString());
                 try
                 {
-                    follow_up = Integer.parseInt(follow.getText().toString());
-                }catch(NumberFormatException nfe){
-
+                    jsonObject = makeJsonObject(size,vehicle_id1,model_id1,quantity1);
+                }catch (JSONException e){
+                    e.printStackTrace();
                 }
+                String json = new String(jsonObject.toString());
+                customer_name = name.getText().toString();
+                contact_no = mobile.getText().toString();
+                tehsil_name = tehsil.getText().toString();
+
+//                quantity =  Integer.parseInt(quantity_tv.getText().toString());
+                    follow_up = follow.getText().toString();
+
 
                 if(customer_name.equals("") || customer_name.equals(null) )
                 {
@@ -262,15 +328,15 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
                     mobile.setError("Invalid Mobile No.");
                     mobile.requestFocus();
                 }
-                else if (follow_up == 0 ) {
-                    follow.setError("Please Enter Follow Up");
+                else if (follow_up.equals("") || follow.equals(null) ) {
+                    follow.setError("Please Enter Next Follow Up Date");
                     follow.requestFocus();
                 }
                 else{
 
-                    addCustomerPresenter.responseAddCustomer(dsm_id,dse_id,customer_name,
-                            application_id,contact_no, district_id, town_id, tehsil_id, model_id,
-                            quantity,vehicle_id, financier_id, follow_up, geo_tag);
+                    addCustomerPresenter.responseAddCustomer(dsm_id,customer_name, application_name,contact_no, district_name,
+                            town_name, tehsil_name,json, financier_name, follow_up,
+                            status,location);
                 }
             }
         });
@@ -301,32 +367,26 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
     @Override
     public void showSpinners(AddCustomerData addCustomerData)
     {
-
-                        if (sharedPrefs.getUserType().equals("0"))
+                        if(sharedPrefs.getUserType().equals("2"))
                         {
-//                            dsm_spinner.setVisibility(View.GONE);
-                            showSpinnerDsm(addCustomerData);
-                            showSpinnerDse(addCustomerData);
-                        }
-                        else if (sharedPrefs.getUserType().equals("1"))
-                        {
-                           dsm_spinner.setVisibility(View.GONE);
-                            showSpinnerDse(addCustomerData);
-                            dsm_id = sharedPrefs.getUserId();
-                        }
-                        else if(sharedPrefs.getUserType().equals("2")) {
                             dsm_spinner.setVisibility(View.GONE);
-                            dse_spinner.setVisibility(View.GONE);
-                            dse_id = sharedPrefs.getUserId();
+                            dsm_id=sharedPrefs.getUserId();
+                        }
+                        else
+                        {
+                            showSpinnerDsm(addCustomerData);
                         }
 
 //                      showSpinnerDsm(addCustomerData);
                         showSpinnerApplication(addCustomerData);
                         showSpinnerDistrict(addCustomerData);
                         showSpinnerTown(addCustomerData);
-                        showSpinnerModel(addCustomerData);
-                        showSpinnerVehicle(addCustomerData);
                         showSpinnerFinancier(addCustomerData);
+//                        showSpinnerModel(addCustomerData);
+//                        showSpinnerVehicle(addCustomerData);
+
+                        recyclerAdapter.setData(addCustomerData);
+                        recyclerAdapter.notifyDataSetChanged();
 
     }
 
@@ -363,6 +423,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
                 //userAddedData.setName(spinner.getItemAtPosition(t).toString());
                 //userAddedData.setDsm_id(dsm_id_ar[t]);
                 dsm_id= dsm_id_ar[t];
+
             }
 
             @Override
@@ -371,50 +432,6 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
             }
         });
 
-    }
-
-
-    @Override
-    public int showSpinnerDse(AddCustomerData addCustomerData) {
-        DseListDetails dseListDetails;
-        List<DseListDetails> dseListDetailsList= new ArrayList<DseListDetails>(addCustomerData.getDseListDetails());
-        ArrayAdapter<String>    adapter;
-        int n= dseListDetailsList.size();
-        final int dse_id_ar[]=new int[n];
-        String dse_name_ar[]=new String[n];
-
-        int i=0;
-        while(i < n)
-        {
-            dseListDetails = dseListDetailsList.get(i);
-            dse_id_ar[i] = dseListDetails.getDse_id();
-            dse_name_ar[i] = dseListDetails.getDse_name();
-            i++;
-        }
-
-        adapter = new ArrayAdapter<String>(getContext(),
-                android.R.layout.simple_spinner_item, dse_name_ar);
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        dse_spinner.setAdapter(adapter);
-
-        //OnItemSelected
-        dse_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int t, long l) {
-
-                //userAddedData.setName(spinner.getItemAtPosition(t).toString());
-                //userAddedData.setDsm_id(dsm_id_ar[t]);
-                dse_id=dse_id_ar[t];
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-        return dse_id;
     }
 
     @Override
@@ -422,7 +439,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
         List<ApplicationListDetails> applicationListDetailsList = new ArrayList<ApplicationListDetails>(addCustomerData.getApplicationListDetails());
         ArrayAdapter<String>    adapter;
         int n= applicationListDetailsList.size();
-        String application_name_ar[] = new String[n];
+        final String application_name_ar[] = new String[n];
         final int application_id_ar[] = new int[n];
         int i=0;
         while(i<n)
@@ -442,6 +459,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int t, long l) {
                 application_id= application_id_ar[t];
+                application_name = application_name_ar[t];
             }
 
             @Override
@@ -459,7 +477,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
         List<DistrictListDetails> districtListDetailsList = new ArrayList<DistrictListDetails>(addCustomerData.getDistrictListDetails());
         ArrayAdapter<String> adapter;
         int n= districtListDetailsList.size();
-        String district_name_ar[] = new String[n];
+        final String district_name_ar[] = new String[n];
         final int district_id_ar[] = new int[n];
         int i=0;
         while(i<n){
@@ -478,6 +496,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int t, long l) {
                 district_id = district_id_ar[t];
+                district_name = district_name_ar[t];
             }
 
             @Override
@@ -493,7 +512,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
         List<TownListDetails> townListDetailsList = new ArrayList<TownListDetails>(addCustomerData.getTownListDetails());
         ArrayAdapter<String> adapter;
         int n= townListDetailsList.size();
-        String town_name_ar[] = new String[n];
+        final String town_name_ar[] = new String[n];
         final int town_id_ar[] = new int[n];
         int i=0;
         while(i<n){
@@ -511,6 +530,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int t, long l) {
                 town_id = town_id_ar[t];
+                town_name = town_name_ar[t];
             }
 
             @Override
@@ -522,75 +542,6 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
 
     }
 
-    @Override
-    public int showSpinnerModel(AddCustomerData addCustomerData) {
-        List<ModelListDetails> modelListDetailsList = new ArrayList<ModelListDetails>(addCustomerData.getModelListDetails());
-        ArrayAdapter<String> adapter;
-        int n= modelListDetailsList.size();
-        final int model_id_ar[] = new int [n];
-        String model_name_ar[] = new String [n];
-
-        int i=0;
-        while(i<n)
-        {
-            modelListDetails = modelListDetailsList.get(i);
-            model_id_ar[i] = modelListDetails.getModel_id();
-            model_name_ar[i] = modelListDetails.getModel_name();
-            i++;
-        }
-        adapter = new ArrayAdapter<String>(getContext(),
-                android.R.layout.simple_spinner_item, model_name_ar);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        model_spinner.setAdapter(adapter);
-
-        model_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int t, long l) {
-                model_id = model_id_ar[t];
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-        return model_id;
-
-    }
-
-    @Override
-    public int showSpinnerVehicle(AddCustomerData addCustomerData) {
-        List<VehicleListDetails> vehicleListDetailsList = new ArrayList<VehicleListDetails>(addCustomerData.getVehicleListDetails());
-        ArrayAdapter<String> adapter;
-        int n= vehicleListDetailsList.size();
-        final int vehicle_id_ar[] = new int[n];
-        final String  vehicle_name_ar[] =  new String[n];
-        int i=0;
-        while(i<n)
-        {
-            vehicleListDetails = vehicleListDetailsList.get(i);
-            vehicle_id_ar[i]= vehicleListDetails.getVehicle_id();
-            vehicle_name_ar[i] =vehicleListDetails.getVehicle_name();
-            i++;
-        }
-        adapter = new ArrayAdapter<String>(getContext(),
-                android.R.layout.simple_spinner_item, vehicle_name_ar);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        vehicle_spinner.setAdapter(adapter);
-        vehicle_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int t, long l) {
-                vehicle_id = vehicle_id_ar[t];
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-        return vehicle_id;
-    }
 
     @Override
     public int showSpinnerFinancier(AddCustomerData addCustomerData) {
@@ -599,7 +550,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
         int n = financierListDetailsList.size();
         int i=0;
         final int financier_id_ar[] = new int[n];
-        String financier_name_ar[] = new String [n];
+        final String financier_name_ar[] = new String [n];
         while(i<n){
             financierListDetails = financierListDetailsList.get(i);
             financier_id_ar[i] = financierListDetails.getFinancier_id();
@@ -613,6 +564,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int t, long l) {
                 financier_id =  financier_id_ar[t];
+                financier_name = financier_name_ar[t];
             }
 
             @Override
@@ -623,6 +575,88 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
         return financier_id;
 
     }
+
+    public void showSpinnerLocation() {
+        final String locationDetails[] = new String[4];
+        locationDetails[0] = "Met in Person";
+        locationDetails[1] = "Walk in";
+        locationDetails[2] = "Tele in";
+        locationDetails[3] = "Fixed a meeting";
+        ArrayAdapter<String> adapter;
+        adapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item,locationDetails);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        location_spinner.setAdapter(adapter);
+        location_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int t, long l) {
+                location=locationDetails[t];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+    }
+    public void showSpinnerStatus() {
+        final String statusDetails[] = new String[3];
+        statusDetails[0] = "Pending";
+        statusDetails[1] = "Confirmed";
+        statusDetails[2] = "Rejected";
+        ArrayAdapter<String> adapter;
+        adapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item,statusDetails);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        status_spinner.setAdapter(adapter);
+        status_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int t, long l) {
+                status=t;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+    }
+
+    @Override
+    public void setValues(int i,String vehicle,String model,int quantity)
+    {
+        vehicle_id1[i]=vehicle;
+        model_id1[i]=model;
+        quantity1[i]=quantity;
+        size=i+1;
+
+    }
+
+    public JSONObject makeJsonObject(int n,String vehicle[],String model[],int quantity[]) throws JSONException
+    {
+            JSONObject obj = null;
+            JSONArray jsonArray = new JSONArray();
+            for(int i=0;i<n;i++)
+            {
+                obj = new JSONObject();
+                try{
+                    obj.put("vehicle",vehicle[i]);
+                    obj.put("model",model[i]);
+                    obj.put("quantity",quantity[i]);
+
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+                jsonArray.put(obj);
+            }
+            JSONObject finalObj = new JSONObject();
+            finalObj.put("item",jsonArray);
+        return finalObj;
+
+    }
+
 
     /**
      * This interface must be implemented by activities that contain this
@@ -635,7 +669,6 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 

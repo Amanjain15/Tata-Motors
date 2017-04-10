@@ -8,6 +8,6 @@ import com.tata.motors.add_customer.AddCustomerCallback;
 
 public interface AddCustomerProvider {
 
-    void requestAddCustomer(String access_token, int user_id, String user_type,
+    void requestAddCustomer(String access_token,
                             AddCustomerCallback addCustomerCallback);
 }

@@ -14,8 +14,6 @@ import retrofit2.http.Query;
 public interface AddCustomerRequestApi {
 
     @GET(Urls.REQUEST_ADD_CUSTOMER)
-    Call<AddCustomerData> requestAddCustomer(@Query("access_token") String access_token,
-                                             @Query("user_id") int user_id,
-                                             @Query("user_type") String user_type);
+    Call<AddCustomerData> requestAddCustomer(@Query("access_token") String access_token);
 
 }

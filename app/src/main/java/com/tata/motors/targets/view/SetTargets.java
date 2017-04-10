@@ -35,12 +35,12 @@ import com.tata.motors.targets.presenter.TargetPresenterImpl;
  * create an instance of this fragment.
  */
 public class SetTargets extends Fragment implements SetTargetView{
-    // TODO: Rename parameter arguments, choose names that match
+
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
+
     private String mParam1;
     private String mParam2;
     private ProgressBar progressBar;
@@ -65,7 +65,7 @@ public class SetTargets extends Fragment implements SetTargetView{
      * @param param2 Parameter 2.
      * @return A new instance of fragment SetTargets.
      */
-    // TODO: Rename and change types and number of parameters
+
     public static SetTargets newInstance(String param1, String param2) {
         SetTargets fragment = new SetTargets();
         Bundle args = new Bundle();
@@ -98,7 +98,7 @@ public class SetTargets extends Fragment implements SetTargetView{
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -207,7 +207,7 @@ public class SetTargets extends Fragment implements SetTargetView{
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
+
         void onFragmentInteraction(Uri uri);
     }
 }

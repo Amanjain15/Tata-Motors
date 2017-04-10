@@ -33,6 +33,7 @@
 
     <string name="model_interested">Model Interested</string>
     <string name="financier">Financier</string>
+    <string name="status">Status</string>
 
     <string name="vehicle">Vehicle</string>
     <string name="location">Location</string>

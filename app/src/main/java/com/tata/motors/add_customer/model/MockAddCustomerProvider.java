@@ -23,8 +23,7 @@ import java.util.List;
 
 public class MockAddCustomerProvider implements AddCustomerProvider {
     @Override
-    public void requestAddCustomer(String access_token, int user_id,
-                                   String user_type, final AddCustomerCallback addCustomerCallback) {
+    public void requestAddCustomer(String access_token, final AddCustomerCallback addCustomerCallback) {
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -74,7 +73,7 @@ public class MockAddCustomerProvider implements AddCustomerProvider {
         AddCustomerData addCustomerData = new AddCustomerData(true,"List Received",0,
                 applicationListDetailsList,districtListDetailsList,townListDetailsList,
                 financierListDetailsList,modelListDetailsList,vehicleListDetailsList,
-                dsmListDetailsList,dseListDetailsList);
+                dsmListDetailsList);
 
 
         return addCustomerData;

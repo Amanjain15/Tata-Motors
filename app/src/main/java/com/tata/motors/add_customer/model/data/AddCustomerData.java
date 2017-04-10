@@ -10,35 +10,32 @@ public class AddCustomerData {
     private boolean success;
     private String message;
     private int user_type;
-    List<ApplicationListDetails> applicationListDetails;
-    List<DistrictListDetails> districtListDetails;
-    List<TownListDetails> townListDetails;
-    List<FinancierListDetails> financierListDetails;
-    List<ModelListDetails> modelListDetails;
-    List<VehicleListDetails> vehicleListDetails;
-    List<DsmListDetails> dsmListDetails;
-    List<DseListDetails> dseListDetails;
+    List<ApplicationListDetails> applicationList;
+    List<DistrictListDetails> districtList;
+    List<TownListDetails> townList;
+    List<FinancierListDetails> financierList;
+    List<ModelListDetails> modelList;
+    List<VehicleListDetails> vehicleList;
+    List<DsmListDetails> user_list;
 
     public AddCustomerData(boolean success, String message, int user_type,
-                           List<ApplicationListDetails> applicationListDetails,
-                           List<DistrictListDetails> districtListDetails,
-                           List<TownListDetails> townListDetails,
-                           List<FinancierListDetails> financierListDetails,
-                           List<ModelListDetails> modelListDetails,
-                           List<VehicleListDetails> vehicleListDetails,
-                           List<DsmListDetails> dsmListDetails,
-                           List<DseListDetails> dseListDetails) {
+                           List<ApplicationListDetails> applicationList,
+                           List<DistrictListDetails> districtList,
+                           List<TownListDetails> townList,
+                           List<FinancierListDetails> financierList,
+                           List<ModelListDetails> modelList,
+                           List<VehicleListDetails> vehicleList,
+                           List<DsmListDetails> user_list) {
         this.success = success;
         this.message = message;
         this.user_type = user_type;
-        this.applicationListDetails = applicationListDetails;
-        this.districtListDetails = districtListDetails;
-        this.townListDetails = townListDetails;
-        this.financierListDetails = financierListDetails;
-        this.modelListDetails = modelListDetails;
-        this.vehicleListDetails = vehicleListDetails;
-        this.dsmListDetails = dsmListDetails;
-        this.dseListDetails = dseListDetails;
+        this.applicationList = applicationList;
+        this.districtList = districtList;
+        this.townList = townList;
+        this.financierList= financierList;
+        this.modelList= modelList;
+        this.vehicleList= vehicleList;
+        this.user_list = user_list;
     }
 
     public boolean isSuccess() {
@@ -54,34 +51,30 @@ public class AddCustomerData {
     }
 
     public List<ApplicationListDetails> getApplicationListDetails() {
-        return applicationListDetails;
+        return applicationList;
     }
 
     public List<DistrictListDetails> getDistrictListDetails() {
-        return districtListDetails;
+        return districtList;
     }
 
     public List<TownListDetails> getTownListDetails() {
-        return townListDetails;
+        return townList;
     }
 
     public List<FinancierListDetails> getFinancierListDetails() {
-        return financierListDetails;
+        return financierList;
     }
 
     public List<ModelListDetails> getModelListDetails() {
-        return modelListDetails;
+        return modelList;
     }
 
     public List<VehicleListDetails> getVehicleListDetails() {
-        return vehicleListDetails;
+        return vehicleList;
     }
 
     public List<DsmListDetails> getDsmListDetails() {
-        return dsmListDetails;
-    }
-
-    public List<DseListDetails> getDseListDetails() {
-        return dseListDetails;
+        return user_list;
     }
 }

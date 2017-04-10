@@ -104,7 +104,7 @@ private ReportTsmAdapter reportTsmAdapter;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_report_tsm, container, false);
+        View view = inflater.inflate(R.layout.report_tsm, container, false);
         ButterKnife.bind(this,view);
         sharedPrefs = new SharedPrefs(getContext());
       ///  employee = sharedPrefs.getKeyEmployeeType();
@@ -113,9 +113,9 @@ private ReportTsmAdapter reportTsmAdapter;
 ///       dsmid = sharedPrefs.getDsmId();
 ///        dseid = sharedPrefs.getDseId();
  ///       usertype=sharedPrefs.getUserType();
-progressBar=(ProgressBar)view.findViewById(R.id.report_progressBar);
-       recyclerView=(RecyclerView)view.findViewById(R.id.report_tsm_RecyclerView);
-        toolbar=(Toolbar)view.findViewById(R.id.report_tsm_Toolbar);
+        progressBar=(ProgressBar)view.findViewById(R.id.report_progressBar);
+        recyclerView=(RecyclerView)view.findViewById(R.id.report_tsm_RecyclerView);
+//        toolbar=(Toolbar)view.findViewById(R.id.report_tsm_Toolbar);
         reportTsmPresenter = new ReportTsmPresenterImpl(new RetrofitReportTsmProvider(), this);
         reportTsmPresenter.requestTsmReport(access_token);
         reportTsmAdapter = new ReportTsmAdapter(getContext(), this);

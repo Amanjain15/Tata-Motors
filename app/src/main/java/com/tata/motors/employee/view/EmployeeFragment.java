@@ -27,6 +27,7 @@ import com.tata.motors.home.home_page;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -98,6 +99,7 @@ public class EmployeeFragment extends Fragment implements EmployeeView {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_employee, container, false);
+        ButterKnife.bind(this,view);
         sharedPrefs = new SharedPrefs(getContext());
        // employee=sharedPrefs.getKeyEmployeeType();
         access_token=sharedPrefs.getAccessToken();

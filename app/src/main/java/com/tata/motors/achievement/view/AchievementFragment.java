@@ -4,11 +4,25 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import com.google.android.gms.games.achievement.AchievementBuffer;
 import com.tata.motors.R;
+import com.tata.motors.achievement.model.RetrofitAchievementProvider;
+import com.tata.motors.achievement.model.data.AchievementData;
+import com.tata.motors.achievement.presenter.AchievementPresenter;
+import com.tata.motors.achievement.presenter.AchievementPresenterImpl;
+import com.tata.motors.helper.SharedPrefs;
+
+import butterknife.BindView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,11 +32,25 @@ import com.tata.motors.R;
  * Use the {@link AchievementFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AchievementFragment extends Fragment {
+public class AchievementFragment extends Fragment implements AchievementView {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+
+
+    @BindView(R.id.achievementRecyclerView)
+    RecyclerView recyclerView;
+    @BindView(R.id.achievementToolbar)
+    Toolbar toolbar;
+    @BindView(R.id.achievementProgressbar)
+    ProgressBar progressBar;
+    private SharedPrefs sharedPrefs;
+    private LinearLayoutManager linearLayoutManager;
+    private AchievementAdapter achievementAdapter;
+    private AchievementPresenter achievementPresenter;
+    private  String access_token;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -66,8 +94,13 @@ public class AchievementFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_achievement, container, false);
-
-
+        linearLayoutManager=new LinearLayoutManager(getContext());
+        access_token=sharedPrefs.getAccessToken();
+        achievementPresenter=new AchievementPresenterImpl(this,new RetrofitAchievementProvider());
+        achievementPresenter.requestAchievement(access_token);
+        achievementAdapter=new AchievementAdapter(this,getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(achievementAdapter);
         return(view);
     }
 
@@ -76,6 +109,32 @@ public class AchievementFragment extends Fragment {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
+    }
+
+    @Override
+    public void showLoading(boolean show) {
+        if(show) {
+            progressBar.setVisibility(View.VISIBLE);
+
+        }
+        else{
+            progressBar.setVisibility(View.GONE);
+        }
+
+    }
+
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(getContext(),message,Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void onVerified(AchievementData achievementData) {
+        achievementAdapter.setData(achievementData.getAchievementDataDetailses());
+        achievementAdapter.notifyDataSetChanged();
+
+
     }
 
     @Override

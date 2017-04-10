@@ -2,12 +2,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.tata.motors.achievement.view.AchievementFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+
+        >
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/achievementToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                app:titleTextColor="@color/white"
+                app:title="ACHIEVEMENT"
+
+
+                />
+        </android.support.design.widget.AppBarLayout>
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/achievementProgressbar"
+            android:layout_gravity="center_horizontal"
+
+            android:visibility="gone"
+            />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/appBarLayout"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/achievementRecyclerView">
+
+            </android.support.v7.widget.RecyclerView>
+
+
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
+
 
 </FrameLayout>

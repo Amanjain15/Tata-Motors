@@ -2,6 +2,7 @@ package com.tata.motors.achievement.model;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.tata.motors.achievement.AchievementCallBack;
 import com.tata.motors.achievement.api.AchievementApi;
 import com.tata.motors.achievement.model.data.AchievementData;
 import com.tata.motors.add_customer.api.CustomerAddedResponseApi;
@@ -10,6 +11,8 @@ import com.tata.motors.helper.Urls;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -38,16 +41,22 @@ public class RetrofitAchievementProvider implements AchievementProvider {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         achievementApi = retrofit.create(AchievementApi.class);
-
-
-
-
-
     }
-
     @Override
-    public void requestAchievement(String access_token) {
+    public void requestAchievement(String access_token, final AchievementCallBack achievementCallBack) {
         Call<AchievementData> call=achievementApi.requestAchievement(access_token);
+        call.enqueue(new Callback<AchievementData>() {
+            @Override
+            public void onResponse(Call<AchievementData> call, Response<AchievementData> response) {
+                achievementCallBack.onSuccess(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<AchievementData> call, Throwable t) {
+                              achievementCallBack.onFailure();
+                t.printStackTrace();
+            }
+        });
 
 
 

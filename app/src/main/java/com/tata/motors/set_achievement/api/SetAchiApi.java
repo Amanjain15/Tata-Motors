@@ -16,7 +16,4 @@ public interface SetAchiApi {
     @GET(Urls.SET_ACHI)
     Call<SetAchiData> requestAchi(@Query("access_token")String token);
 
-
-
-
 }

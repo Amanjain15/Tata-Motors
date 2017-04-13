@@ -26,6 +26,8 @@ public class Urls {
     public static final String SET_ACHI = "abcd";
     public static final String SEND_ACHI = "abcd";
     public static final String REQUEST_REPORT_TSM = "request_report_tsm";
+    public static final String REQUEST_REPORT_DSM = "request_report_dsm";
     public static final String RESPONSE_SET_TARGET = "response_set_target";
+    public static final String SEND_STATUS = "send_status";
     public static final String REQUEST_ACHIVEMENT = "achievement";
 }

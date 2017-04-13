@@ -3,95 +3,120 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
+    android:layout_margin="1dp"
     android:layout_gravity="center"
+    android:orientation="vertical"
 
     >
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:contentPadding="8dp"
-        android:layout_margin="10dp"
+        android:layout_height="208dp"
+        app:contentPadding="5dp"
         app:cardCornerRadius="5dp"
         android:layout_centerInParent="true"
+
         >
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="387dp"
+            android:layout_height="213dp"
             android:orientation="vertical"
-            >
+            android:background="#ffffff"
+            android:id="@+id/layout_color">
 
-            <android.support.design.widget.TextInputLayout
+            <TextView
+                android:id="@+id/report_dse_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
+                android:focusable="true"
+                android:hint="@string/hint_name"
+                android:textColor="#17202a"
+                android:textSize="18dp" />
 
-                <TextView
-                    android:id="@+id/name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:hint="@string/hint_name"
-                    />
-            </android.support.design.widget.TextInputLayout>
-
-
-
-            <android.support.design.widget.TextInputLayout
+            <TextView
+                android:id="@+id/report_dse_customerMet"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
+                android:hint="Customer met"
 
-                <TextView
-                    android:id="@+id/customer_met"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Customer Met"
-                    android:inputType="textPassword"
+                android:paddingLeft="7dp"
+                android:textColor="#17202a"
+                android:textSize="15dp" />
 
-                    />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
+            <TextView
+                android:id="@+id/report_dse_pending"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
+                android:hint="pending"
 
-                <TextView
-                    android:id="@+id/sold"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Sold"
-                    android:inputType="textPassword"
+                android:paddingLeft="7dp"
+                android:textColor="#17202a"
+                android:textSize="15dp" />
 
-                    />
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
+            <TextView
+                android:id="@+id/report_dse_lost"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
+                android:hint="Lost"
 
-                <TextView
-                    android:id="@+id/lost"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Lost"
-                    android:inputType="textPassword"
+                android:paddingLeft="7dp"
+                android:textColor="#17202a"
+                android:textSize="15dp" />
 
-                    />
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
+            <TextView
+                android:id="@+id/report_dse_sold"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
+                android:hint="Sold"
 
-                <TextView
-                    android:id="@+id/pending"
-                    android:layout_width="match_parent"
+                android:paddingLeft="7dp"
+                android:textColor="#17202a"
+                android:textSize="15dp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                >
+
+                <Button
+                    android:id="@+id/customer_view"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint=" Pending"
-                    android:inputType="textPassword"
+                    android:layout_gravity="center_horizontal"
+                    android:text="View Customer"
 
                     />
-            </android.support.design.widget.TextInputLayout>
+
+                <Button
+                    android:id="@+id/button_safe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Safe"
+                    android:visibility="gone"
+                    />
+            </LinearLayout>
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
-</LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#5f6a6a"
+        android:layout_marginTop="4dp"
+        />
 
+</LinearLayout>

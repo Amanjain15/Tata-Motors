@@ -24,6 +24,9 @@ import com.tata.motors.helper.Keys;
 import com.tata.motors.helper.SharedPrefs;
 import com.tata.motors.login.view.LoginScreenActivity;
 import com.tata.motors.profile.view.ProfileFragment;
+import com.tata.motors.report_dsm.view.ReportFragment;
+import com.tata.motors.report_dsm.view.Report_dsmFragment;
+import com.tata.motors.report_tsm.view.ReportTsmFragment;
 import com.tata.motors.splash_screen.view.SplashScreenActivity;
 import com.tata.motors.targets.view.SetTargets;
 import com.tata.motors.targets.view.TargetFragment;
@@ -157,7 +160,8 @@ public class home_page extends AppCompatActivity
             setFragment(new TargetFragment(), "Targets");
         }
         else if (id == R.id.nav_pass) {
-            setFragment(new ChangePassFragment(), "Change Password");
+//            setFragment(new ChangePassFragment(), "Change Password");
+            setFragment(new ReportFragment(),"Reports");
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

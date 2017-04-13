@@ -4,28 +4,37 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_sign_out"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_signout"
             android:title="Sign Out" />
         <item
             android:id="@+id/nav_profile"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_profile"
             android:title="Profile" />
-        <item
-            android:id="@+id/nav_customer"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Customer" />
+
         <item
             android:id="@+id/nav_dse"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="DSE" />
+            android:icon="@drawable/ic_dse"
+            android:title="Dse" />
+
+        <item
+            android:id="@+id/nav_customer"
+            android:icon="@drawable/ic_customer"
+            android:title="Customers" />
+        <item
+            android:id="@+id/nav_report"
+            android:icon="@drawable/ic_reports"
+            android:title="Reports" />
+
         <item
             android:id="@+id/nav_targets"
-            android:icon="@drawable/ic_menu_send"
+            android:icon="@drawable/ic_targets"
             android:title="Targets" />
+
         <item
             android:id="@+id/nav_pass"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_pass"
             android:title="Change Password" />
+
     </group>
 
 

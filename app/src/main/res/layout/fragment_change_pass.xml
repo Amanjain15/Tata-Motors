@@ -2,9 +2,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.tata.motors.change_password.view.ChangePassFragment">
 
-
+<android.support.v7.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardCornerRadius="10dp"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
+    android:layout_marginBottom="4dp"
+    app:contentPadding="4dp"
+    >
 
     <LinearLayout
         android:orientation="vertical"
@@ -42,7 +51,7 @@
 
         <Button
             android:id="@+id/button"
-            android:background="@drawable/welcome_button"
+            android:background="@drawable/default_button"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Submit"
@@ -59,4 +68,5 @@
             />
 
     </LinearLayout>
+    </android.support.v7.widget.CardView>
 </FrameLayout>

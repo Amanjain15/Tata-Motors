@@ -3,7 +3,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back3"
+    android:background="#0c3e8a"
     >
 
     <ProgressBar
@@ -14,17 +14,14 @@
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
         android:paddingTop="100dp"
-
-
-
         />
 
     <ImageView
         android:id="@+id/img"
         android:layout_width="160dp"
         android:layout_height="160dp"
+        android:src="@drawable/logo"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/logo2"
-        />
+        android:layout_marginTop="64dp" />
 </RelativeLayout>

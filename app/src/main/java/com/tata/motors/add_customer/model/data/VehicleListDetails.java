@@ -6,19 +6,19 @@ package com.tata.motors.add_customer.model.data;
 
 public class VehicleListDetails {
 
-    private int vehicle_id;
-    private String vehicle_name;
+    private int id;
+    private String name;
 
-    public VehicleListDetails(int vehicle_id, String vehicle_name) {
-        this.vehicle_id = vehicle_id;
-        this.vehicle_name = vehicle_name;
+    public VehicleListDetails(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
-    public int getVehicle_id() {
-        return vehicle_id;
+    public int getId() {
+        return id;
     }
 
-    public String getVehicle_name() {
-        return vehicle_name;
+    public String getName() {
+        return name;
     }
 }

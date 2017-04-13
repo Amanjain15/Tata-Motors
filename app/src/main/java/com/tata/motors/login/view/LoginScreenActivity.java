@@ -150,6 +150,7 @@ public class LoginScreenActivity extends Activity implements LoginScreenView {
          sharedPrefs.setUserType(loginData.getUser_type());
          sharedPrefs.setAccessToken(loginData.getAccess_token());
          sharedPrefs.setUserId(loginData.getUser_id());
+         Log.d("login",sharedPrefs.getUserId()+" ");
          sharedPrefs.setKeyEmployeeType(loginData.getUser_type());//equals to UserType
          sharedPrefs.setLogin(true);
 

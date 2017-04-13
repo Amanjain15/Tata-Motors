@@ -14,7 +14,7 @@ import retrofit2.http.Query;
 public interface EmployeeApi {
 
     @GET(Urls.REQUEST_EMPLOYEE)
-    Call<EmployeeData> getemployee(@Query("accesstoken") String token,
-                                   @Query("employee_type")String employee );
+    Call<EmployeeData> getemployee(@Query("access_token") String token,
+                                   @Query("choose_id")int choose_id,@Query("user_see_type") String user_c_type );
 
 }

@@ -6,21 +6,21 @@ package com.tata.motors.add_customer.model.data;
 
 public class ModelListDetails {
 
-    private int model_id;
-    private String model_name;
+    private int id;
+    private String name;
 
 
-    public ModelListDetails(int model_id, String model_name) {
+    public ModelListDetails(int id, String name) {
 
-        this.model_id = model_id;
-        this.model_name = model_name;
+        this.id = id;
+        this.name = name;
     }
-    public int getModel_id() {
-        return model_id;
+    public int getId() {
+        return id;
     }
 
-    public String getModel_name() {
-        return model_name;
+    public String getName() {
+        return name;
     }
 
 }

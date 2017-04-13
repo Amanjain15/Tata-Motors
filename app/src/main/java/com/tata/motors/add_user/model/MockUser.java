@@ -37,7 +37,7 @@ public class MockUser implements AddUserProvider {
         },500);
     }
 
-    AddUserData getMockAddUser(){
+  public AddUserData getMockAddUser(){
 
         List <DsmListDetails> dsmListDetailses = new ArrayList<>();
         List <DealerListDetails> dealerListDetailses = new ArrayList<>();

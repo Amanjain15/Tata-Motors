@@ -10,31 +10,31 @@ public class AddCustomerData {
     private boolean success;
     private String message;
     private int user_type;
-    List<ApplicationListDetails> applicationList;
-    List<DistrictListDetails> districtList;
-    List<TownListDetails> townList;
-    List<FinancierListDetails> financierList;
-    List<ModelListDetails> modelList;
-    List<VehicleListDetails> vehicleList;
+    List<ApplicationListDetails> application_list;
+    List<DistrictListDetails> district_list;
+    List<TownListDetails> town_list;
+    List<FinancierListDetails> financier_list;
+    List<ModelListDetails> vehicle_model_list;
+    List<VehicleListDetails> vehicle_list;
     List<DsmListDetails> user_list;
 
     public AddCustomerData(boolean success, String message, int user_type,
-                           List<ApplicationListDetails> applicationList,
-                           List<DistrictListDetails> districtList,
-                           List<TownListDetails> townList,
-                           List<FinancierListDetails> financierList,
-                           List<ModelListDetails> modelList,
-                           List<VehicleListDetails> vehicleList,
+                           List<ApplicationListDetails> application_list,
+                           List<DistrictListDetails> district_list,
+                           List<TownListDetails> town_list,
+                           List<FinancierListDetails> financier_list,
+                           List<ModelListDetails> vehicle_model_list,
+                           List<VehicleListDetails> vehicle_list,
                            List<DsmListDetails> user_list) {
         this.success = success;
         this.message = message;
         this.user_type = user_type;
-        this.applicationList = applicationList;
-        this.districtList = districtList;
-        this.townList = townList;
-        this.financierList= financierList;
-        this.modelList= modelList;
-        this.vehicleList= vehicleList;
+        this.application_list = application_list;
+        this.district_list = district_list;
+        this.town_list = town_list;
+        this.financier_list = financier_list;
+        this.vehicle_model_list = vehicle_model_list;
+        this.vehicle_list = vehicle_list;
         this.user_list = user_list;
     }
 
@@ -51,27 +51,27 @@ public class AddCustomerData {
     }
 
     public List<ApplicationListDetails> getApplicationListDetails() {
-        return applicationList;
+        return application_list;
     }
 
     public List<DistrictListDetails> getDistrictListDetails() {
-        return districtList;
+        return district_list;
     }
 
     public List<TownListDetails> getTownListDetails() {
-        return townList;
+        return town_list;
     }
 
     public List<FinancierListDetails> getFinancierListDetails() {
-        return financierList;
+        return financier_list;
     }
 
     public List<ModelListDetails> getModelListDetails() {
-        return modelList;
+        return vehicle_model_list;
     }
 
     public List<VehicleListDetails> getVehicleListDetails() {
-        return vehicleList;
+        return vehicle_list;
     }
 
     public List<DsmListDetails> getDsmListDetails() {

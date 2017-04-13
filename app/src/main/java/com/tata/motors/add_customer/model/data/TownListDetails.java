@@ -6,19 +6,19 @@ package com.tata.motors.add_customer.model.data;
 
 public class TownListDetails {
 
-    private int  town_id;
-    private String town_name;
+    private int id;
+    private String name;
 
-    public TownListDetails(int town_id, String town_name) {
-        this.town_id = town_id;
-        this.town_name = town_name;
+    public TownListDetails(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
-    public int getTown_id() {
-        return town_id;
+    public int getId() {
+        return id;
     }
 
-    public String getTown_name() {
-        return town_name;
+    public String getName() {
+        return name;
     }
 }

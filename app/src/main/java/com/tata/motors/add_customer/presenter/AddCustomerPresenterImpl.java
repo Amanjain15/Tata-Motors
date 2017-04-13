@@ -1,5 +1,7 @@
 package com.tata.motors.add_customer.presenter;
 
+import android.util.Log;
+
 import com.tata.motors.add_customer.AddCustomerCallback;
 import com.tata.motors.add_customer.CustomerAddedCallBack;
 import com.tata.motors.add_customer.model.AddCustomerProvider;
@@ -24,8 +26,9 @@ public class AddCustomerPresenterImpl implements AddCustomerPresenter {
         this.addCustomerView = addCustomerView;
     }
 
-    public AddCustomerPresenterImpl(CustomerAddedProvider customerAddedProvider) {
+    public AddCustomerPresenterImpl(CustomerAddedProvider customerAddedProvider,AddCustomerView addCustomerView) {
         this.customerAddedProvider = customerAddedProvider;
+        this.addCustomerView=addCustomerView;
     }
 
     @Override
@@ -37,6 +40,7 @@ public class AddCustomerPresenterImpl implements AddCustomerPresenter {
                 if(addCustomerData.isSuccess())
                 {
                     addCustomerView.showSpinners(addCustomerData);
+                    Log.d("AddCustomerPresenter",addCustomerData.getDsmListDetails().get(0).getDsm_name()+"");
                     addCustomerView.showError(addCustomerData.getMessage());
 //                    addCustomerView.showSpinnerDsm(addCustomerData.getDsmListDetails());
 //                    addCustomerView.showSpinnerDse(addCustomerData);
@@ -57,8 +61,10 @@ public class AddCustomerPresenterImpl implements AddCustomerPresenter {
     }
 
     @Override
-    public void responseAddCustomer(int dsm_id,
+    public void responseAddCustomer(String access_token,int dsm_id,
                                     String customer_name,
+                                    String address,
+                                    String email,
                                     String application_name,
                                     String contact_no,
                                     String district_name,
@@ -70,7 +76,9 @@ public class AddCustomerPresenterImpl implements AddCustomerPresenter {
                                     int status ,String location)
     {
         addCustomerView.showProgressBar(true);
-        customerAddedProvider.responseAddCustomer(dsm_id,customer_name, application_name,contact_no, district_name,
+        Log.d("call",dsm_id+" "+customer_name+" "+application_name+" "+contact_no+" "+district_name
+                +" "+town_name+" "+json+" "+financier_name+" "+follow_up+" "+status+" "+location);
+        customerAddedProvider.responseAddCustomer(access_token,dsm_id,customer_name,address,email, application_name,contact_no, district_name,
                 town_name, tehsil, json, financier_name, follow_up,
                 status,location, new CustomerAddedCallBack() {
                     @Override

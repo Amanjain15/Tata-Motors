@@ -1,15 +1,16 @@
 package com.tata.motors.add_customer.view;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -26,14 +28,13 @@ import android.widget.Toast;
 import com.tata.motors.R;
 import com.tata.motors.add_customer.model.MockAddCustomerProvider;
 import com.tata.motors.add_customer.model.RetrofitAddCustomerProvider;
+import com.tata.motors.add_customer.model.RetrofitCustomerAddedProvider;
 import com.tata.motors.add_customer.model.data.AddCustomerData;
 import com.tata.motors.add_customer.model.data.ApplicationListDetails;
 import com.tata.motors.add_customer.model.data.DistrictListDetails;
 import com.tata.motors.add_customer.model.data.DsmListDetails;
 import com.tata.motors.add_customer.model.data.FinancierListDetails;
-import com.tata.motors.add_customer.model.data.ModelListDetails;
 import com.tata.motors.add_customer.model.data.TownListDetails;
-import com.tata.motors.add_customer.model.data.VehicleListDetails;
 import com.tata.motors.add_customer.presenter.AddCustomerPresenter;
 import com.tata.motors.add_customer.presenter.AddCustomerPresenterImpl;
 import com.tata.motors.helper.SharedPrefs;
@@ -50,7 +51,7 @@ import java.util.TimeZone;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.tata.motors.R.id.dse_spinner;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -68,20 +69,17 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
     @BindView(R.id.dsm_spinner)
     Spinner dsm_spinner;
 
-    @BindView(R.id.dse_spinner)
-    Spinner dse_spinner;
-
     @BindView(R.id.district_spinner)
     Spinner district_spinner;
 
     @BindView(R.id.town_spinner)
     Spinner town_spinner;
 
-    @BindView(R.id.model_spinner)
-    Spinner model_spinner;
-
-    @BindView(R.id.vehicle_spinner)
-    Spinner vehicle_spinner;
+//    @BindView(R.id.model_spinner)
+//    Spinner model_spinner;
+//
+//    @BindView(R.id.vehicle_spinner)
+//    Spinner vehicle_spinner;
 
     @BindView(R.id.financier_spinner)
     Spinner financier_spinner;
@@ -94,6 +92,8 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
 
     @BindView(R.id.customer_name)
     TextView name;
+    @BindView(R.id.address)
+    TextView addressTv;
 
     @BindView(R.id.mobile)
     TextView mobile;
@@ -106,8 +106,8 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
 
 //    @BindView(R.id.geo_tag)
 
-    @BindView(R.id.quantity)
-    TextView quantity_tv;
+//    @BindView(R.id.quantity)
+//    TextView quantity_tv;
 
     @BindView(R.id.submitButton)
     Button submit;
@@ -115,18 +115,25 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
     @BindView(R.id.recycler_customer)
     RecyclerView recyclerView;
 
-    private ProgressBar progressBar;
+    @BindView(R.id.email)
+    EditText email;
 
-    private int dsm_id,application_id,district_id, town_id;
+    @BindView(R.id.fab_customer)
+    FloatingActionButton fab;
+
+    private ProgressBar progressBar;
+    private static AddCustomerData addCustomerData1;
+
+    private static  int dsm_id,application_id,district_id, town_id;
     private int financier_id;
 
     private DatePickerDialog datePicker;
     private Calendar calendar;
     private DatePickerDialog.OnDateSetListener datePickerListener;
 
-    private String customer_name, application_name,contact_no, district_name,
-            town_name, tehsil_name, financier_name, follow_up,location;
-    private int status;
+    private static String customer_name, application_name,contact_no, district_name,
+            town_name, tehsil_name, financier_name, follow_up,location,address,email_id;
+    private static int status;
 
     private ApplicationListDetails applicationListDetails;
     private DistrictListDetails districtListDetails;
@@ -137,11 +144,12 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
     private DsmListDetails dsmListDetails;
     private RecyclerAdapter recyclerAdapter;
     private LinearLayoutManager linearLayoutManager;
-    private String model_id1[] = new String[10],vehicle_id1[] = new String[10];
-    private int quantity1[] = new int[10];
-
+    public static String model_id1[] = new String[10],vehicle_id1[] = new String[10];
+    private static int quantity1[] = new int[10];
+    private static int recyclerSize=1;
+    private static int itemCount=0;
     private JSONObject jsonObject=null;
-    private int size;
+    public static int size=0;
 
 
 
@@ -219,6 +227,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
         showSpinnerLocation();showSpinnerStatus();
         addCustomerPresenter.requestAddCustomer(sharedPrefs.getAccessToken());
 
+
         calendar = Calendar.getInstance(TimeZone.getDefault()); // Get current date
 
         datePickerListener = new DatePickerDialog.OnDateSetListener() {
@@ -239,15 +248,29 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
             @Override
             public void onClick(View view) {
                 datePicker = new DatePickerDialog(getContext(),
-                        R.style.AppTheme, datePickerListener,
+                        R.style.AppThemeDatePicker, datePickerListener,
                         calendar.get(Calendar.YEAR),
                         calendar.get(Calendar.MONTH),
                         calendar.get(Calendar.DAY_OF_MONTH));
+//                datePicker.setContentView(R.layout.date_picker_layout);
                 datePicker.setCancelable(false);
                 datePicker.setTitle("Select the date");
+
+
                 datePicker.show();
             }
         });
+        fab.setVisibility(View.GONE);
+
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                itemCount=itemCount+1;
+//                recyclerAdapter.setData(itemCount,addCustomerData1);
+//                recyclerAdapter.notifyDataSetChanged();
+//            }
+//        });
+
 
         return view;
     }
@@ -281,68 +304,17 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
 
     void initialize(){
         sharedPrefs = new SharedPrefs(getContext());
-//        addCustomerPresenter = new AddCustomerPresenterImpl(new RetrofitAddCustomerProvider(),this);
-        addCustomerPresenter = new AddCustomerPresenterImpl(new MockAddCustomerProvider(),this);
+        addCustomerPresenter = new AddCustomerPresenterImpl(new RetrofitAddCustomerProvider(),this);
+//        addCustomerPresenter = new AddCustomerPresenterImpl(new MockAddCustomerProvider(),this);
         recyclerAdapter = new RecyclerAdapter(getContext(),this);
         linearLayoutManager= new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(recyclerAdapter);
-
     }
 
 
 
-    @Override
-    public void showAdd() {
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                jsonObject=new JSONObject();
-
-                try
-                {
-                    jsonObject = makeJsonObject(size,vehicle_id1,model_id1,quantity1);
-                }catch (JSONException e){
-                    e.printStackTrace();
-                }
-                String json = new String(jsonObject.toString());
-                customer_name = name.getText().toString();
-                contact_no = mobile.getText().toString();
-                tehsil_name = tehsil.getText().toString();
-
-//                quantity =  Integer.parseInt(quantity_tv.getText().toString());
-                    follow_up = follow.getText().toString();
-
-
-                if(customer_name.equals("") || customer_name.equals(null) )
-                {
-                    name.setError("Please Fill Customer's Name");
-                    name.requestFocus();
-                }
-                else if(contact_no.equals("") || contact_no.equals(null))
-                {
-                    mobile.setError("Please Fill Mobile No.");
-                    mobile.requestFocus();
-                }
-                else if (contact_no.length() != 10) {
-                    mobile.setError("Invalid Mobile No.");
-                    mobile.requestFocus();
-                }
-                else if (follow_up.equals("") || follow.equals(null) ) {
-                    follow.setError("Please Enter Next Follow Up Date");
-                    follow.requestFocus();
-                }
-                else{
-
-                    addCustomerPresenter.responseAddCustomer(dsm_id,customer_name, application_name,contact_no, district_name,
-                            town_name, tehsil_name,json, financier_name, follow_up,
-                            status,location);
-                }
-            }
-        });
-    }
-
-    @Override
+        @Override
     public void showUpdate() {
 
     }
@@ -367,6 +339,8 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
     @Override
     public void showSpinners(AddCustomerData addCustomerData)
     {
+        addCustomerData1=addCustomerData;
+        Log.d("check",addCustomerData1.getMessage()+"");
                         if(sharedPrefs.getUserType().equals("2"))
                         {
                             dsm_spinner.setVisibility(View.GONE);
@@ -374,9 +348,10 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
                         }
                         else
                         {
+                            Log.d("AddCustomer",addCustomerData.getDsmListDetails().get(0).getDsm_name()+"");
                             showSpinnerDsm(addCustomerData);
                         }
-
+        Log.d("AddCustomer",addCustomerData.getApplicationListDetails().get(0).getName()+"");
 //                      showSpinnerDsm(addCustomerData);
                         showSpinnerApplication(addCustomerData);
                         showSpinnerDistrict(addCustomerData);
@@ -385,58 +360,67 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
 //                        showSpinnerModel(addCustomerData);
 //                        showSpinnerVehicle(addCustomerData);
 
-                        recyclerAdapter.setData(addCustomerData);
+                        recyclerAdapter.setData(1,addCustomerData);
                         recyclerAdapter.notifyDataSetChanged();
+        showAdd();
+        addCustomerPresenter = new AddCustomerPresenterImpl(new RetrofitCustomerAddedProvider(),this);
 
     }
 
     @Override
     public void showSpinnerDsm(AddCustomerData addCustomerData) {
+        try {
 
+            List<DsmListDetails> dsmListDetailsList = new ArrayList<DsmListDetails>(addCustomerData.getDsmListDetails());
+            ArrayAdapter<String> adapter;
+            int n = dsmListDetailsList.size();
+            final int dsm_id_ar[] = new int[n];
+            String dsm_name_ar[] = new String[n];
 
-        List<DsmListDetails> dsmListDetailsList= new ArrayList<DsmListDetails>(addCustomerData.getDsmListDetails());
-        ArrayAdapter<String>    adapter;
-        int n= dsmListDetailsList.size();
-        final int dsm_id_ar[]=new int[n];
-        String dsm_name_ar[]=new String[n];
+            int i = 0;
+            while (i < n) {
+                dsmListDetails = dsmListDetailsList.get(i);
+                dsm_id_ar[i] = dsmListDetails.getDsm_id();
+                dsm_name_ar[i] = dsmListDetails.getDsm_name();
+                i++;
+            }
 
-        int i=0;
-        while(i < n)
+            adapter = new ArrayAdapter<String>(getContext(),
+                    android.R.layout.simple_spinner_item, dsm_name_ar);
+
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            dsm_spinner.setAdapter(adapter);
+
+            //OnItemSelected
+            dsm_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int t, long l) {
+
+                    //userAddedData.setName(spinner.getItemAtPosition(t).toString());
+                    //userAddedData.setDsm_id(dsm_id_ar[t]);
+                    dsm_id = dsm_id_ar[t];
+
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+        }catch(NullPointerException e)
         {
-            dsmListDetails = dsmListDetailsList.get(i);
-            dsm_id_ar[i] = dsmListDetails.getDsm_id();
-            dsm_name_ar[i] = dsmListDetails.getDsm_name();
-            i++;
+            e.printStackTrace();
         }
 
-        adapter = new ArrayAdapter<String>(getContext(),
-                android.R.layout.simple_spinner_item, dsm_name_ar);
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        dsm_spinner.setAdapter(adapter);
-
-        //OnItemSelected
-        dsm_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int t, long l) {
-
-                //userAddedData.setName(spinner.getItemAtPosition(t).toString());
-                //userAddedData.setDsm_id(dsm_id_ar[t]);
-                dsm_id= dsm_id_ar[t];
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
 
     }
 
     @Override
     public int showSpinnerApplication(AddCustomerData addCustomerData) {
-        List<ApplicationListDetails> applicationListDetailsList = new ArrayList<ApplicationListDetails>(addCustomerData.getApplicationListDetails());
+        try{
+            List<ApplicationListDetails> applicationListDetailsList = new ArrayList<ApplicationListDetails>(addCustomerData.getApplicationListDetails());
+
+
         ArrayAdapter<String>    adapter;
         int n= applicationListDetailsList.size();
         final String application_name_ar[] = new String[n];
@@ -445,8 +429,8 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
         while(i<n)
         {
             applicationListDetails = applicationListDetailsList.get(i);
-            application_name_ar[i] = applicationListDetails.getApplication_name();
-            application_id_ar[i] = applicationListDetails.getApplication_id();
+            application_name_ar[i] = applicationListDetails.getName();
+            application_id_ar[i] = applicationListDetails.getId();
             i++;
         }
         adapter = new ArrayAdapter<String>(getContext(),
@@ -467,6 +451,10 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
 
             }
         });
+        }catch(NullPointerException e)
+        {
+            e.printStackTrace();
+        }
 
 
         return application_id;
@@ -474,41 +462,47 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
 
     @Override
     public int showSpinnerDistrict(AddCustomerData addCustomerData) {
-        List<DistrictListDetails> districtListDetailsList = new ArrayList<DistrictListDetails>(addCustomerData.getDistrictListDetails());
-        ArrayAdapter<String> adapter;
-        int n= districtListDetailsList.size();
-        final String district_name_ar[] = new String[n];
-        final int district_id_ar[] = new int[n];
-        int i=0;
-        while(i<n){
-            districtListDetails = districtListDetailsList.get(i);
-            district_name_ar[i] = districtListDetails.getDistrict_name();
-            district_id_ar[i] = districtListDetails.getDistrict_id();
-            i++;
+        try {
+            List<DistrictListDetails> districtListDetailsList = new ArrayList<DistrictListDetails>(addCustomerData.getDistrictListDetails());
+            ArrayAdapter<String> adapter;
+            int n = districtListDetailsList.size();
+            final String district_name_ar[] = new String[n];
+            final int district_id_ar[] = new int[n];
+            int i = 0;
+            while (i < n) {
+                districtListDetails = districtListDetailsList.get(i);
+                district_name_ar[i] = districtListDetails.getName();
+                district_id_ar[i] = districtListDetails.getId();
+                i++;
+            }
+            adapter = new ArrayAdapter<String>(getContext(),
+                    android.R.layout.simple_spinner_item, district_name_ar);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            district_spinner.setAdapter(adapter);
+
+            //OnItemSelected
+            district_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int t, long l) {
+                    district_id = district_id_ar[t];
+                    district_name = district_name_ar[t];
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+        }catch(NullPointerException e)
+        {
+            e.printStackTrace();
         }
-        adapter = new ArrayAdapter<String>(getContext(),
-                android.R.layout.simple_spinner_item, district_name_ar);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        district_spinner.setAdapter(adapter);
-
-        //OnItemSelected
-        district_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int t, long l) {
-                district_id = district_id_ar[t];
-                district_name = district_name_ar[t];
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
         return district_id;
     }
 
     @Override
     public int showSpinnerTown(AddCustomerData addCustomerData) {
+        try{
         List<TownListDetails> townListDetailsList = new ArrayList<TownListDetails>(addCustomerData.getTownListDetails());
         ArrayAdapter<String> adapter;
         int n= townListDetailsList.size();
@@ -517,8 +511,8 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
         int i=0;
         while(i<n){
             townListDetails = townListDetailsList.get(i);
-            town_id_ar[i]= townListDetails.getTown_id();
-            town_name_ar[i]= townListDetails.getTown_name();
+            town_id_ar[i]= townListDetails.getId();
+            town_name_ar[i]= townListDetails.getName();
             i++;
         }
         adapter = new ArrayAdapter<String>(getContext(),
@@ -537,7 +531,10 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
-        });
+        });}catch(NullPointerException e)
+        {
+            e.printStackTrace();
+        }
         return town_id;
 
     }
@@ -545,6 +542,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
 
     @Override
     public int showSpinnerFinancier(AddCustomerData addCustomerData) {
+        try{
         List<FinancierListDetails> financierListDetailsList = new ArrayList<FinancierListDetails>(addCustomerData.getFinancierListDetails());
         ArrayAdapter<String> adapter;
         int n = financierListDetailsList.size();
@@ -553,8 +551,8 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
         final String financier_name_ar[] = new String [n];
         while(i<n){
             financierListDetails = financierListDetailsList.get(i);
-            financier_id_ar[i] = financierListDetails.getFinancier_id();
-            financier_name_ar[i]= financierListDetails.getFinancier_name();
+            financier_id_ar[i] = financierListDetails.getId();
+            financier_name_ar[i]= financierListDetails.getName();
             i++;
             }
         adapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_item, financier_name_ar);
@@ -572,11 +570,18 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
 
             }
         });
+
+        }catch(NullPointerException e)
+        {
+            e.printStackTrace();
+        }
         return financier_id;
 
     }
 
     public void showSpinnerLocation() {
+
+
         final String locationDetails[] = new String[4];
         locationDetails[0] = "Met in Person";
         locationDetails[1] = "Walk in";
@@ -627,12 +632,36 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
     @Override
     public void setValues(int i,String vehicle,String model,int quantity)
     {
+        Log.d("AddCustomerSetValues",i+" "+vehicle+" "+model+" "+quantity);
         vehicle_id1[i]=vehicle;
         model_id1[i]=model;
         quantity1[i]=quantity;
-        size=i+1;
-
+        if(i+1>size)
+            size=i+1;
+        else if(size==0)
+        {
+            size=1;
+        }
+        //size=size+1;
+        Log.d("AddCustomerJson",size+" "+vehicle_id1[0]+" "+model_id1[1]+" "+quantity1[1]);
     }
+
+    @Override
+    public void notifyChange(int itemCount) {
+        recyclerAdapter=new RecyclerAdapter(getContext(),this);
+        linearLayoutManager= new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(recyclerAdapter);
+
+        recyclerAdapter.notifyItemInserted(itemCount);
+    }
+
+//    @Override
+//    public void notifyChange(int itemCount) {
+//
+//        recyclerAdapter.setData(itemCount,addCustomerData1);
+//        recyclerAdapter.notifyDataSetChanged();
+//    }
 
     public JSONObject makeJsonObject(int n,String vehicle[],String model[],int quantity[]) throws JSONException
     {
@@ -640,8 +669,11 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
             JSONArray jsonArray = new JSONArray();
             for(int i=0;i<n;i++)
             {
+
                 obj = new JSONObject();
                 try{
+                    Log.d("fromarray",vehicle[i]);
+
                     obj.put("vehicle",vehicle[i]);
                     obj.put("model",model[i]);
                     obj.put("quantity",quantity[i]);
@@ -656,6 +688,76 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
         return finalObj;
 
     }
+
+    @Override
+    public void showAdd() {
+        submit.setOnClickListener(new View.OnClickListener() {
+
+
+            @Override
+            public void onClick(View view) {
+//                jsonObject=new JSONObject()
+
+                Log.d("AddCustomerJson1",size+" "+vehicle_id1[0]+" "+model_id1[1]+" "+quantity1[1]);
+                try
+                {
+                    jsonObject = makeJsonObject(size,vehicle_id1,model_id1,quantity1);
+                    Log.d("AddCustomerJson2",size+" "+vehicle_id1[0]+" "+model_id1[1]+" "+quantity1[1]);
+
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+                String json = new String(jsonObject.toString());
+                Log.d("AddCustomerJson",json+"");
+                customer_name = name.getText().toString();
+                contact_no = mobile.getText().toString();
+                tehsil_name = tehsil.getText().toString();
+                address=addressTv.getText().toString();
+                email_id = email.getText().toString();
+//                quantity =  Integer.parseInt(quantity_tv.getText().toString());
+                follow_up = follow.getText().toString();
+
+                if(customer_name.equals("") || customer_name.equals(null) )
+                {
+                    name.setError("Please Fill Customer's Name");
+                    name.requestFocus();
+                }
+                else if(contact_no.equals("") || contact_no.equals(null))
+                {
+                    mobile.setError("Please Fill Mobile No.");
+                    mobile.requestFocus();
+                }else if(address.equals("") || address.equals(null))
+                {
+                    addressTv.setError("Please Fill Address.");
+                    addressTv.requestFocus();
+                }
+                else if (contact_no.length() != 10) {
+                    mobile.setError("Invalid Mobile No.");
+                    mobile.requestFocus();
+                }
+                else if (follow_up.equals("") || follow.equals(null) ) {
+                    follow.setError("Please Enter Next Follow Up Date");
+                    follow.requestFocus();
+                }
+                else if (email_id.equals("") || email_id.equals(null) ) {
+                    email.setError("Please Enter Email Id");
+                    email.requestFocus();
+                }
+                else{
+
+                    Log.d("call",dsm_id+" "+customer_name+" "+application_name+" "+contact_no+" "+district_name
+                                    +" "+town_name+" "+json+" "+financier_name+" "+follow_up+" "+status+" "+location);
+
+
+                    addCustomerPresenter.responseAddCustomer(sharedPrefs.getAccessToken(),dsm_id,customer_name,
+                            address,email_id,application_name,contact_no, district_name,
+                            town_name, tehsil_name,json, financier_name, follow_up,
+                            status,location);
+                }
+            }
+        });
+    }
+
 
 
     /**

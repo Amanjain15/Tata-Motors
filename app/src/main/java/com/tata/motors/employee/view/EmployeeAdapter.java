@@ -6,12 +6,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.tata.motors.R;
+import com.tata.motors.add_user.view.AddUserFragment;
 import com.tata.motors.employee.model.data.EmployeeData;
 import com.tata.motors.employee.model.data.EmployeeListDetails;
+import com.tata.motors.home.home_page;
+import com.tata.motors.profile.view.ProfileFragment;
+import com.tata.motors.view_customer.view.ViewCustomerFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +30,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.MyView
     private  EmployeeView employeeView;
     private EmployeeFragment employeeFragment;
     private LayoutInflater layoutInflater;
+    private String user_c_type;
 
     public EmployeeAdapter(Context context,  EmployeeFragment employeeFragment) {
         this.context = context;
@@ -33,8 +39,9 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.MyView
         this.layoutInflater = LayoutInflater.from(context);
     }
 
-    public void setData(List<EmployeeListDetails> employeeListDetailses) {
+    public void setData(List<EmployeeListDetails> employeeListDetailses, String user_c_type) {
         detailsList = employeeListDetailses;
+        this.user_c_type = user_c_type;
     }
 
     @Override
@@ -48,17 +55,47 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.MyView
         final EmployeeListDetails employeeListDetails=detailsList.get(position);
         holder.employeeName.setText(employeeListDetails.getUsername());
 
-        holder.employeeName.setOnClickListener(new View.OnClickListener() {
+//        if(user_c_type.equals("4"))
+//            holder.emp_button.setVisibility(View.INVISIBLE);
+
+        holder.pro_button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-      //          if (context instanceof HomePage) {
-        //            ((HomePage) context).onEmployeeSelected(employeeListDetails.getUser_id(),employeeListDetails.getUsername());
-          //      }
+            public void onClick(View view) {
+
+                ProfileFragment profileFragment=ProfileFragment.newInstance(employeeListDetails.getUser_id());
+                ((home_page)context).setFragment(profileFragment,"PROFILE");
+
             }
         });
 
+        holder.emp_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                switch (user_c_type)
+                {
+                    case "1":
+                        EmployeeFragment dse_fragment=EmployeeFragment.newInstance("2",employeeListDetails.getUser_id());
+                        ((home_page)context).setFragment(dse_fragment, "DSE");
+                        break;
+                    case "2":
+                        EmployeeFragment customer_fragment=EmployeeFragment.newInstance("4",employeeListDetails.getUser_id());
+                        ((home_page)context).setFragment(customer_fragment, "Customers");
+                        break;
+                    case "3":
+                        EmployeeFragment dsm_fragment=EmployeeFragment.newInstance("1",employeeListDetails.getUser_id());
+                        ((home_page)context).setFragment(dsm_fragment, "DSM");
+                        break;
+                    case "4":
 
+                        ViewCustomerFragment viewCustomerFragment= ViewCustomerFragment.newInstance(employeeListDetails.getUser_id());
+                        ((home_page)context).setFragment(viewCustomerFragment,"Customer");
+                        break;
+
+                }
+
+            }
+        });
     }
 
     @Override
@@ -70,9 +107,12 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         private TextView employeeName ;
+        private Button emp_button,pro_button;
         public MyViewHolder(View itemView) {
             super(itemView);
             employeeName=(TextView)itemView.findViewById(R.id.employee);
+            pro_button=(Button)itemView.findViewById(R.id.view_profile);
+            emp_button=(Button)itemView.findViewById(R.id.view_employee);
 
         }
     }

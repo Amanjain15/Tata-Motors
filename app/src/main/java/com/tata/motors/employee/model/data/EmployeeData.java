@@ -8,12 +8,12 @@ import java.util.List;
 public class EmployeeData {
     private boolean success;
     private String message;
-    private List<EmployeeListDetails> employeeListDetails;
+    private List<EmployeeListDetails> user_list;//user_list
 
     public EmployeeData(boolean success, String message, List<EmployeeListDetails> employeeListDetails) {
         this.success = success;
         this.message = message;
-        this.employeeListDetails = employeeListDetails;
+        this.user_list = employeeListDetails;
     }
 
     public boolean isSuccess() {
@@ -25,6 +25,6 @@ public class EmployeeData {
     }
 
     public List<EmployeeListDetails> getEmployeeListDetails() {
-        return employeeListDetails;
+        return user_list;
     }
 }

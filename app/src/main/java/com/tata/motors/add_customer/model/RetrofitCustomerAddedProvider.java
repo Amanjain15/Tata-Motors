@@ -24,8 +24,10 @@ public class RetrofitCustomerAddedProvider implements  CustomerAddedProvider{
     private Retrofit retrofit;
 
     @Override
-    public void responseAddCustomer(int dsm_id,
+    public void responseAddCustomer(String access_token,int dsm_id,
                                     String customer_name,
+                                    String address,
+                                    String email,
                                     String application_name,
                                     String contact_no,
                                     String district_name,
@@ -50,8 +52,8 @@ public class RetrofitCustomerAddedProvider implements  CustomerAddedProvider{
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         customerAddedResponseApi = retrofit.create(CustomerAddedResponseApi.class);
-        Call<CustomerAddedData> call = customerAddedResponseApi.responseAddCustomer(
-                                dsm_id,customer_name, application_name,contact_no, district_name,
+        Call<CustomerAddedData> call = customerAddedResponseApi.responseAddCustomer(access_token,
+                                dsm_id,customer_name,address,email,application_name,contact_no, district_name,
                                 town_name, tehsil,json, financier_name, follow_up,
                                 status,location);
         call.enqueue(new Callback<CustomerAddedData>() {

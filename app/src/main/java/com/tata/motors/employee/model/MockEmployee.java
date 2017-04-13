@@ -29,7 +29,7 @@ public class MockEmployee implements EmployeeProvider{
 
 
     @Override
-    public void requestEmployee(String token, String Employee,final EmployeeCallBack employeeCallBack) {
+    public void requestEmployee(String token, int choose_id,String user_c_type,final EmployeeCallBack employeeCallBack) {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

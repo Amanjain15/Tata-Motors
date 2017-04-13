@@ -17,11 +17,13 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
+            android:titleTextColor="@color/white"
+            app:titleTextColor="@color/white"
+
             app:popupTheme="@style/PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_home_page" />
-
 
 </android.support.design.widget.CoordinatorLayout>

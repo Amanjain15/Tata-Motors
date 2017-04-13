@@ -14,10 +14,11 @@ public interface ProfileSendApi {
 
 @GET(Urls.REQUEST_SEND_PROFILE)
 Call<ProfileSendData> requestSendData(@Query("access_token")String token,
-                                      @Query("user_id")int sendUserId, @Query("name")String sendName,
-                                      @Query("mobile_no") String sendMobileNo,
-                                      @Query("contact_no") String sendContactNo,
+                                      @Query("user_name")String userName,
+                                       @Query("name")String sendName,
+                                      @Query("mobile") String sendMobileNo,
                                       @Query("email") String sendEmail,
-                                      @Query("address") String sendAddress );
+                                      @Query("address") String sendAddress,
+                                       @Query("designation") String designation);
 
 }

@@ -5,38 +5,64 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".employee.view.EmployeeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/employeeToolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            app:titleTextColor="@color/white"
-            app:title="Employee List"
-
-
-            />
-    </android.support.design.widget.AppBarLayout>
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/employeeProgressbar"
-        android:layout_gravity="center_horizontal"
-
-        android:visibility="gone"
-        />
-    <android.support.v7.widget.RecyclerView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/employeeRecyclerView">
 
-    </android.support.v7.widget.RecyclerView>
+        >
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/employeeToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:title="Employee List"
+                android:navigationIcon="@drawable/ic_arrow_back_white_24dp"
+                app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
+                app:titleTextColor="@color/white"
+                app:title="Employee List"
+                />
+        </android.support.design.widget.AppBarLayout>
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/employeeProgressbar"
+            android:layout_centerInParent="true"
+
+            android:visibility="invisible"
+            />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/appBarLayout"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="2dp"
+            app:cardCornerRadius="10dp"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/employeeRecyclerView">
+
+            </android.support.v7.widget.RecyclerView>
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab_employee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="@dimen/fab_margin"
+                app:srcCompat="@android:drawable/ic_input_add"
+                />
+
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
 
 </FrameLayout>

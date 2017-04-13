@@ -6,19 +6,19 @@ package com.tata.motors.add_customer.model.data;
 
 public class DistrictListDetails {
 
-    private int district_id;
-    private String district_name;
+    private int id;
+    private String name;
 
-    public DistrictListDetails(int district_id, String district_name) {
-        this.district_id = district_id;
-        this.district_name = district_name;
+    public DistrictListDetails(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
-    public int getDistrict_id() {
-        return district_id;
+    public int getId() {
+        return id;
     }
 
-    public String getDistrict_name() {
-        return district_name;
+    public String getName() {
+        return name;
     }
 }

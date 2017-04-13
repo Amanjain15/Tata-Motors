@@ -17,14 +17,17 @@ public interface CustomerAddedResponseApi {
 
     @FormUrlEncoded
     @POST(Urls.RESPONSE_ADD_CUSTOMER)
-    Call<CustomerAddedData> responseAddCustomer(@Field("user_id") int dsm_id,
+    Call<CustomerAddedData> responseAddCustomer(@Field("access_token")String access_token,
+                                                @Field("user_id") int dsm_id,
                                                 @Field("customer_name") String customer_name,
+                                                @Field("address") String address,
+                                                @Field("email") String email,
                                                 @Field("application") String application_name,
                                                 @Field("contact_no") String contact_no,
-                                                @Field("district_id") String district_name,
+                                                @Field("district") String district_name,
                                                 @Field("town") String town_name,
                                                 @Field("tehsil")String tehsil,
-                                                @Field("json_item") String json,
+                                                @Field("vehicle_data_list") String json,
 //                                                @Field("quantity")int quantity,
 //                                                @Field("vehicle")String vehicle_name,
                                                 @Field("financier")String financier_name,

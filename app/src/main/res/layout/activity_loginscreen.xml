@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#cce8f0"
 
     >
+
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
         >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/back_login"
+            android:alpha="0.80"
+            android:scaleType="fitXY"
+            />
+
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,7 +31,9 @@
         app:cardCornerRadius="5dp"
         android:layout_centerInParent="true"
 
+
         >
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,6 +52,7 @@
                     android:layout_height="wrap_content"
                     android:focusable="true"
                     android:hint="@string/hint_name"
+                    android:textColor="@color/black"
                     />
             </android.support.design.widget.TextInputLayout>
 
@@ -54,7 +68,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_password"
                     android:inputType="textPassword"
-
+                    android:textColor="@color/black"
                     />
             </android.support.design.widget.TextInputLayout>
 
@@ -66,14 +80,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/login"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:background="@drawable/default_button"
                 />
             <ProgressBar
                 android:id="@+id/barLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:visibility="gone"
+                android:visibility="invisible"
                 />
 
         </LinearLayout>

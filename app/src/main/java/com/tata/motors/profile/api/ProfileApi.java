@@ -11,5 +11,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 public interface ProfileApi{
 @GET(Urls.REQUEST_PROFILE)
-Call<ProfileData> requestProfile(@Query("access_token")String token, @Query("user_id")int userId);
+Call<ProfileData> requestProfile(@Query("access_token")String token,
+                                 @Query("user_id") int user_id);
 }

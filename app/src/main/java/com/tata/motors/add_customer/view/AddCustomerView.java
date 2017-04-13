@@ -32,4 +32,7 @@ public interface AddCustomerView {
 //    int showSpinnerVehicle(AddCustomerData addCustomerData);
     int showSpinnerFinancier(AddCustomerData addCustomerData);
     void setValues(int i,String vehicle,String model,int quantity);
+
+    void notifyChange(int itemCount);
+//    void notifyChange(int i);
 }

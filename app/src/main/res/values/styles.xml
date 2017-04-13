@@ -6,10 +6,25 @@
 
 
         <item name="android:typeface">serif</item>
-        <item name="android:windowBackground">@drawable/back3</item>
+        <item name="android:windowBackground">@mipmap/back_white</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@android:color/black</item>
+
+
+    </style>
+
+    <style name="AppThemeDatePicker" parent="Theme.AppCompat.Light.NoActionBar">
+
+
+        <item name="android:typeface">serif</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/black</item>
+
 
     </style>
 

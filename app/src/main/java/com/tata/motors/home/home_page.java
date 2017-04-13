@@ -127,26 +127,32 @@ public class home_page extends AppCompatActivity
             Intent i =new Intent(home_page.this, SplashScreenActivity.class);
             startActivity(i);
             finish();
-        }
-        else if (id == R.id.nav_profile) {
-            setFragment(new ProfileFragment(),"Profile");
 
-        }
-        else if (id == R.id.nav_customer) {
-            Keys.Key_id=1;
+        } else if (id == R.id.nav_profile) {
+            ProfileFragment profileFragment=ProfileFragment.newInstance(sharedPrefs.getUserId());
+            Log.d("drawer",sharedPrefs.getUserId()+" ");
+            setFragment(profileFragment,"Profile");
+        } else if (id == R.id.nav_customer) {
+
             setFragment(new AddCustomerFragment(),"Add Customer");
 
-        }
-        else if (id == R.id.nav_dsm) {
-            sharedPrefs.setKeyEmployeeType("1");
-            setFragment(new AddUserFragment(),"Add DSM");
+        } else if (id == R.id.nav_dsm) {
+
+            EmployeeFragment fragment = EmployeeFragment.newInstance("1",-1);
+            setFragment(fragment ,"Add DSM");
+
+        }else if (id == R.id.nav_dse) {
+
+            EmployeeFragment fragment = EmployeeFragment.newInstance("2",-1);
+            setFragment(fragment,"Add DSE");
+
+        }else if (id == R.id.nav_dealer) {
+
+            EmployeeFragment fragment = EmployeeFragment.newInstance("3",-1);
+            setFragment(fragment,"Dealers");
 
         }
-        else if (id == R.id.nav_dse) {
-            sharedPrefs.setKeyEmployeeType("2");
-            setFragment(new AddUserFragment(),"Add DSE");
 
-        }
         else if (id == R.id.nav_targets) {
             setFragment(new TargetFragment(), "Targets");
         }

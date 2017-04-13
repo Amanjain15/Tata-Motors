@@ -3,6 +3,7 @@ package com.tata.motors.employee.view;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.tata.motors.R;
+import com.tata.motors.add_user.view.AddUserFragment;
 import com.tata.motors.employee.model.RetrofitEmployeeProvider;
 import com.tata.motors.employee.model.data.EmployeeData;
 import com.tata.motors.employee.model.data.EmployeeListDetails;
@@ -25,6 +27,7 @@ import com.tata.motors.home.home_page;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,12 +42,12 @@ public class EmployeeFragment extends Fragment implements EmployeeView {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String USER_C_TYPE = "user_c_type";
+    private static final String ID = "id";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private String user_c_type;
+    private int choose_id;
 
     @BindView(R.id.employeeRecyclerView)
     RecyclerView recyclerView;
@@ -57,7 +60,7 @@ public class EmployeeFragment extends Fragment implements EmployeeView {
 
     private LinearLayoutManager linearLayoutManager;
     private SharedPrefs sharedPrefs;
-    private String  access_token,employee;
+    private String  access_token;
     private EmployeeAdapter employeeAdapter;
 
     private OnFragmentInteractionListener mListener;
@@ -70,16 +73,14 @@ public class EmployeeFragment extends Fragment implements EmployeeView {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment EmployeeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static EmployeeFragment newInstance(String param1, String param2) {
+    public static EmployeeFragment newInstance(String user_see_type, int id) {
         EmployeeFragment fragment = new EmployeeFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(USER_C_TYPE, user_see_type);
+        args.putInt(ID, id);
         fragment.setArguments(args);
         return fragment;
     }
@@ -88,8 +89,8 @@ public class EmployeeFragment extends Fragment implements EmployeeView {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            user_c_type = getArguments().getString(USER_C_TYPE);
+            choose_id = getArguments().getInt(ID);
         }
     }
 
@@ -98,32 +99,57 @@ public class EmployeeFragment extends Fragment implements EmployeeView {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_employee, container, false);
-
+        ButterKnife.bind(this,view);
         sharedPrefs = new SharedPrefs(getContext());
-        employee=sharedPrefs.getKeyEmployeeType();
+       // employee=sharedPrefs.getKeyEmployeeType();
         access_token=sharedPrefs.getAccessToken();
         employeePresenter=new EmployeePresenterImpl(new RetrofitEmployeeProvider(),this);
         employeeAdapter=new EmployeeAdapter(getContext(),this);
-
         linearLayoutManager= new LinearLayoutManager(getContext());
 
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(employeeAdapter);
-        employeePresenter.requestEmployee(access_token,employee);
 
-        ((home_page)getActivity()).getSupportActionBar().hide();
 
-       if(employee.equals("0")) {
-           toolbar.setTitle("DEALERS");
-       }
-        else if(employee.equals("1"))
-       {
-           toolbar.setTitle("DSM");
-       }
-        else if(employee.equals("2"))
-       {
-           toolbar.setTitle("DSE");
-       }
+        FloatingActionButton fab = (FloatingActionButton)view.findViewById(R.id.fab_employee);
+        fab.setVisibility(View.GONE);
+        if(user_c_type.equals("1")||user_c_type.equals("2"))
+        {
+            fab.setVisibility(View.VISIBLE);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    sharedPrefs.setKeyEmployeeType(user_c_type);
+                    if(user_c_type.equals("1"))
+                    {
+                        ((home_page)getContext()).setFragment(new AddUserFragment(), "Add DSM");
+                    }
+                    else if(user_c_type.equals("2"))
+                    {
+                        ((home_page)getContext()).setFragment(new AddUserFragment(), "Add DSE");
+                    }
+
+                }
+        });
+                            //dealer ke case me floating button nahi rahegi wo handle karne ke liye
+        }
+
+        if(user_c_type.equals("3")) {
+            toolbar.setTitle("DEALERS");
+        }
+        else if(user_c_type.equals("1"))
+        {
+            toolbar.setTitle("DSM");
+        }
+        else if(user_c_type.equals("2"))
+        {
+            toolbar.setTitle("DSE");
+        }
+
+        employeePresenter.requestEmployee(access_token,choose_id,user_c_type);
+//        if(user_c_type)
+//        ((home_page)getActivity()).getSupportActionBar().hide();
+
         return view;
     }
     @Override
@@ -145,10 +171,9 @@ public class EmployeeFragment extends Fragment implements EmployeeView {
 
     @Override
     public void dataReceived(List<EmployeeListDetails> employeeListDetailsList) {
-        employeeAdapter.setData(employeeListDetailsList);
+        employeeAdapter.setData(employeeListDetailsList,user_c_type);
         employeeAdapter.notifyDataSetChanged();
     }
-
 
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {

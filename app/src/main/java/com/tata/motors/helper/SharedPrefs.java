@@ -20,7 +20,7 @@ public class SharedPrefs {
     private static final int KEY_VERSION = 1;
     private static final String KEY_EMPLOYEE_TYPE="employee";
     private static final String KEY_USER_TYPE = "user_type";
-
+    private static final String KEY_PROFILE_EDIT = "profile_edit";
 
     // LogCat tag
     private static String TAG = "Shared Preference";
@@ -42,6 +42,25 @@ public class SharedPrefs {
     public static int getKeyVersion() {
         return KEY_VERSION;
     }
+
+    public  String getKeyProfileEdit() {
+
+
+        return pref.getString( KEY_PROFILE_EDIT, "0");
+    }
+
+    public void setKeyProfileEdit(String profile) {
+
+        editor.putString(KEY_PROFILE_EDIT, profile);
+        editor.commit();
+
+
+    }
+
+
+
+
+
 
     public boolean isLoggedIn() {
         return pref.getBoolean(KEY_IS_LOGGEDIN, false);

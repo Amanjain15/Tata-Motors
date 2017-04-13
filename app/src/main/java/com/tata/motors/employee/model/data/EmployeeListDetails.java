@@ -5,23 +5,23 @@ package com.tata.motors.employee.model.data;
  */
 public class EmployeeListDetails {
 
-    private int user_id;
-    private String username;
+    private int id;
+    private String name;
 
     public EmployeeListDetails(int user_id, String username) {
-        this.user_id = user_id;
-        this.username = username;
+        this.id = user_id;
+        this.name = username;
     }
 
 
     public int getUser_id() {
-        return user_id;
+        return id;
     }
 
 
 
     public String getUsername() {
-        return username;
+        return name;
     }
 
 

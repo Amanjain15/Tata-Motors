@@ -78,7 +78,7 @@
                 android:textSize="20dp"
                 android:textColor="#FFFFFF"
                 android:layout_marginBottom="5dp"
-                android:background="@drawable/welcome_button"
+                android:background="@drawable/default_button"
                 android:id="@+id/ok"
                 />
 

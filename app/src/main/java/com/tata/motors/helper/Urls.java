@@ -13,17 +13,23 @@ public class Urls {
     public static final String REQUEST_WELCOME_SCREEN = "url/";
     public static final String REQUEST_ADD_USER = "add_user/";
     public static final String RESPONSE_ADD_USER = "add_user/";
-    public static final String REQUEST_ADD_CUSTOMER = "add_customer_request";
-    public static final String RESPONSE_ADD_CUSTOMER = "add_customer_request";
+    public static final String REQUEST_ADD_CUSTOMER = "add_customer/";
+    public static final String RESPONSE_ADD_CUSTOMER = "add_customer/";
     public static final String REQUEST_TARGET = "target";
     public static final String REQUEST_SET_TARGET = "set_target";
     public static final String REQUEST_LOGIN = "login/";
-    public  static final String REQUEST_PROFILE="PROFILE";
+    public  static final String REQUEST_PROFILE="profile";
     public  static final String REQUEST_SEND_PROFILE="SEND_PROFILE";
     public static final String REPORT = "report";
     public static final String REQUEST_CHANGE_PASS="change_password/";
-    public static final String REQUEST_EMPLOYEE="employee";
-
+    public static final String REQUEST_EMPLOYEE="view_user";
+    public static final String SET_ACHI = "abcd";
     public static final String REQUEST_REPORT_TSM = "request_report_tsm";
     public static final String RESPONSE_SET_TARGET = "response_set_target";
+    public static final String REQUEST_ACHIVEMENT = "achievement";
+    public static final String REQUEST_VIEW_CUSTOMER = "view_customer/";
+    public static final String REQUEST_FOLLOW_UP = "followup/";
+    public static final String REQUEST_EDIT_CUSTOMER = "edit_customer/";
+
+    public static final String RESPONSE_EDIT_CUSTOMER = "response_edit_customer/";
 }

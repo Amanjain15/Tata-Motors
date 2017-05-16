@@ -21,11 +21,11 @@
                 android:id="@+id/add_user_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:title="@string/add_dsm"
+                android:title="Add"
+                android:navigationIcon="@drawable/ic_arrow_back_white_24dp"
                 app:title="Add DSM"
                 app:titleTextColor="@color/white"
-
-
+                app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
                 />
 
         </android.support.design.widget.AppBarLayout>

@@ -12,6 +12,7 @@ public interface EditCustomerView {
     void showProgressBar(boolean show);
     void showError(String error);
     void showData(EditCustomerData editCustomerData);
-    void setData();
+    void setData(int i );
     void setValues(int i,int id,String vehicle,String model,int quantity);
+    void intent();
 }

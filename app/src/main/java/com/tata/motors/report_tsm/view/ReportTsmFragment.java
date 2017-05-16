@@ -105,7 +105,7 @@ private ReportTsmAdapter reportTsmAdapter;
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.report_tsm, container, false);
-        ButterKnife.bind(this,view);
+      //  ButterKnife.bind(this,view);
         sharedPrefs = new SharedPrefs(getContext());
       ///  employee = sharedPrefs.getKeyEmployeeType();
         access_token = sharedPrefs.getAccessToken();

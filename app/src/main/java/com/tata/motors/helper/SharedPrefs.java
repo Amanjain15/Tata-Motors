@@ -22,8 +22,10 @@ public class SharedPrefs {
     private static final String KEY_USER_TYPE = "user_type";
     private static final String KEY_PROFILE_EDIT = "profile_edit";
 
+
     // LogCat tag
     private static String TAG = "Shared Preference";
+
 
     // Shared Preferences
     SharedPreferences pref;
@@ -32,7 +34,6 @@ public class SharedPrefs {
 
     // shared pref mode
     int PRIVATE_MODE = 0;
-
     public SharedPrefs(Context context) {
         this._context = context;
         pref = _context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
@@ -49,17 +50,10 @@ public class SharedPrefs {
         return pref.getString( KEY_PROFILE_EDIT, "0");
     }
 
-    public void setKeyProfileEdit(String profile) {
-
+   public void setKeyProfileEdit(String profile) {
         editor.putString(KEY_PROFILE_EDIT, profile);
         editor.commit();
-
-
     }
-
-
-
-
 
 
     public boolean isLoggedIn() {

@@ -20,10 +20,6 @@
             android:id="@+id/nav_customer"
             android:icon="@drawable/ic_customer"
             android:title="Customers" />
-        <item
-            android:id="@+id/nav_report"
-            android:icon="@drawable/ic_reports"
-            android:title="Reports" />
 
         <item
             android:id="@+id/nav_targets"

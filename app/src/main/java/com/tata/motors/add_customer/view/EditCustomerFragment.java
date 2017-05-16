@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -36,7 +37,9 @@ import com.tata.motors.add_customer.model.data.TownListDetails;
 import com.tata.motors.add_customer.presenter.AddCustomerPresenter;
 import com.tata.motors.add_customer.presenter.EditCustomerPresenter;
 import com.tata.motors.add_customer.presenter.EditCustomerPresenterImpl;
+import com.tata.motors.employee.view.EmployeeFragment;
 import com.tata.motors.helper.SharedPrefs;
+import com.tata.motors.home.home_page;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -108,6 +111,9 @@ public class EditCustomerFragment extends Fragment  implements  EditCustomerView
     @BindView(R.id.email)
     EditText email;
 
+    @BindView(R.id.add_customer_toolbar)
+    Toolbar toolbar;
+
     private ProgressBar progressBar;
     private static AddCustomerData addCustomerData1;
 
@@ -134,6 +140,7 @@ public class EditCustomerFragment extends Fragment  implements  EditCustomerView
     public static String model_id1[] = new String[10],vehicle_id1[] = new String[10];
     private static int quantity1[] = new int[10],id1[]=new int[10];
     private static int recyclerSize=1;
+    private static  EditCustomerData editCustomerData1;
 
     private JSONObject jsonObject=null;
     public static int size=0;
@@ -178,6 +185,8 @@ public class EditCustomerFragment extends Fragment  implements  EditCustomerView
         View view= inflater.inflate(R.layout.fragment_add_customer, container, false);
         ButterKnife.bind(this, view);
         initialize();
+        toolbar.setTitle("Edit Customer");
+        ((home_page)getContext()).getSupportActionBar().hide();
         progressBar = (ProgressBar)view.findViewById(R.id.submitBar);
         mobile.addTextChangedListener(new TextWatcher() {
             @Override
@@ -292,6 +301,7 @@ public class EditCustomerFragment extends Fragment  implements  EditCustomerView
 
     @Override
     public void showData(EditCustomerData editCustomerData) {
+        editCustomerData1=editCustomerData;
         if(sharedPrefs.getUserType().equals("2"))
         {
             dsm_spinner.setVisibility(View.GONE);
@@ -317,7 +327,7 @@ public class EditCustomerFragment extends Fragment  implements  EditCustomerView
         addressTv.setText(editCustomerData.getAddress());
         follow.setText(editCustomerData.getFollow_up());
         tehsil.setText(editCustomerData.getTehsil());
-
+        email.setText(editCustomerData.getEmail());
 
 
         editCustomerAdapter.setData(1,editCustomerData);
@@ -328,8 +338,9 @@ public class EditCustomerFragment extends Fragment  implements  EditCustomerView
     }
 
     @Override
-    public void setData() {
-
+    public void setData(int itemCount) {
+            editCustomerAdapter.setData(itemCount,editCustomerData1);
+            editCustomerAdapter.notifyDataSetChanged();
     }
 
     public void showSpinnerDsm(EditCustomerData editCustomerData) {
@@ -616,7 +627,7 @@ public class EditCustomerFragment extends Fragment  implements  EditCustomerView
         {
             size=1;
         }
-        Log.d("EditCustomerJson",size+" "+vehicle_id1[0]+" "+model_id1[1]+" "+quantity1[1]);
+        Log.d("EditCustomerJson",size+" "+vehicle_id1[0]+" "+model_id1[0]+" "+quantity1[0]);
     }
 
 
@@ -629,8 +640,8 @@ public class EditCustomerFragment extends Fragment  implements  EditCustomerView
 
             obj = new JSONObject();
             try{
-                Log.d("array",vehicle[i]);
-                obj.put("id",id1[i]);
+//                Log.d("array",vehicle[i]);
+                obj.put("id",id[i]);
                 obj.put("vehicle",vehicle[i]);
                 obj.put("model",model[i]);
                 obj.put("quantity",quantity[i]);
@@ -714,6 +725,24 @@ public class EditCustomerFragment extends Fragment  implements  EditCustomerView
             }
         });
     }
+
+    @Override
+    public void intent() {
+        hideKeyboard();
+        ((home_page)getContext()).getSupportActionBar().show();
+        if(sharedPrefs.getUserType().equals("0"))
+        {
+            EmployeeFragment employeeFragment = EmployeeFragment.newInstance("4",-1);
+            ((home_page)getContext()).setFragment(employeeFragment,"Customers");
+        }
+        else{
+            EmployeeFragment employeeFragment = EmployeeFragment.newInstance("4",sharedPrefs.getUserId());
+            ((home_page)getContext()).setFragment(employeeFragment,"Customers");
+        }
+
+
+    }
+
 
     /**
      * This interface must be implemented by activities that contain this

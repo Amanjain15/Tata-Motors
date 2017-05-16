@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -24,7 +25,6 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.tata.motors.R;
 import com.tata.motors.add_customer.model.MockAddCustomerProvider;
 import com.tata.motors.add_customer.model.RetrofitAddCustomerProvider;
@@ -37,21 +37,18 @@ import com.tata.motors.add_customer.model.data.FinancierListDetails;
 import com.tata.motors.add_customer.model.data.TownListDetails;
 import com.tata.motors.add_customer.presenter.AddCustomerPresenter;
 import com.tata.motors.add_customer.presenter.AddCustomerPresenterImpl;
+import com.tata.motors.employee.view.EmployeeFragment;
 import com.tata.motors.helper.SharedPrefs;
-
+import com.tata.motors.home.home_page;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -120,6 +117,8 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
 
     @BindView(R.id.fab_customer)
     FloatingActionButton fab;
+    @BindView(R.id.add_customer_toolbar)
+    Toolbar toolbar;
 
     private ProgressBar progressBar;
     private static AddCustomerData addCustomerData1;
@@ -202,6 +201,8 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
         View view= inflater.inflate(R.layout.fragment_add_customer, container, false);
         ButterKnife.bind(this, view);
         initialize();
+
+        toolbar.setVisibility(View.GONE);
         progressBar = (ProgressBar)view.findViewById(R.id.submitBar);
         mobile.addTextChangedListener(new TextWatcher() {
             @Override
@@ -656,6 +657,14 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
         recyclerAdapter.notifyItemInserted(itemCount);
     }
 
+    @Override
+    public void intent() {
+        hideKeyboard();
+        ((home_page)getContext()).getSupportActionBar().show();
+        EmployeeFragment employeeFragment = EmployeeFragment.newInstance("4",sharedPrefs.getUserId());
+        ((home_page)getContext()).setFragment(employeeFragment,"Customers");
+    }
+
 //    @Override
 //    public void notifyChange(int itemCount) {
 //
@@ -697,7 +706,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
             @Override
             public void onClick(View view) {
 //                jsonObject=new JSONObject()
-
+                hideKeyboard();
                 Log.d("AddCustomerJson1",size+" "+vehicle_id1[0]+" "+model_id1[1]+" "+quantity1[1]);
                 try
                 {

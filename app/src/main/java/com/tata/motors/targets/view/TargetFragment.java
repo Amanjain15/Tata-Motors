@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.tata.motors.R;
 import com.tata.motors.helper.SharedPrefs;
+import com.tata.motors.home.home_page;
 import com.tata.motors.targets.model.MockTargetProvider;
 import com.tata.motors.targets.model.RetrofitTargetProvider;
 import com.tata.motors.targets.model.data.TargetData;
@@ -96,7 +97,9 @@ public class TargetFragment extends Fragment implements TargetView{
         targetPresenter = new TargetPresenterImpl(this, new MockTargetProvider());
         targetPresenter.requestTarget(sharedPrefs.getUserType(),
                 sharedPrefs.getUserId(),sharedPrefs.getUsername());
+        Log.d("PrefsCheck", sharedPrefs.getKeyEmployeeType()+" ");
 
+        ((home_page)getContext()).getSupportActionBar().show();
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {

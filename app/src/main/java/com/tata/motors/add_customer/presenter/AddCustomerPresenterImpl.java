@@ -88,6 +88,7 @@ public class AddCustomerPresenterImpl implements AddCustomerPresenter {
 
                             addCustomerView.showError(customerAddedData.getMessage());
                             addCustomerView.showProgressBar(false);
+                            addCustomerView.intent();
                             //// TODO: 10/4/17 HAVE to intent to another fragment necessary
                         }
                         else{

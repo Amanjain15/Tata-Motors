@@ -3,6 +3,7 @@ package com.tata.motors.add_user.view;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -31,6 +32,7 @@ import com.tata.motors.add_user.presenter.AddUserPresenter;
 import com.tata.motors.add_user.presenter.AddUserPresenterImpl;
 import com.tata.motors.add_user.presenter.UserAddedPresenter;
 import com.tata.motors.add_user.presenter.UserAddedPresenterImpl;
+import com.tata.motors.employee.view.EmployeeFragment;
 import com.tata.motors.helper.SharedPrefs;
 import com.tata.motors.home.home_page;
 import com.tata.motors.targets.view.TargetFragment;
@@ -137,7 +139,7 @@ public class AddUserFragment extends Fragment implements AddUserView {
         toolbar = (Toolbar)view.findViewById(R.id.add_user_toolbar);
         addUserPresenter= new AddUserPresenterImpl(this,new AddUserRetrofitProvider());
 //        addUserPresenter= new AddUserPresenterImpl(this,new MockUser());
-
+        Log.d("Add User",prefs.getKeyEmployeeType()+"");
         addUserPresenter.requestAddUser(prefs.getAccessToken(),prefs.getUserId(), prefs.getKeyEmployeeType());
 
         button_submit.setOnClickListener(
@@ -276,6 +278,7 @@ public class AddUserFragment extends Fragment implements AddUserView {
             userAddedPresenter = new UserAddedPresenterImpl(this , new UserAddedRetrofitProvider());
             Log.d("submit()",dealer_id+" "+username+" "+name+" "+" "+prefs.getKeyEmployeeType());
             userAddedPresenter.responseAddUser(prefs.getAccessToken(),dealer_id,username,name,prefs.getKeyEmployeeType());
+
         }
 //        prefs.setKeyEmployeeType(prefs.getUserType());
 
@@ -296,12 +299,32 @@ public class AddUserFragment extends Fragment implements AddUserView {
         password.setText(userAddedData.getPassword());
 //        prefs.setKeyEmployeeType(prefs.getUserType());
         dialog.show();
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                ((home_page)getContext()).setFragment(new TargetFragment(),"Target");
-//            }
-//        },15000);
+        Intent i = new Intent(getActivity(),home_page.class);
+        startActivity(i);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+//                Intent i = new Intent(getActivity(),home_page.class);
+//                startActivity(i);
+                switch(prefs.getKeyEmployeeType())
+                {
+                    case "1":
+                        prefs.setKeyEmployeeType(prefs.getUserType());
+                        ((home_page)getContext()).getSupportActionBar().show();
+                        EmployeeFragment fragment = EmployeeFragment.newInstance("1",-1);
+                        ((home_page)getContext()).setFragment(fragment,"Dsm");
+                        break;
+                    case "2":
+                        prefs.setKeyEmployeeType(prefs.getUserType());
+                        ((home_page)getContext()).getSupportActionBar().show();
+                        EmployeeFragment fragment2 = EmployeeFragment.newInstance("2",-1);
+                        ((home_page)getContext()).setFragment(fragment2,"Dse");
+                        break;
+
+                }
+            }
+        },1000);
 
 
     }
@@ -326,6 +349,7 @@ public class AddUserFragment extends Fragment implements AddUserView {
 
         if(prefs.getKeyEmployeeType().equals("1"))        //adding dsm by tsm
         {
+
             Log.d("adduserfragmentcheck()","1");
             toolbar.setTitle("Add DSM");
             if(prefs.getUserType().equals("0"))

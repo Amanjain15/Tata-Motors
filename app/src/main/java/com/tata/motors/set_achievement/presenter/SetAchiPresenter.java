@@ -5,4 +5,8 @@ package com.tata.motors.set_achievement.presenter;
  */
 
 public interface SetAchiPresenter {
+
+
+    void requestSpinner(String access_token);
+    void sendAchi(String access_token,int id,String achievement);
 }

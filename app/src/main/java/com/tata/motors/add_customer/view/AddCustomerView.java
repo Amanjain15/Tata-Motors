@@ -34,5 +34,6 @@ public interface AddCustomerView {
     void setValues(int i,String vehicle,String model,int quantity);
 
     void notifyChange(int itemCount);
+    void intent();
 //    void notifyChange(int i);
 }

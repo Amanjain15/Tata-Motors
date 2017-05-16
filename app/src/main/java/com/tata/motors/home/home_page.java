@@ -24,6 +24,9 @@ import com.tata.motors.helper.Keys;
 import com.tata.motors.helper.SharedPrefs;
 import com.tata.motors.login.view.LoginScreenActivity;
 import com.tata.motors.profile.view.ProfileFragment;
+import com.tata.motors.report_dsm.view.ReportFragment;
+import com.tata.motors.report_dsm.view.Report_dsmFragment;
+import com.tata.motors.report_tsm.view.ReportTsmFragment;
 import com.tata.motors.splash_screen.view.SplashScreenActivity;
 import com.tata.motors.targets.view.SetTargets;
 import com.tata.motors.targets.view.TargetFragment;
@@ -104,9 +107,9 @@ public class home_page extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -129,22 +132,43 @@ public class home_page extends AppCompatActivity
             finish();
 
         } else if (id == R.id.nav_profile) {
+            sharedPrefs.setKeyEmployeeType(sharedPrefs.getUserType());
             ProfileFragment profileFragment=ProfileFragment.newInstance(sharedPrefs.getUserId());
             Log.d("drawer",sharedPrefs.getUserId()+" ");
             setFragment(profileFragment,"Profile");
         } else if (id == R.id.nav_customer) {
+            sharedPrefs.setKeyEmployeeType(sharedPrefs.getUserType());
+//            setFragment(new AddCustomerFragment(),"Add Customer");
 
-            setFragment(new AddCustomerFragment(),"Add Customer");
+            if(sharedPrefs.getUserType().equals("0"))
+            {
+                EmployeeFragment customer_fragment=EmployeeFragment.newInstance("4",-1);
+                setFragment(customer_fragment, "Customers");
+            }
+            else if(sharedPrefs.getUserType().equals("1") ||sharedPrefs.getUserType().equals("2"))
+            {
+                EmployeeFragment customer_fragment=EmployeeFragment.newInstance("4",sharedPrefs.getUserId());
+                setFragment(customer_fragment, "Customers");
+            }
 
         } else if (id == R.id.nav_dsm) {
 
             EmployeeFragment fragment = EmployeeFragment.newInstance("1",-1);
-            setFragment(fragment ,"Add DSM");
+            setFragment(fragment ,"DSM");
 
         }else if (id == R.id.nav_dse) {
 
-            EmployeeFragment fragment = EmployeeFragment.newInstance("2",-1);
-            setFragment(fragment,"Add DSE");
+            if(sharedPrefs.getUserType().equals("0"))
+            {
+                EmployeeFragment fragment = EmployeeFragment.newInstance("2",-1);
+                setFragment(fragment,"DSE");
+            }
+            else if(sharedPrefs.getUserType().equals("1"))
+            {
+                EmployeeFragment fragment = EmployeeFragment.newInstance("2",sharedPrefs.getUserId());
+                setFragment(fragment,"DSE");
+            }
+
 
         }else if (id == R.id.nav_dealer) {
 
@@ -154,11 +178,22 @@ public class home_page extends AppCompatActivity
         }
 
         else if (id == R.id.nav_targets) {
+            sharedPrefs.setKeyEmployeeType(sharedPrefs.getUserType());
             setFragment(new TargetFragment(), "Targets");
         }
         else if (id == R.id.nav_pass) {
+            sharedPrefs.setKeyEmployeeType(sharedPrefs.getUserType());
             setFragment(new ChangePassFragment(), "Change Password");
+//            setFragment(new ReportFragment(),"Reports");
         }
+        else if (id == R.id.nav_report) {
+            sharedPrefs.setKeyEmployeeType(sharedPrefs.getUserType());
+            EmployeeFragment fragment = EmployeeFragment.newInstance("4",sharedPrefs.getUserId());
+            setFragment(fragment,"Customers");
+        }
+
+
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

@@ -12,4 +12,5 @@ public interface EmployeeView {
     void showProgressbar(boolean show);
     void showMessage(String message);
     void dataReceived(List<EmployeeListDetails> employeeListDetailsList);
+    void safe(int id);
 }

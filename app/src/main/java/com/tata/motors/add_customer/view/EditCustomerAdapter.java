@@ -92,7 +92,11 @@ public class EditCustomerAdapter extends RecyclerView.Adapter<EditCustomerAdapte
         public void onItemSelected(AdapterView<?> adapterView, View view, int t, long l) {
                 vehicle = vehicle_name_ar[t];
         //                    Log.d("AddCustomerSetValues0",position+" "+vehicle+" "+model+" "+quantity);
-                }
+
+                editCustomerView.setValues(position,editCustomerData.getVehicle_data_list().get(position)
+                        .getId(),vehicle,model,quantity);
+
+        }
 
         @Override
         public void onNothingSelected(AdapterView<?> adapterView) {
@@ -123,6 +127,9 @@ public class EditCustomerAdapter extends RecyclerView.Adapter<EditCustomerAdapte
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int t, long l) {
                 model=model_name_ar[t];
+                editCustomerView.setValues(position,editCustomerData.getVehicle_data_list().get(position)
+                        .getId(),vehicle,model,quantity);
+
         //                    Log.d("AddCustomerSetValues1",position+" "+vehicle+" "+model+" "+quantity);
                 }
 
@@ -141,8 +148,8 @@ public class EditCustomerAdapter extends RecyclerView.Adapter<EditCustomerAdapte
 
                 try {
 
+                        if(position<editCustomerData.getVehicle_data_list().size())
                         holder.quantity_tv.setText(editCustomerData.getVehicle_data_list().get(position).getQuantity()+"");
-
                 }catch (NullPointerException e)
                 {
                         e.printStackTrace();
@@ -176,9 +183,16 @@ public class EditCustomerAdapter extends RecyclerView.Adapter<EditCustomerAdapte
 
 
 
-                holder.fab_customer.setVisibility(View.GONE);
+//                holder.fab_customer.setVisibility(View.GONE);
+                holder.fab_customer.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                                itemCount = itemCount+1;
+//                                editCustomerFragment.setData(itemCount);
+                        }
+                });
 
-                }
+        }
 
         @Override
         public int getItemCount() {

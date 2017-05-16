@@ -67,6 +67,7 @@ public class EditCustomerPresenterImpl implements  EditCustomerPresenter {
 
                             editCustomerView.showError(customerAddedData.getMessage());
                             editCustomerView.showProgressBar(false);
+                            editCustomerView.intent();
                             //// TODO: 10/4/17 HAVE to intent to another fragment necessary
                         }
                         else{

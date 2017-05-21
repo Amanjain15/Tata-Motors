@@ -29,7 +29,7 @@ public class MockProfileProvider implements ProfileProvider {
     }
 
     @Override
-    public void requestSendProfile(String access_token, String user_name, String name, String mobile_no, String email, String address, String designation, final SendProfileCallBack sendProfileCallBack) {
+    public void requestSendProfile(String access_token, int user_id, String name, String mobile_no, String email, String address, String designation, final SendProfileCallBack sendProfileCallBack) {
         Log.d("Mock","1");
         new Handler().postDelayed(new Runnable() {
             @Override

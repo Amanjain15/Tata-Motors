@@ -148,7 +148,7 @@ public class ProfileFragment extends Fragment implements ProfileView{
                 address1=address.getText().toString();
                 designation1=designation.getText().toString();
               //  dealers1=dealers.getText().toString();
-                profilePresenter.requestSendProfile(token,userName1,name1,mobileNo1,email1,address1,designation1);
+                profilePresenter.requestSendProfile(token,sharedPrefs.getUserId(),name1,mobileNo1,email1,address1,designation1);
               //  profilePresenter.requestSendProfile("sd","sd","fdfc","dd","vv","sdv","dcd","sv");
             }
         });

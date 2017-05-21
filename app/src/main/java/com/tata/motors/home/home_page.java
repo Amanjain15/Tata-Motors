@@ -145,7 +145,12 @@ public class home_page extends AppCompatActivity
                 EmployeeFragment customer_fragment=EmployeeFragment.newInstance("4",-1);
                 setFragment(customer_fragment, "Customers");
             }
-            else if(sharedPrefs.getUserType().equals("1") ||sharedPrefs.getUserType().equals("2"))
+            else if(sharedPrefs.getUserType().equals("1"))
+            {
+                EmployeeFragment customer_fragment=EmployeeFragment.newInstance("4",-1);
+                setFragment(customer_fragment, "Customers");
+            }
+            else if(sharedPrefs.getUserType().equals("2"))
             {
                 EmployeeFragment customer_fragment=EmployeeFragment.newInstance("4",sharedPrefs.getUserId());
                 setFragment(customer_fragment, "Customers");

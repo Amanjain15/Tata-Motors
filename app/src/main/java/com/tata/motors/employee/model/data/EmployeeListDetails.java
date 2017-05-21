@@ -8,9 +8,11 @@ public class EmployeeListDetails {
     private String name;
     private int lost, sold, customer_met,pending;
     private int color_flag,id,etu,ftu;                          //flag = 0 greeen, flag = 1 red
-    private int daily_target;
+    private int daily_target,user_id;
 
-    public EmployeeListDetails(String name, int lost, int sold, int customer_met, int pending, int color_flag, int id, int etu, int ftu, int daily_target) {
+    public EmployeeListDetails(String name, int lost, int sold, int customer_met, int pending,
+                               int color_flag, int id, int etu, int ftu, int daily_target,
+                               int user_id) {
         this.name = name;
         this.lost = lost;
         this.sold = sold;
@@ -21,6 +23,11 @@ public class EmployeeListDetails {
         this.etu = etu;
         this.ftu = ftu;
         this.daily_target = daily_target;
+        this.user_id=user_id;
+    }
+
+    public int getUserId() {
+        return user_id;
     }
 
     public int getDaily_target() {

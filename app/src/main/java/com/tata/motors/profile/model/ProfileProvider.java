@@ -10,7 +10,7 @@ public interface ProfileProvider {
 
 
 public void requestProfile(String access_token,int user_id ,ProfileCallBack profileCallBack);
-    public void requestSendProfile(String access_token,String user_name, String name, String mobile_no,  String email, String address,String designation,SendProfileCallBack sendProfileCallBack);
+    public void requestSendProfile(String access_token,int user_id, String name, String mobile_no,  String email, String address,String designation,SendProfileCallBack sendProfileCallBack);
 
 
 

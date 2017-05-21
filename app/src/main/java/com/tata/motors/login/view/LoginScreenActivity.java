@@ -104,7 +104,7 @@ public class LoginScreenActivity extends Activity implements LoginScreenView {
                     name.setError("Please fill name");
                     name.requestFocus();
                 } else if (password1.equals("") || password1.equals(null)) {
-                    password.setError("Please fill mobile");
+                    password.setError("Please fill password");
                     password.requestFocus();
 
                 }

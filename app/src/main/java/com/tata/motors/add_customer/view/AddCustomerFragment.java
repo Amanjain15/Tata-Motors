@@ -115,8 +115,8 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
     @BindView(R.id.email)
     EditText email;
 
-    @BindView(R.id.fab_customer)
-    FloatingActionButton fab;
+//    @BindView(R.id.fab_customer)
+//    FloatingActionButton fab;
     @BindView(R.id.add_customer_toolbar)
     Toolbar toolbar;
 
@@ -261,7 +261,7 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
                 datePicker.show();
             }
         });
-        fab.setVisibility(View.GONE);
+
 
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override

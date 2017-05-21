@@ -6,7 +6,7 @@ package com.tata.motors.helper;
 
 public class Urls {
 
-//    public static final String BASE_URL = "http://192.168.43.19:8080/";
+//    public static final String BASE_URL = "http://52.10.216.203:8010/";
     public static final String BASE_URL = "http://192.168.43.240:8000/";
     public static final String REQUEST_SPLASH_SCREEN = "version/";
 
@@ -15,11 +15,11 @@ public class Urls {
     public static final String RESPONSE_ADD_USER = "add_user/";
     public static final String REQUEST_ADD_CUSTOMER = "add_customer/";
     public static final String RESPONSE_ADD_CUSTOMER = "add_customer/";
-    public static final String REQUEST_TARGET = "target";
+    public static final String REQUEST_TARGET = "view_user";
     public static final String REQUEST_SET_TARGET = "set_target";
     public static final String REQUEST_LOGIN = "login/";
     public  static final String REQUEST_PROFILE="profile";
-    public  static final String REQUEST_SEND_PROFILE="SEND_PROFILE";
+    public  static final String REQUEST_SEND_PROFILE="profile/";
     public static final String REPORT = "report";
     public static final String REQUEST_CHANGE_PASS="change_password/";
     public static final String REQUEST_EMPLOYEE="view_user";

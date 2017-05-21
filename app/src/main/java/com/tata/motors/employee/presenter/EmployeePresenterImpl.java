@@ -12,7 +12,7 @@ import com.tata.motors.employee.view.EmployeeView;
 /**
  * Created by aman on 24/1/17.
  */
-public class EmployeePresenterImpl implements EmployeePresenter
+    public class EmployeePresenterImpl implements EmployeePresenter
      {
          private EmployeeProvider employeeProvider;
          private EmployeeView employeeView;
@@ -44,8 +44,9 @@ public class EmployeePresenterImpl implements EmployeePresenter
 
                  @Override
                  public void onFailure() {
-                    employeeView.showProgressbar(false);
-                     employeeView.showMessage("unable to connect");
+                        //Recycler View Refresh
+                        employeeView.showProgressbar(false);
+                        employeeView.showMessage("unable to connect");
                  }
              });
 

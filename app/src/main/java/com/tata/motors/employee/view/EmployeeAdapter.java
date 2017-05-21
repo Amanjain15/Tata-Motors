@@ -77,11 +77,12 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.MyView
                 holder.lost.setVisibility(View.VISIBLE);
                 holder.sold.setVisibility(View.VISIBLE);
                 holder.pending.setVisibility(View.VISIBLE);
-
+                holder.target.setVisibility(View.VISIBLE);
                 holder.customer_met.setText(employeeListDetails.getCustomer_met()+"");
                 holder.lost.setText(employeeListDetails.getLost()+"");
                 holder.sold.setText(employeeListDetails.getSold()+"");
                 holder.pending.setText(employeeListDetails.getPending()+"");
+                holder.target.setText(employeeListDetails.getDaily_target()+"");
                 break;
             case "2":
                 holder.label1.setVisibility(View.VISIBLE);
@@ -98,6 +99,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.MyView
                 holder.lost.setText(employeeListDetails.getLost()+"");
                 holder.sold.setText(employeeListDetails.getSold()+"");
                 holder.pending.setText(employeeListDetails.getPending()+"");
+                holder.target.setText(employeeListDetails.getDaily_target()+"");
 
                 if(employeeListDetails.getColor_flag()==1)
                 {
@@ -115,7 +117,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.MyView
                 });
                 break;
             case "3":
-
+                    holder.pro_button.setVisibility(View.INVISIBLE);
                 break;
             case "4":
 
@@ -134,7 +136,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.MyView
             @Override
             public void onClick(View view) {
 
-                ProfileFragment profileFragment=ProfileFragment.newInstance(employeeListDetails.getUser_id());
+                ProfileFragment profileFragment=ProfileFragment.newInstance(employeeListDetails.getUserId()); //UserID not ID
                 ((home_page)context).setFragment(profileFragment,"PROFILE");
 
             }

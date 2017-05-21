@@ -69,8 +69,8 @@ public class RetrofitProfileProvider implements ProfileProvider {
     }
 
     @Override
-    public void requestSendProfile(String access_token, String user_name, String name, String mobile_no, String email, String address, String designation, final SendProfileCallBack sendProfileCallBack) {
-        Call<ProfileSendData>call=profileSendApi.requestSendData(access_token,user_name,name,mobile_no,email,address,designation);
+    public void requestSendProfile(String access_token, int user_id, String name, String mobile_no, String email, String address, String designation, final SendProfileCallBack sendProfileCallBack) {
+        Call<ProfileSendData>call=profileSendApi.requestSendData(access_token, user_id,name,mobile_no,email,address,designation);
         call.enqueue(new Callback<ProfileSendData>() {
             @Override
             public void onResponse(Call<ProfileSendData> call, retrofit2.Response<ProfileSendData> response) {

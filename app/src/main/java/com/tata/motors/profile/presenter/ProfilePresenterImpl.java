@@ -52,9 +52,9 @@ public class ProfilePresenterImpl implements ProfilePresenter{
     }
 
     @Override
-    public void requestSendProfile(String access_token, String userName, String name, String mobileNo, String email, String address, String designation) {
+    public void requestSendProfile(String access_token,int user_id, String name, String mobileNo, String email, String address, String designation) {
         profileView.showProgressBar(true);
-        profileProvider.requestSendProfile(access_token, userName, name, mobileNo, email, address, designation,  new SendProfileCallBack() {
+        profileProvider.requestSendProfile(access_token,  user_id, name, mobileNo, email, address, designation,  new SendProfileCallBack() {
             @Override
             public void onFailure() {
                 profileView.showProgressBar(false);

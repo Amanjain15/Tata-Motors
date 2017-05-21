@@ -299,8 +299,6 @@ public class AddUserFragment extends Fragment implements AddUserView {
         password.setText(userAddedData.getPassword());
 //        prefs.setKeyEmployeeType(prefs.getUserType());
         dialog.show();
-        Intent i = new Intent(getActivity(),home_page.class);
-        startActivity(i);
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -310,22 +308,24 @@ public class AddUserFragment extends Fragment implements AddUserView {
                 switch(prefs.getKeyEmployeeType())
                 {
                     case "1":
+                        dialog.dismiss();
                         prefs.setKeyEmployeeType(prefs.getUserType());
                         ((home_page)getContext()).getSupportActionBar().show();
                         EmployeeFragment fragment = EmployeeFragment.newInstance("1",-1);
                         ((home_page)getContext()).setFragment(fragment,"Dsm");
                         break;
                     case "2":
+                        dialog.dismiss();
                         prefs.setKeyEmployeeType(prefs.getUserType());
                         ((home_page)getContext()).getSupportActionBar().show();
                         EmployeeFragment fragment2 = EmployeeFragment.newInstance("2",-1);
                         ((home_page)getContext()).setFragment(fragment2,"Dse");
                         break;
-
                 }
             }
         },1000);
-
+//        Intent i = new Intent(getActivity(),home_page.class);
+//        startActivity(i);
 
     }
 

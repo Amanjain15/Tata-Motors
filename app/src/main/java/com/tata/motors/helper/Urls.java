@@ -6,8 +6,8 @@ package com.tata.motors.helper;
 
 public class Urls {
 
-//    public static final String BASE_URL = "http://52.10.216.203:8010/";
-    public static final String BASE_URL = "http://192.168.43.240:8000/";
+    public static final String BASE_URL = "http://52.10.216.203:8010/";
+//    public static final String BASE_URL = "http://192.168.43.240:8000/";
     public static final String REQUEST_SPLASH_SCREEN = "version/";
 
     public static final String REQUEST_WELCOME_SCREEN = "url/";

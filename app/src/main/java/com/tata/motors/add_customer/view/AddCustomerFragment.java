@@ -661,8 +661,23 @@ public class AddCustomerFragment extends Fragment implements  AddCustomerView {
     public void intent() {
         hideKeyboard();
         ((home_page)getContext()).getSupportActionBar().show();
-        EmployeeFragment employeeFragment = EmployeeFragment.newInstance("4",sharedPrefs.getUserId());
-        ((home_page)getContext()).setFragment(employeeFragment,"Customers");
+        if(sharedPrefs.getUserType().equals("0"))
+        {
+            EmployeeFragment customer_fragment=EmployeeFragment.newInstance("4",-1);
+            ((home_page)getContext()).setFragment(customer_fragment,"Customers");
+        }
+        else if(sharedPrefs.getUserType().equals("1"))
+        {
+            EmployeeFragment customer_fragment=EmployeeFragment.newInstance("4",-1);
+            ((home_page)getContext()).setFragment(customer_fragment,"Customers");
+        }
+        else if(sharedPrefs.getUserType().equals("2"))
+        {
+            EmployeeFragment customer_fragment=EmployeeFragment.newInstance("4",sharedPrefs.getUserId());
+            ((home_page)getContext()).setFragment(customer_fragment,"Customers");
+        }
+//        EmployeeFragment employeeFragment = EmployeeFragment.newInstance("4",sharedPrefs.getUserId());
+//        ((home_page)getContext()).setFragment(employeeFragment,"Customers");
     }
 
 //    @Override

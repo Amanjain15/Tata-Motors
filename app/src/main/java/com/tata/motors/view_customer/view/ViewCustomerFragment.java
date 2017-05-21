@@ -4,8 +4,10 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,6 +78,9 @@ public class ViewCustomerFragment extends Fragment implements ViewCustomer {
     Button button_follow_up;
     @BindView(R.id.recycler_view_customer)
     RecyclerView recyclerView;
+
+    @BindView(R.id.viewToolbar)
+    Toolbar toolbar;
     private ViewCustomerAdapter viewCustomerAdapter;
     private LinearLayoutManager linearLayoutManager;
 
@@ -121,6 +126,16 @@ public class ViewCustomerFragment extends Fragment implements ViewCustomer {
         ButterKnife.bind(this,view);
         initialize();
         viewCustomerPresenter.requestViewCustomer(sharedPrefs.getAccessToken(),choose_id);
+        ((home_page) getActivity()).getSupportActionBar().hide();
+        toolbar.setTitleTextColor(ContextCompat.getColor(getContext(), R.color.white));
+        toolbar.setNavigationIcon(ContextCompat.getDrawable(getContext(), R.drawable.ic_arrow_back_white_24dp));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
+
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -221,6 +236,12 @@ public class ViewCustomerFragment extends Fragment implements ViewCustomer {
         viewCustomerAdapter.setData(viewCustomerData.getVehicle_data_list());
         viewCustomerAdapter.notifyDataSetChanged();
 
+    }
+
+    @Override
+    public void onDestroy() {
+        ((home_page)getContext()).getSupportActionBar().show();
+        super.onDestroy();
     }
 
     /**

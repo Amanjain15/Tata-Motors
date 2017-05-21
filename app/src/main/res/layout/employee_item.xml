@@ -74,25 +74,24 @@
 
             <TextView
                 android:id="@+id/label_cust"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="Customer met"
-                android:paddingLeft="7dp"
                 android:textColor="#17202a"
                 android:textSize="15dp"
+                android:paddingLeft="7dp"
                 android:visibility="gone"
                 />
 
             <TextView
 
                 android:id="@+id/customerMet"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:hint="10"
-                android:paddingLeft="7dp"
                 android:textColor="#17202a"
                 android:textSize="15dp"
                 android:visibility="gone"
@@ -105,13 +104,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="10">
+            android:weightSum="2">
 
             <TextView
                 android:id="@+id/label_pending"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="5.86"
+                android:layout_weight="1"
                 android:hint="Pending"
                 android:paddingLeft="7dp"
                 android:textColor="#17202a"
@@ -121,12 +120,11 @@
 
             <TextView
                 android:id="@+id/pending"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="4.27"
+                android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:hint="10"
-                android:paddingLeft="7dp"
                 android:textColor="#17202a"
                 android:textSize="15dp"
                 android:visibility="gone"
@@ -142,9 +140,9 @@
 
             <TextView
                 android:id="@+id/label_lost"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="6.26"
+                android:layout_weight="5"
                 android:hint="Lost"
                 android:paddingLeft="7dp"
                 android:textColor="#17202a"
@@ -154,12 +152,11 @@
 
             <TextView
                 android:id="@+id/lost"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="3.87"
+                android:layout_weight="5"
                 android:gravity="center_horizontal"
                 android:hint="10"
-                android:paddingLeft="7dp"
                 android:textColor="#17202a"
                 android:textSize="15dp"
                 android:visibility="gone"
@@ -176,9 +173,9 @@
 
             <TextView
                 android:id="@+id/label_sold"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="6.32"
+                android:layout_weight="5"
                 android:hint="Sold"
                 android:paddingLeft="7dp"
                 android:textColor="#17202a"
@@ -188,12 +185,11 @@
 
             <TextView
                 android:id="@+id/sold"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="3.91"
+                android:layout_weight="5"
                 android:gravity="center_horizontal"
                 android:hint="10"
-                android:paddingLeft="7dp"
                 android:textColor="#17202a"
                 android:textSize="15dp"
                 android:visibility="gone"
@@ -209,9 +205,9 @@
 
             <TextView
                 android:id="@+id/label_target"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="6.32"
+                android:layout_weight="5"
                 android:hint="Target Given"
                 android:paddingLeft="7dp"
                 android:textColor="#17202a"
@@ -222,13 +218,13 @@
 
             <TextView
                 android:id="@+id/target"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="3.91"
+                android:layout_weight="5"
                 android:gravity="center_horizontal"
-                android:paddingLeft="7dp"
                 android:textColor="#17202a"
                 android:textSize="15dp"
+                android:hint="10"
                 android:visibility="gone"
                 />
 

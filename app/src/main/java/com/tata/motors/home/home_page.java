@@ -78,7 +78,8 @@ public class home_page extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         Log.d("","HOME");
 //        setFragment(new SetTargets(), "SetTargets");
-        setFragment(new TargetFragment(),"Targets");
+//        setFragment(new ProfileFragment(),"Profile");
+        getSupportActionBar().setTitle("Tata Motors");
 
     }
 

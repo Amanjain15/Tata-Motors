@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -129,7 +130,7 @@ public class AddUserFragment extends Fragment implements AddUserView {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add_user, container, false);
-
+        ((home_page)getContext()).getSupportActionBar().hide();
         //ButterKnife.bind(this, view);
         spinner = (Spinner)view.findViewById(R.id.spinner);
         editTextUsername=(TextView) view.findViewById(R.id.input_username);
@@ -140,6 +141,16 @@ public class AddUserFragment extends Fragment implements AddUserView {
         addUserPresenter= new AddUserPresenterImpl(this,new AddUserRetrofitProvider());
 //        addUserPresenter= new AddUserPresenterImpl(this,new MockUser());
         Log.d("Add User",prefs.getKeyEmployeeType()+"");
+        toolbar.setTitleTextColor(ContextCompat.getColor(getContext(), R.color.white));
+        toolbar.setNavigationIcon(ContextCompat.getDrawable(getContext(), R.drawable.ic_arrow_back_white_24dp));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
+
+
         addUserPresenter.requestAddUser(prefs.getAccessToken(),prefs.getUserId(), prefs.getKeyEmployeeType());
 
         button_submit.setOnClickListener(
@@ -362,11 +373,18 @@ public class AddUserFragment extends Fragment implements AddUserView {
 
 
 
+
         //        toolbar.setTitle("Add DSE");
 //          showSpinnerDsm(addUserData);
 
     }
 
+    @Override
+    public void onDestroy() {
+        ((home_page)getContext()).getSupportActionBar().show();
+        toolbar.setVisibility(View.GONE);
+        super.onDestroy();
+    }
 
     /**
      * This interface must be implemented by activities that contain this

@@ -73,6 +73,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.MyView
                 holder.label2.setVisibility(View.VISIBLE);
                 holder.label3.setVisibility(View.VISIBLE);
                 holder.label4.setVisibility(View.VISIBLE);
+                holder.label5.setVisibility(View.VISIBLE);
                 holder.customer_met.setVisibility(View.VISIBLE);
                 holder.lost.setVisibility(View.VISIBLE);
                 holder.sold.setVisibility(View.VISIBLE);
@@ -120,7 +121,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.MyView
                     holder.pro_button.setVisibility(View.INVISIBLE);
                 break;
             case "4":
-
+                    holder.pro_button.setVisibility(View.INVISIBLE);
                 break;
 
         }

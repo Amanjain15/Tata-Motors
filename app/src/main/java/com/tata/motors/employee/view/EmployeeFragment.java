@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -176,24 +177,54 @@ public class EmployeeFragment extends Fragment implements EmployeeView {
         }
 
 
+        if(!(choose_id==(-1)))
+        {
+            ((home_page) getActivity()).getSupportActionBar().hide();
+            toolbar.setTitleTextColor(ContextCompat.getColor(getContext(), R.color.white));
+            toolbar.setNavigationIcon(ContextCompat.getDrawable(getContext(), R.drawable.ic_arrow_back_white_24dp));
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    getActivity().onBackPressed();
+                }
+            });
+        }
+        else
+        {
+            toolbar.setVisibility(View.GONE);
 
+        }
 
         if(user_c_type.equals("3")) {
             toolbar.setTitle("DEALERS");
+            toolbar.setVisibility(View.GONE);
             to.setVisibility(View.GONE);
             from.setVisibility(View.GONE);
             button.setVisibility(View.GONE);
             spinner.setVisibility(View.GONE);
             linearLayout.setVisibility(View.GONE);
             ((home_page)getContext()).getSupportActionBar().show();
+            ((home_page)getContext()).getSupportActionBar().setTitle("Dealers");
+
         }
         else if(user_c_type.equals("1"))
         {
             toolbar.setTitle("DSM");
+            if((choose_id==(-1)))
+            {
+                ((home_page)getContext()).getSupportActionBar().show();
+                ((home_page)getContext()).getSupportActionBar().setTitle("DSM");
+            }
+
         }
         else if(user_c_type.equals("2"))
         {
             toolbar.setTitle("DSE");
+            if((choose_id==(-1)))
+            {
+                ((home_page)getContext()).getSupportActionBar().show();
+                ((home_page)getContext()).getSupportActionBar().setTitle("DSE");
+            }
         }
         else if(user_c_type.equals("4"))
         {
@@ -281,14 +312,6 @@ public class EmployeeFragment extends Fragment implements EmployeeView {
         showSpinnerStatus();
 
         employeePresenter.requestEmployee(access_token,choose_id,user_c_type,to_date,from_date,status);
-        if(!(choose_id==(-1)))
-            ((home_page) getActivity()).getSupportActionBar().hide();
-        else
-        {
-            toolbar.setVisibility(View.GONE);
-        }
-
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -323,7 +346,14 @@ public class EmployeeFragment extends Fragment implements EmployeeView {
     @Override
     public void showMessage(String message) {
 
-        Toast.makeText(getContext()," "+message,Toast.LENGTH_SHORT).show();
+        try{
+            Toast.makeText(getContext()," "+message,Toast.LENGTH_SHORT).show();
+        }
+        catch (java.lang.NullPointerException e)
+        {
+            Toast.makeText(getContext()," "+null,Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     @Override
@@ -384,6 +414,12 @@ public class EmployeeFragment extends Fragment implements EmployeeView {
         });
 
 
+    }
+
+    @Override
+    public void onDestroy() {
+        ((home_page)getContext()).getSupportActionBar().show();
+        super.onDestroy();
     }
 
     /**

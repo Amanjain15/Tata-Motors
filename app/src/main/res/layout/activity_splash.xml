@@ -3,7 +3,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0c3e8a"
+    android:background="@color/colorPrimaryDark"
     >
 
     <ProgressBar
@@ -14,6 +14,9 @@
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
         android:paddingTop="100dp"
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/white"
         />
 
     <ImageView

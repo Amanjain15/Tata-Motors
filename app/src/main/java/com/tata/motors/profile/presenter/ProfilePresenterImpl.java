@@ -65,8 +65,9 @@ public class ProfilePresenterImpl implements ProfilePresenter{
             public void onSuccess(ProfileSendData profileSendData) {
                 if(profileSendData.isSuccess())
                 {
-                  profileView.onSend(profileSendData);
+                    profileView.onSend(profileSendData);
                     profileView.showProgressBar(false);
+                    profileView.disable_textview();
 
                 }
                 else{

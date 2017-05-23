@@ -11,4 +11,5 @@ public interface ProfileView {
     void showMessage(String message);
     void onReceive(ProfileData profileData);
     void onSend(ProfileSendData profileSendData);
+    public void disable_textview();
 }

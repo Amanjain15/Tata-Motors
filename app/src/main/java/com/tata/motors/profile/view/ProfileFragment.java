@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -131,9 +132,10 @@ public class ProfileFragment extends Fragment implements ProfileView{
               //  dealers.setFocusable(true);
                 //dealers.setClickable(true);
                 //dealers.setFocusableInTouchMode(true);
-                designation.setFocusable(true);
-                designation.setClickable(true);
-                designation.setFocusableInTouchMode(true);
+//                designation.setFocusable(true);
+//                designation.setClickable(true);
+//                designation.setFocusableInTouchMode(true);
+                Toast.makeText(getContext(),"Edit Please!!!",Toast.LENGTH_SHORT).show();
 
 
             }
@@ -150,13 +152,38 @@ public class ProfileFragment extends Fragment implements ProfileView{
               //  dealers1=dealers.getText().toString();
                 profilePresenter.requestSendProfile(token,sharedPrefs.getUserId(),name1,mobileNo1,email1,address1,designation1);
               //  profilePresenter.requestSendProfile("sd","sd","fdfc","dd","vv","sdv","dcd","sv");
+
             }
         });
         return(view);
     }
 
+    @Override
+    public void disable_textview(){
+        name.setFocusable(false);
+        name.setClickable(false);
+        name.setFocusableInTouchMode(false);
+        userName.setFocusable(false);
+        userName.setClickable(false);
+        userName.setFocusableInTouchMode(false);
+        mobileNo.setFocusable(false);
+        mobileNo.setClickable(false);
+        mobileNo.setFocusableInTouchMode(false);
+        email.setFocusable(false);
+        email.setClickable(false);
+        email.setFocusableInTouchMode(false);
+        address.setFocusable(false);
+        address.setClickable(false);
+        address.setFocusableInTouchMode(false);
+        //  dealers.setFocusable(true);
+        //dealers.setClickable(true);
+        //dealers.setFocusableInTouchMode(true);
+        designation.setFocusable(false);
+        designation.setClickable(false);
+        designation.setFocusableInTouchMode(false);
+        hideKeyboard();
 
-
+    }
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
@@ -261,6 +288,13 @@ mobileNo.setText(profileData.getMobile_no());
         dealers.setText(profileData.getDealer());       */
     }
 
+    private void hideKeyboard() {
+        View view = getActivity().getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
     @Override
     public void onSend(ProfileSendData profileSendData) {
 

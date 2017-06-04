@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.tata.motors.change_password.view.ChangePassFragment">
+    tools:context="com.executives.motors.change_password.view.ChangePassFragment">
 
 <android.support.v7.widget.CardView
     android:layout_width="match_parent"

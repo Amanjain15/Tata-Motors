@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.tata.motors.report.view.ReportDseFragment">
+    tools:context="com.executives.motors.report.view.ReportDseFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

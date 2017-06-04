@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.tata.motors.profile.view.ProfileFragment">
+    tools:context="com.executives.motors.profile.view.ProfileFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -28,6 +28,14 @@
                 app:cardCornerRadius="10dp"
                 app:contentPadding="5dp"
                 >
+                <ProgressBar
+                    android:id="@+id/profileProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="visible"
+
+                    />
 
                 <LinearLayout
 
@@ -148,14 +156,6 @@
 
                     />
                     </android.support.design.widget.TextInputLayout>
-
-                        <ProgressBar
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/profileProgressBar"
-                            android:layout_gravity="center"
-                            android:visibility="gone"
-                            />
 
 
                         <LinearLayout

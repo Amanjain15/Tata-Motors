@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.tata.motors">
+    package="com.executives.motors">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name="android.support.multidex.MultiDexApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
         <!-- Splash screen -->
         <activity
-            android:name=".splash_screen.view.SplashScreenActivity"
+            android:name="com.executives.motors.splash_screen.view.SplashScreenActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -21,10 +22,9 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
-            android:name=".home.home_page"
+            android:name="com.executives.motors.home.home_page"
             android:label="@string/title_activity_home_page">
             <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.MAIN" />-->
@@ -33,10 +33,10 @@
             <!--</intent-filter>-->
         </activity>
         <activity
-            android:name=".welcome_screen.view.WelcomeScreenActivity"
+            android:name="com.executives.motors.welcome_screen.view.WelcomeScreenActivity"
             android:label="@string/title_activity_welcome_page">
         </activity>
-        <activity android:name=".login.view.LoginScreenActivity"
+        <activity android:name="com.executives.motors.login.view.LoginScreenActivity"
             android:label="login_activity">
             <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.MAIN" />-->
